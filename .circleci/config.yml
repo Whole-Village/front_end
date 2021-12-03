@@ -7,11 +7,11 @@ orbs:
 jobs:
   npm-install:
     executor: node/default
-      steps:
-        - checkout:
-        - node/install-packages:
-          cache-path: ~/project/node_modules
-          override-ci-command: npm install
+    steps:
+      - checkout:
+      - node/install-packages:
+        cache-path: ~/project/node_modules
+        override-ci-command: npm install
 
 
 workflows:
