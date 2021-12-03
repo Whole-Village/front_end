@@ -8,7 +8,7 @@ jobs:
   npm-install:
     executor: node/default
       steps:
-        - checkout
+        - checkout:
         - node/install-packages:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
