@@ -2,6 +2,9 @@
   "name": "front_end",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@apollo/client": "^3.5.5",
     "@testing-library/jest-dom": "^5.15.1",
@@ -17,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "./node_modules/.bin/cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^9.1.0"
   }
 }
