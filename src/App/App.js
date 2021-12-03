@@ -1,5 +1,4 @@
 import { Route, Switch } from 'react-router-dom';
-import { useState } from 'react';
 import StartVillage from '../StartVillage/StartVillage';
 import './App.css';
 
