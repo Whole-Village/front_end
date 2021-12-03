@@ -5,6 +5,7 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
   node: circleci/node@4.7
+  heroku: circleci/heroku@x.y
   # cypress: cypress-io/cypress@1
 
 # Invoke jobs via workflows
@@ -13,6 +14,13 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
+      - build
+       - heroku/deploy-via-git:
+           requires:
+             - build # only run deploy-via-git job if the build job has completed
+           filters:
+             branches:
+               only: main # only run deploy-via-git job on main branch
       # - cypress/run
       - node/test:
           # This is the node version to use for the `cimg/node` tag
