@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import StartVillage from '../StartVillage/StartVillage';
+import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import './App.css';
 
 function App() {
@@ -7,7 +8,10 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" render={() =>
-          <StartVillage />
+          <div>
+            <StartVillage />
+            <NewVillageForm />
+          </div>
         }
         />
       </Switch>
