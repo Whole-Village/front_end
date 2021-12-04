@@ -5,7 +5,7 @@ import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import './App.css';
 
 function App() {
-  const [newVillage, setNewVillage] = useState({name: ''});
+  const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: []});
   const [newVillageStatus, setNewVillageStatus] = useState({nameSubmitted: false});
 
   const handleVillageChange = (e) => {
@@ -27,8 +27,8 @@ function App() {
             <input
               type='text'
               placeholder='Fuller Elementary 4th Grade...'
-              name='name'
-              value={newVillage.name}
+              name='village_name'
+              value={newVillage.village_name}
               onChange={handleVillageChange}
             />
             <button type='submit'>START A VILLAGE</button>

@@ -16,6 +16,12 @@ const StartVillage = () => {
         <input
           type='text'
           placeholder='Fuller Elementary 4th Grade...'
+          name='village_name'
+          onChange={ e => setNewVillage([e.target.name] = e.target.value)}
+        />
+        <input
+          type='text'
+          placeholder='Fuller Elementary 4th Grade...'
           name='name'
           onChange={ e => setNewVillage([e.target.name] = e.target.value)}
         />
