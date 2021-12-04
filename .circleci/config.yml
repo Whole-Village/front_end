@@ -7,13 +7,12 @@ orbs:
 
 jobs:
    build:
-     ...
      steps:
        - checkout
        - run:
-           name: Deploy Master to Heroku
+           name: Deploy Main to Heroku
            command: |
-             git push https://heroku:74435af4-b1ed-4375-ad21-ad1c28805114@git.heroku.com/whole-village.git master
+             git push https://heroku:74435af4-b1ed-4375-ad21-ad1c28805114@git.heroku.com/whole-village.git main
 
              
 workflows:
@@ -38,9 +37,15 @@ workflows:
           group: 'all tests' # name this group "all tests" on the dashboard
           start: 'npm start' # start server before running tests
       - build
-      - heroku/deploy-via-git:
+        - deploy:
           requires:
             - build
           filters:
             branches:
               only: main
+      # - heroku/deploy-via-git:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         only: main
