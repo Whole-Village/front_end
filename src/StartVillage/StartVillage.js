@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const StartVillage = () => {
   const [newVillage, setNewVillage] = useState({name: ''});
@@ -10,6 +11,8 @@ const StartVillage = () => {
   }
 
   return (
+    <>
+    <Link to="/dashboard">DASHBOARD</Link>
     <form>
       <input
         type='text'
@@ -19,6 +22,7 @@ const StartVillage = () => {
       />
       <button onClick={e => startVillage(e)}>START A VILLAGE</button>
     </form>
+  </>
   )
 }
 
