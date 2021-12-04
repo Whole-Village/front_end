@@ -2,14 +2,18 @@ import React from 'react';
 
 
 const MembersAdded = ({ villageMembers }) => {
+  let villageMemberCount = 0;
   const villageInvitee = villageMembers.map(member => {
     return(
-      <p key={member.email}>{member.email}</p>
+      <p className='village-member-email' key={member.email}>{member.email}</p>
     )
   })
 
   return(
-    <div className='added-villager'>{villageInvitee}</div>
+    <section className='added-villagers'>
+      <h2>Village Invite List</h2>
+      {villageInvitee}
+    </section>
   )
 }
 

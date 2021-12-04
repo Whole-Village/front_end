@@ -15,11 +15,15 @@ function App() {
 
   const changeVillageSubmitStatus = () => {
     setNewVillageStatus({nameSubmitted: true})
-    console.log(newVillage);
   };
 
+  const addVillageMembers = (allMembers) => {
+    setNewVillage((prevProps) => ({
+      ...prevProps, village_invitees: allMembers}))
+  }
+
   return (
-    <div className="App">
+    <div className="App">{console.log("new village members:",newVillage)}
       <Switch>
         <Route exact path="/" render={() =>
           !newVillageStatus.nameSubmitted ?
@@ -36,6 +40,7 @@ function App() {
           <NewVillageForm
             handleVillageChange={handleVillageChange}
             newVillage={newVillage}
+            addVillageMembers={addVillageMembers}
           />
         }/>
       </Switch>
