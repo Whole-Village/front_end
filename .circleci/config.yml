@@ -4,6 +4,18 @@ orbs:
   cypress: cypress-io/cypress@1.29.0
   heroku: circleci/heroku@1.2.6
 
+
+jobs:
+   build:
+     ...
+     steps:
+       - checkout
+       - run:
+           name: Deploy Master to Heroku
+           command: |
+             git push https://heroku:74435af4-b1ed-4375-ad21-ad1c28805114@git.heroku.com/whole-village.git master
+
+             
 workflows:
   test_and_heroku_deploy:
     jobs:
