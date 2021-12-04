@@ -2,17 +2,19 @@ import React from 'react';
 import './NewVillageForm.css';
 
 
-const NewVillageForm = () => {
+const NewVillageForm = ({ handleVillageChange, newVillage}) => {
 
 
   return(
-    <form>
+    <form className='new-village-form'>
       <input
         type='text'
         placeholder='Fuller Elementary 4th Grade...'
         name='name'
+        value={newVillage.name}
+        onChange={handleVillageChange}
       />
-      <button onClick={console.log('trash')}>
+      <button className='create-village-btn' onClick={console.log('trash')}>
         <span className="material-icons">
           send
         </span>

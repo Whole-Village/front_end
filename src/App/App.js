@@ -33,7 +33,10 @@ function App() {
             />
             <button type='submit'>START A VILLAGE</button>
           </form> :
-          <NewVillageForm />
+          <NewVillageForm
+            handleVillageChange={handleVillageChange}
+            newVillage={newVillage}
+          />
         }/>
       </Switch>
     </div>
