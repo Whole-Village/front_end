@@ -19,6 +19,12 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers}) =
       // console.log(villageMember)
   }
 
+  const removeVillageMember = (villagerEmail) => {
+    villageMembers.filter(villager => villager.email !== villagerEmail)
+    console.log(villagerEmail)
+    addVillageMember(villageMembers)
+  }
+
   return(
     <div>
       <form className='new-village-form'>
@@ -47,7 +53,10 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers}) =
         </button>
       </form>
       <section>
-        <MembersAdded villageMembers={villageMembers}/>
+        <MembersAdded
+        villageMembers={villageMembers}
+        removeVillageMember={removeVillageMember}
+        />
       </section>
     </div>
   )
