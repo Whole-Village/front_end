@@ -13,7 +13,7 @@ const NewVillageForm = () => {
         name='name'
       />
       <button onClick={console.log('trash')}>
-        <span className="material-icons-outlined">
+        <span className="material-icons">
           send
         </span>
       </button>

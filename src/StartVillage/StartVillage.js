@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NewVillageForm from '../NewVillageForm/NewVillageForm';
 
 const StartVillage = () => {
   const [newVillage, setNewVillage] = useState({name: ''});
@@ -10,15 +11,18 @@ const StartVillage = () => {
   }
 
   return (
-    <form>
-      <input
-        type='text'
-        placeholder='Fuller Elementary 4th Grade...'
-        name='name'
-        onChange={ e => setNewVillage([e.target.name] = e.target.value)}
-      />
-      <button onClick={e => startVillage(e)}>START A VILLAGE</button>
-    </form>
+    { !newVillage.name ?
+      <form>
+        <input
+          type='text'
+          placeholder='Fuller Elementary 4th Grade...'
+          name='name'
+          onChange={ e => setNewVillage([e.target.name] = e.target.value)}
+        />
+        <button onClick={e => startVillage(e)}>START A VILLAGE</button>
+      </form> :
+      <NewVillageForm />
+    }
   )
 }
 
