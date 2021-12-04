@@ -28,7 +28,7 @@ workflows:
 
       - heroku/deploy-via-git:
         requires:
-          - cypres/run
+          - cypress/run
         filters:
           branches:
             only: main
