@@ -27,8 +27,8 @@ workflows:
           start: 'npm start' # start server before running tests
 
       - heroku/deploy-via-git:
-        requires:
-          - cypress/run
-        filters:
-          branches:
-            only: main
+          requires:
+            - cypress/run
+          filters:
+            branches:
+              only: main
