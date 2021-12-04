@@ -3,7 +3,19 @@ orbs:
   node: circleci/node@4.7
   cypress: cypress-io/cypress@1.29.0
   heroku: circleci/heroku@1.2.6
-             
+
+jobs:
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          command: >
+            echo "The command above installs Heroku, the command below deploys.
+            What you do inbetween is up to you!"
+      - heroku/deploy-via-git
+
 workflows:
   test_and_heroku_deploy:
     jobs:
@@ -26,7 +38,7 @@ workflows:
           group: 'all tests' # name this group "all tests" on the dashboard
           start: 'npm start' # start server before running tests
       - heroku/install
-      - heroku/deploy-via-git:
+      - deploy:
           requires:
             - cypress/run
           filters:
