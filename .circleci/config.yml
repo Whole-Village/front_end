@@ -6,13 +6,13 @@ orbs:
 
 
 jobs:
-   build:
-     steps:
-       - checkout
-       - run:
-           name: Deploy Main to Heroku
-           command: |
-             git push https://heroku:74435af4-b1ed-4375-ad21-ad1c28805114@git.heroku.com/whole-village.git main
+  build:
+    steps:
+      - checkout
+      - run:
+        name: Deploy Main to Heroku
+          command: |
+            git push https://heroku:74435af4-b1ed-4375-ad21-ad1c28805114@git.heroku.com/whole-village.git main
 
              
 workflows:
