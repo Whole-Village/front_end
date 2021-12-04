@@ -5,14 +5,20 @@ orbs:
   heroku: circleci/heroku@1.2.6
 
 
-jobs:
-  build:
-    steps:
-      - checkout
-      - run:
-        name: Deploy Main to Heroku
-          command: |
-            git push https://heroku:74435af4-b1ed-4375-ad21-ad1c28805114@git.heroku.com/whole-village.git main
+# jobs:
+#   build:
+#   deploy:
+#     docker:
+#       - image: <docker-image-name-tag>
+#         auth:
+#           username: mydockerhub-user
+#           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+#     steps:
+#       - checkout
+#       - run:
+#         name: Deploy Main to Heroku
+#           command: |
+#             git push https://heroku:74435af4-b1ed-4375-ad21-ad1c28805114@git.heroku.com/whole-village.git main
 
              
 workflows:
@@ -37,15 +43,9 @@ workflows:
           group: 'all tests' # name this group "all tests" on the dashboard
           start: 'npm start' # start server before running tests
       - build
-        - deploy:
+      - heroku/deploy-via-git:
           requires:
             - build
           filters:
             branches:
               only: main
-      # - heroku/deploy-via-git:
-      #     requires:
-      #       - build
-      #     filters:
-      #       branches:
-      #         only: main
