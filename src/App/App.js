@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard';
 import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
+import VillageHome from '../VillageHome/VillageHome';
 import './App.css';
 
 function App() {
@@ -52,7 +53,12 @@ function App() {
           render={
             () => <Dashboard />
           }/>
-          {/* <Route
+        <Route 
+          exact path="/village" 
+          render={
+            () => <VillageHome />
+          }/>
+          <Route
 							exact
 							path="/villages/:id"
 							render={({ match }) => {
@@ -60,7 +66,7 @@ function App() {
 									return (
 										<VillageHome
 											villageId={villageId}
-										/>)}} /> */}
+										/>)}} />
       </Switch>
     </div>
   );

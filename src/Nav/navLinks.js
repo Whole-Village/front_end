@@ -1,4 +1,11 @@
-export const navLinks = [
+export const dashboardNavLinks = [
+  {
+    name: "Create a Village",
+    url: "/dashboard"
+  },
+]
+
+export const villageHomeNavLinks = [
   {
     name: "My Dashboard",
     url: "/dashboard"

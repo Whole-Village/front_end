@@ -2,17 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './VillageCard.js'
 
-const VillageCard = () => {
-  // pass props down
-  //Map user's village array to make VillageCards
-  
-
+const VillageCard = ({ id, name }) => {
   return (
-  // <Link to={`/villages/${id}`}>
+  <Link to={`/villages/${id}`}>
     <article className="village-card">
-      <h3>VILLAGE CARD</h3>
+      <h3>{name}</h3>
     </article>
-  // </Link>
+  </Link>
   )
 }
 
