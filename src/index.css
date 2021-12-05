@@ -2,17 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* use Apple's SF font or default to system fonts */
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+
 }
 
 body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: "PlayfairDisplay";
   min-height: 100vh;
-  /* background-image: url('/images/bg.jpeg'); */
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

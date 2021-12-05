@@ -1,4 +1,8 @@
 .App {
-
+  background-image: url("../images/bg.jpeg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  border: 1px red solid;
 }
 
