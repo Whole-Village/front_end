@@ -13,20 +13,38 @@ import {
 } from "@apollo/client";
 
 
+// const client = new ApolloClient({
+//   //will replace the uri below with the whole village backend uri
+//   uri: 'https://48p1r2roz4.sse.codesandbox.io',
+//   cache: new InMemoryCache()
+// });
 const client = new ApolloClient({
   //will replace the uri below with the whole village backend uri
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  uri: 'https://whole-village-be.herokuapp.com/graphql',
   cache: new InMemoryCache()
 });
 
+// client.query({
+//   query: gql`
+//      query GetRates {
+//        rates(currency: "USD") {
+//          currency
+//        }
+//      }
+//    `
+//  })
+//  .then(result => console.log(result));
+
 client.query({
   query: gql`
-     query GetRates {
-       rates(currency: "USD") {
-         currency
-       }
-     }
-   `
+    query {
+      users {
+        firstName
+        lastName
+        email
+      }
+    }
+  `
  })
  .then(result => console.log(result));
 
