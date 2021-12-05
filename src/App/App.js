@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard';
+import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import './App.css';
 
@@ -37,11 +38,14 @@ function App() {
             />
             <button type='submit'>START A VILLAGE</button>
           </form> :
-          <NewVillageForm
-            handleVillageChange={handleVillageChange}
-            newVillage={newVillage}
-            addVillageMembers={addVillageMembers}
-          />
+          <div>
+            <NewVillageForm
+              handleVillageChange={handleVillageChange}
+              newVillage={newVillage}
+              addVillageMembers={addVillageMembers}
+            />
+            <NewEvent />
+          </div>
         }/>
         <Route 
           exact path="/dashboard" 
