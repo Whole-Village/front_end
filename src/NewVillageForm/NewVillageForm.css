@@ -1,0 +1,15 @@
+.new-village-form {
+  display: flex;
+  justify-content: center;
+}
+.create-village-btn {
+  height:2.5em;
+  width: 2.5em;
+  background-color: white;
+  border: none;
+}
+
+.material-icons {
+  font-size: 24px;
+  color: #c175ff;
+}
