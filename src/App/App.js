@@ -48,7 +48,7 @@ function App() {
           render={
             () => <Dashboard />
           }/>
-          <Route
+          {/* <Route
 							exact
 							path="/villages/:id"
 							render={({ match }) => {
@@ -56,7 +56,7 @@ function App() {
 									return (
 										<VillageHome
 											villageId={villageId}
-										/>
+										/>)}} /> */}
       </Switch>
     </div>
   );
