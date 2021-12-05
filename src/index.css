@@ -10,7 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "PlayfairDisplay";
   min-height: 100vh;
-  background-image: (/images/bg.jpeg);
+  /* background-image: url('/images/bg.jpeg'); */
 }
 
 code {
