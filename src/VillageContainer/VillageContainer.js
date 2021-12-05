@@ -14,7 +14,6 @@ const villageCards = villages.map((elem, i) => {
   );
 })
 
-
   return (
     <div className="village-container">
     {villageCards}
