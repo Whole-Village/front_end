@@ -48,6 +48,15 @@ function App() {
           render={
             () => <Dashboard />
           }/>
+          <Route
+							exact
+							path="/villages/:id"
+							render={({ match }) => {
+								let villageId = match.params.id;
+									return (
+										<VillageHome
+											villageId={villageId}
+										/>
       </Switch>
     </div>
   );

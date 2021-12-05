@@ -6,6 +6,7 @@ const Nav = () => {
 
   const dashboardLinks = navLinks.map((elem, i) => {
     return <Link to={elem.url} key={i}>{elem.name}</Link>
+    ;
   })
 
   return (
