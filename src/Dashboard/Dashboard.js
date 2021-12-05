@@ -1,12 +1,14 @@
 import React from 'react';
 import './Dashboard.css'
 import VillageContainer from '../VillageContainer/VillageContainer'
+import Nav from '../Nav/Nav'
 
 const Dashboard = () => {
 
   return (
     <>
     <h1>Dashboard</h1>
+    <Nav />
     <VillageContainer />
     </>
   )
@@ -14,12 +16,11 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-// VillagesContainer
-// VillagesCard
 
 //Nav
 // Link to Create a Village
 //Link to Events
 
 //UserProfile
+
 
