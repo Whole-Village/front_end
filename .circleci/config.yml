@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
-        - run:
+      - run:
           command: >
             echo "The command above installs Heroku, the command below deploys.
             What you do inbetween is up to you!"
