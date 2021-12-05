@@ -1,9 +1,7 @@
-
-
 .form-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-content: center;
+  padding: 25px;
   margin-top: 100px;
   width: 700px;
   height: 400px;
@@ -12,9 +10,98 @@
   background-color: #FF1368;
 }
 
- form {
+form {
+  display: grid;
+  grid-template-columns: 250px 450px;
+  color: white;
+}
+
+.name-label, .date-label, .time-label, .adult-label {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-end;
+  grid-column: 1;
+  font-weight: bold;
+  color: white;
+}
+
+
+.name-label {
+  grid-row: 1;
+}
+
+.date-label {
+  margin-top: 10px;
+  grid-row: 2;
+}
+
+.time-label {
+  margin-top: 10px;
+  grid-row: 3;
+}
+
+.adult-label {
+  margin-top: 10px;
+  grid-row: 4;
+}
+
+.description-label {
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+  margin-top: 10px;
+  grid-row: 6;
+  grid-column: 1;
+  font-weight: bold;
+}
+
+.name-input, .date-input, .time-input, .description-input {
+  grid-column: 2;
+  background-color: #FF1368;
+  border-radius: 10px;
+  border: 2px solid white;
+  color: white;
+}
+
+.name-input {
+  grid-row: 1;
+}
+
+.date-input {
+  grid-row: 2;
+  margin-top: 10px;
+}
+
+.time-input {
+  grid-row: 3;
+  margin-top: 10px;
+}
+
+.yes-label, .yes-input {
+  grid-row: 4;
+  grid-column: 2;
+  margin-top: 10px;
+}
+
+.no-label, .no-input {
+  grid-row: 5;
+  grid-column: 2;
+}
+
+.description-input {
+  grid-row: 6;
+}
+
+.submit-btn {
+  display: flex;
+  justify-content: center;
+  grid-row: 8;
+  grid-column: 2;
+  margin-top: 10px;
+  background-color: #FF1368;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
 }
  /* orange: E8902D */
