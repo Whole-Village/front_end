@@ -1,4 +1,4 @@
-describe('Main Page User Flows', () => {
+// describe('Main Page User Flows', () => {
   // beforeEach(() => {
   //   cy.visit('http://localhost:3000')
   // });
@@ -6,4 +6,6 @@ describe('Main Page User Flows', () => {
   //   cy.get('button')
   // });
 
-})
+// })
+
+    // cy.visit('http://localhost:3000', { timeout: 120000 })
