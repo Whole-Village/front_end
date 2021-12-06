@@ -1,6 +1,7 @@
 .village-home {
   display: flex;
   flex-direction: column;
+  align-content: center;
   width: 90%;
   height: 100vh;
 }
@@ -42,4 +43,10 @@ a {
 .event-details {
   margin-top: 10px;
   text-align: left;
+}
+
+
+.form-container {
+  position: absolute;
+  margin-left: 25%;
 }
