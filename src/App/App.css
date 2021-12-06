@@ -10,3 +10,9 @@
   min-height: 100vh;
   background-color: white;
 }
+
+* {
+  font-family: 'Sarala', sans-serif;
+}
+
+/* font-family: 'Poiret One', cursive; */
