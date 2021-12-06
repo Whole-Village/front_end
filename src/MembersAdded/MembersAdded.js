@@ -14,9 +14,9 @@ const MembersAdded = ({ villageMembers, setVillageMembers }) => {
     return(
       <div className='village-member-card' key={Math.random()}>
         <p className='village-member-email'>{member.email}</p>
-        <button onClick={() => removeVillageMember(member.email)}>
+        <button className='remove-member-btn' onClick={() => removeVillageMember(member.email)}>
           <span className="material-icons">
-            remove_circle
+            person_remove_alt_1
           </span>
         </button>
       </div>

@@ -1,15 +1,49 @@
 .new-village-form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background-color: #00b7eb;
+  margin-top:  40px;
+  width: 80%;
+  height: 25em;
+  border-radius: 50px;
+  opacity: 0.85;
 }
-.create-village-btn {
-  height:2.5em;
-  width: 2.5em;
-  background-color: white;
+
+.village-data-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+  color: black;
+}
+
+.roster {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-member-btn, .remove-member-btn {
+  height: 2.5em;
+  background-color: #00b7eb;
   border: none;
+}
+
+label, input {
+  height: 2em;
+}
+
+label {
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+input {
+  width: 280px;
+  margin: 0px 4px 10px 9px;
+  border: 1px solid #575a89;
+  border-radius: 6px;
 }
 
 .material-icons {
   font-size: 24px;
-  color: #c175ff;
 }

@@ -16,37 +16,35 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers}) =
   const handleVillageMemberChange = (e) => {
     addVillageMember((prevProps) => ({
       ...prevProps, [e.target.name]: e.target.value}))
-      // console.log(villageMember)
+      console.log(villageMember)
   }
 
   return(
-    <div>
-      <form className='new-village-form'>
-      <label>Village Name
-      </label>
-        <input
-          type='text'
-          name='village_name'
-          value={newVillage.village_name}
-          onChange={handleVillageChange}
-        />
-      </form>
-      <form>
-        <label>Email
+    <div className='new-village-form'>
+      <form className='village-data-input'>
+        <label>Village Name
+          <input
+            type='text'
+            name='village_name'
+            value={newVillage.village_name}
+            onChange={handleVillageChange}
+          />
         </label>
-        <input
-          type='text'
-          name='email'
-          value={villageMember.email}
-          onChange={e => handleVillageMemberChange(e)}
-        />
+        <label>Invitee Email
+          <input
+            type='text'
+            name='email'
+            value={villageMember.email}
+            onChange={e => handleVillageMemberChange(e)}
+          />
+        </label>
         <button className='add-member-btn' onClick={handleAddedVillageMember}>
           <span className="material-icons">
             person_add
           </span>
         </button>
       </form>
-      <section>
+      <section className='roster'>
         <MembersAdded
         villageMembers={villageMembers}
         setVillageMembers={setVillageMembers}
