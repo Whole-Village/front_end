@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/" render={() =>
+        <Route exact path="/" render={() =>
             <NewVillageForm
               handleVillageChange={handleVillageChange}
               newVillage={newVillage}
