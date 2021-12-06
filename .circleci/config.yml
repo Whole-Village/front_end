@@ -26,8 +26,7 @@ workflows:
           parallel: true # split all specs across machines
           parallelism: 4 # use 4 CircleCI machines to finish quickly
           group: 'all tests' # name this group "all tests" on the dashboard
-          start: 'npm start'
-          wait-on: 'http://localhost:3000' # start server before running tests
+          start: 'npm start' # start server before running tests
       - deploy:
           requires:
             - cypress/run
