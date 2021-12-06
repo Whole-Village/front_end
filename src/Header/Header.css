@@ -8,12 +8,13 @@ header {
 
 .first-letter {
   font-size: 2.1em;
+  font-family: 'Poiret One', cursive;
 }
 
 .app-title {
   color: #E88D22;
   font-size: 1.3em;
-  font-family: 'Krona One', sans-serif;
+  font-family: 'Sarala', sans-serif;
 }
 
 .app-mission, .app-title {
