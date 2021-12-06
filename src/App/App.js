@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 // import NewEvent from '../NewEvent/NewEvent';
@@ -23,7 +23,10 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route exact path="/" render={() =>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <Route exact path="/home" render={() =>
             <NewVillageForm
               handleVillageChange={handleVillageChange}
               newVillage={newVillage}
