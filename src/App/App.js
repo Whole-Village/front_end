@@ -53,11 +53,6 @@ function App() {
           render={
             () => <Dashboard />
           }/>
-        <Route 
-          exact path="/village" 
-          render={
-            () => <VillageHome />
-          }/>
           <Route
 							exact
 							path="/villages/:id"

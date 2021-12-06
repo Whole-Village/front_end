@@ -1,3 +1,10 @@
+.village-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: space-around;
+  border: 1px solid chocolate;
+}
 .village-card {
   width: 330px;
   height: 144px;
@@ -7,6 +14,9 @@
 
 .event-card-info {
   z-index: 1000;
+  border: 1px solid cyan;
+  width: fit-content;
+  position: absolute;
 }
 
 .color-indicator {
@@ -14,5 +24,6 @@
   height: 144px;
   background-color: #C8372D;
   border-radius: 10px 0px 0px 10px;
+/* mix-blend-mode: hard-light; */
 
 }
