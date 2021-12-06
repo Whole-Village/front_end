@@ -36,17 +36,23 @@ const client = new ApolloClient({
 //  .then(result => console.log(result));
 
 client.query({
-  query: gql`
-    query {
-      users {
-        firstName
-        lastName
-        email
-      }
+  // query: gql`
+  //   query {
+  //     users {
+  //       firstName
+  //       lastName
+  //       email
+  //     }
+  //   }
+  // `
+  query: gql
+  `query {
+    village(id: 1){
+      name
     }
-  `
+  }`
  })
- .then(result => console.log(result));
+ .then(result => console.log('village',result));
 
 ReactDOM.render(
   <BrowserRouter>
