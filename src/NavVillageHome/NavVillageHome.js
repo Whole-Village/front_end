@@ -6,7 +6,6 @@ const NavVillageHome = () => {
 
   const villageHomeLinks = villageHomeNavLinks.map((elem, i) => {
     return <Link to={elem.url} key={i}>{elem.name}</Link>
-    ;
   })
 
   return (
