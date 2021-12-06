@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 // import NewEvent from '../NewEvent/NewEvent';
