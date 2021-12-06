@@ -5,7 +5,4 @@ describe('Main Page User Flows', () => {
   it('Should see an input', () => {
     cy.get('input')
   });
-
 })
-
-    // cy.visit('http://localhost:3000', { timeout: 120000 })
