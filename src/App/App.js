@@ -6,7 +6,6 @@ import Dashboard from '../Dashboard/Dashboard';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import VillageHome from '../VillageHome/VillageHome';
 import './App.css';
-
 function App() {
   const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: []});
 
