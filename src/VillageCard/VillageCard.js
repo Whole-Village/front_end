@@ -8,10 +8,10 @@ const VillageCard = ({ id, name }) => {
     <>
   <Link to={`/villages/${id}`}>
     <div className="village-card">
-  <div className="color-indicator" />
+      <div className="color-indicator" />
       <div className="event-card-info">
-      <p>{name}</p>
-</div>
+        <p>{name}</p>
+      </div>
     </div>
   </Link>
     <Link to={`/villages/${id}`}>

@@ -19,12 +19,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard;
-
-
-//Nav
-// Link to Create a Village
-//Link to Events
-
-//UserProfile
-
-

@@ -1,8 +1,12 @@
 .App {
-  background-image: url("../images/bg.jpeg");
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+  background-image:url("../assets/diverse-village.jpeg");
   background-repeat: no-repeat;
-  background-position: center bottom;
-  border: 1px red solid;
+  background-position: bottom;
+  min-height: 100vh;
+  background-color: white;
 }
-
