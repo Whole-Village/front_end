@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: #00b7eb;
   margin-top:  40px;
-  width: 80%;
+  width: 90%;
   height: 25em;
   border-radius: 50px;
   opacity: 0.85;
@@ -38,7 +38,7 @@ label {
 }
 
 input {
-  width: 280px;
+  width: 260px;
   margin: 0px 4px 10px 9px;
   border: 1px solid #575a89;
   border-radius: 6px;
