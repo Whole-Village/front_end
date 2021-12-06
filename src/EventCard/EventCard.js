@@ -3,13 +3,12 @@ import React from 'react';
 const EventCard = ({ id, type, name, date, description, time, adult_required }) => {
   return (
     <div className="event-card">
-      <p>{id}</p>
-      <p>{type}</p>
-      <p>{name}</p>
-      <p>{date}</p>
-      <p>{description}</p>
-      <p>{time}</p>
-      <p>{adult_required}</p>
+      <p className="event-details">Event: {name}</p>
+      <p className="event-details">Date: {date}</p>
+      <p className="event-details">Description: {description}</p>
+      <p className="event-details">Start time: {time}</p>
+      {adult_required && <p className="event-details">Parent Presence Required</p>}
+      {!adult_required && <p className="event-details">Parent Presence Not Required! Enjoy a break. 🥳</p>}
     </div>
   )
 }
