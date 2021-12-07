@@ -1,0 +1,52 @@
+.village-home {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 90%;
+  height: 100vh;
+}
+
+h2 {
+  color: #E88D22;
+}
+
+a {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: black;
+}
+
+.sub {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 5%;
+}
+
+.events, .villagers {
+  width: 40%;
+  height: 60vh;
+  background-color: rgb(255, 19, 104, 0.75);
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.event-card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-family: 'Sarala', sans-serif;
+}
+
+.event-details {
+  margin-top: 10px;
+  text-align: left;
+}
+
+
+.form-container {
+  position: absolute;
+  margin-left: 25%;
+}
