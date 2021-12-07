@@ -7,32 +7,32 @@ const VillageCard = ({ id, name }) => {
   return (
     <>
     <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section>
+      <section className="village-card">
         <p>Soccer Team</p>
       </section>
     </NavLink>
     <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section>
+      <section className="village-card">
         <p>Soccer Team</p>
       </section>
     </NavLink>
         <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section>
+      <section className="village-card">
         <p>Soccer Team</p>
       </section>
     </NavLink>
         <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section>
+      <section className="village-card">
         <p>Soccer Team</p>
       </section>
     </NavLink>
         <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section>
+      <section className="village-card">
         <p>Soccer Team</p>
       </section>
     </NavLink>
         <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section>
+      <section className="village-card">
         <p>Soccer Team</p>
       </section>
     </NavLink>
