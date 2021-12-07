@@ -36,21 +36,28 @@ const client = new ApolloClient({
 //  .then(result => console.log(result));
 
 client.query({
-  // query: gql`
-  //   query {
-  //     users {
-  //       firstName
-  //       lastName
-  //       email
-  //     }
-  //   }
-  // `
-  query: gql
-  `query {
-    village(id: 1){
-      name
+  query: gql`
+    query {
+      users {
+        firstName
+        lastName
+        email
+      }
     }
-  }`
+  `
+ })
+ .then(result => console.log('users',result));
+
+ client.query({
+   query: gql
+   `
+   query {
+     village(id: 3) {
+      name
+      description
+     }
+   }
+  `
  })
  .then(result => console.log('village',result));
 
