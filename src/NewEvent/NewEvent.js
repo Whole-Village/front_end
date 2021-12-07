@@ -2,11 +2,13 @@ import React from 'react';
 import './NewEvent.css';
 import { useState } from 'react';
 
-const NewEvent = () => {
+const NewEvent = ({ submitForm }) => {
   const[value, setValue] = useState({name: '', date: '', time: '', description: '', adultRequired: ''});
+
   const onChange = (event) => {
     setValue({...value, [event.target.name]: event.target.value});
   };
+
   return (
     <div className="form-container">
       <form className="form">
@@ -23,7 +25,7 @@ const NewEvent = () => {
         <input type="radio" name="adult" className="no-input" onChange={onChange} value={false}/>
         <label htmlFor="description" className="description-label">DESCRIPTION</label>
         <input type="text" style={{height:100, width:300}} name="description" className="description-input" onChange={onChange} />
-        <input type="submit" className="submit-btn" style={{width:300}} />
+        <input type="submit" onClick={submitForm} className="submit-btn" style={{width:300}} />
       </form>
     </div>
   )

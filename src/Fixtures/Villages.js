@@ -19,9 +19,9 @@ export const villageData =
           type: "event",
             name: "Field Day",
             date: "01/15/2022",
-            description: "Bring your sparklers cocoa cups as we celebrate the year to come.",
-            time: "8PM",
-            adult_required: true
+            description: "School Field Day! Please make sure kids are dressed in comfortable clothes and have a water bottle with their name on it.",
+            time: "12PM",
+            adult_required: false
         }
       ]
     }
