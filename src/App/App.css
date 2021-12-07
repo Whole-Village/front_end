@@ -1,12 +1,13 @@
 .App {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  padding-top: 21px;
   align-items: center;
   text-align: center;
-  background-image:url("../assets/diverse-village.jpeg");
+  background-image:url("../assets/diverse-village.jpg");
   background-repeat: no-repeat;
   background-position: bottom;
   min-height: 100vh;
+  max-widtH: 100vw;
   background-color: white;
 }
