@@ -5,7 +5,7 @@ import NavVillageHome from '../NavVillageHome/NavVillageHome';
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
 import { villages } from '../Fixtures/Villages';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const VillageHome = ({ id }) => {
   const [isFormOpen, setFormStatus] = useState(false)

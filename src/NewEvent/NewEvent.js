@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewEvent.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const NewEvent = ({ submitForm }) => {
   const[value, setValue] = useState({name: '', date: '', time: '', description: '', adultRequired: ''});
