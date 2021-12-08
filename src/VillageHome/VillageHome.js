@@ -1,9 +1,8 @@
 import React from 'react';
 import './VillageHome.css'
-import NavVillageHome from '../NavVillageHome/NavVillageHome';
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
-import NewVillageForm from '../NewVillageForm/NewVillageForm';
+// import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import { villages } from '../Fixtures/Villages';
 import { useState } from 'react';
 
