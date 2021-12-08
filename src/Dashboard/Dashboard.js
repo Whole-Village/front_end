@@ -11,7 +11,6 @@ const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, village
 const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //loading is a boolean I can use it for conditional rendering
 //look into error and refetch
-console.log(data, loading)
   return (
     <div className="dashboard">
       <h1>My Villages</h1>
@@ -28,7 +27,7 @@ console.log(data, loading)
           address: '222 Trial Pl.',
           name: 'Todd'
         }
-      })}> GraphQL Mutation Trial
+      })}> {!loading && data}Trial for graphQL Mutation
       </button>
     </div>
   )
