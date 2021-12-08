@@ -26,15 +26,21 @@ const VillageHome = ({ id }) => {
     <div className="village-home">
       <NavVillageHome />
       <h2>Welcome to {villageData[0].name}!</h2>
+      <div className="village-subheaders">
+      <h3 className="events-sub">Village Events</h3>
+      <h3 className="villagers-sub">Villagers</h3>
+      </div>
       <div className="sub">
       {isFormOpen && <NewEvent />}
         <div className="events">
-          <p>Upcoming Events</p>
-          <button onClick={showEventForm}>Create a New Event</button>
           <Events sumitForm={submitForm}/>
         </div>
         <div className="villagers">
         </div>
+        </div>
+        <div className="button-container">
+        <button className="create-event" onClick={showEventForm}>Create a New Event</button>
+        <button className="invite-new">Invite More Villagers</button>
         </div>
     </div>
   )
