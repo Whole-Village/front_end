@@ -1,18 +1,12 @@
 import React from 'react';
 import './Dashboard.css';
 import VillageContainer from '../VillageContainer/VillageContainer';
-import { useQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import NewVillageForm from '../NewVillageForm/NewVillageForm.js'
 import { updateUser } from '../graphQL/mutations/UpdateUser';
-import { villagesQuery } from '../graphQL/queries/GetVillage';
+// import { villagesQuery } from '../graphQL/queries/GetVillage';
 
 const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen }) => {
-// const { data, loading } = useQuery(villagesQuery, {
-//   variables: {
-//     id: "3"
-//   }
-// })
-// console.log(data)
 
 const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //loading is a boolean I can use it for conditional rendering
