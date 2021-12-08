@@ -29,7 +29,7 @@ const VillageHome = ({ id }) => {
 
   return (
     <div className="village-home">
-      <h2>Welcome to {villageData[0].name}!</h2>
+      <h2 className="village-name">Welcome to {villageData[0].name}!</h2>
       <div className="village-subheaders">
         <h3 className="events-sub">Village Events</h3>
         <h3 className="villagers-sub">Villagers</h3>
