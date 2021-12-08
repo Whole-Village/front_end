@@ -11,6 +11,7 @@ const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, village
 const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //loading is a boolean I can use it for conditional rendering
 //look into error and refetch
+console.log(data, loading)
   return (
     <div className="dashboard">
       <h1>My Villages</h1>

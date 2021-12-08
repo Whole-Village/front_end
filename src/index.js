@@ -9,7 +9,7 @@ import {
   InMemoryCache,
   ApolloProvider,
   // useQuery,
-  gql
+  // gql
 } from '@apollo/client';
 
 
