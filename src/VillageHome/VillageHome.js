@@ -17,7 +17,6 @@ const VillageHome = ({ id }) => {
       setFormStatus(true)
     )
   }
-
   const submitForm = (event) => {
     event.preventDefault()
     setFormStatus(false)
