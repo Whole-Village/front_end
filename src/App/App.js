@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
-        <Route exact path="/home" render={() =>
+        <Route exact path="/create-a-village" render={() =>
             <NewVillageForm
               handleVillageChange={handleVillageChange}
               newVillage={newVillage}

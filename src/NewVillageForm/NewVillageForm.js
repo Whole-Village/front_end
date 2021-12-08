@@ -50,6 +50,7 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers}) =
         setVillageMembers={setVillageMembers}
         />
       </section>
+      <button>Create Village!</button>
     </div>
   )
 }
