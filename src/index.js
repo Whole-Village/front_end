@@ -17,31 +17,31 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-client.query({
-  query: gql`
-    query {
-      users {
-        firstName
-        lastName
-        email
-      }
-    }
-  `
- })
- .then(result => console.log('users',result));
+// client.query({
+//   query: gql`
+//     query {
+//       users {
+//         firstName
+//         lastName
+//         email
+//       }
+//     }
+//   `
+//  })
+//  .then(result => console.log('users',result));
 
- client.query({
-   query: gql
-   `
-   query {
-     village(id: 3) {
-      name
-      description
-     }
-   }
-  `
- })
- .then(result => console.log('village',result));
+ // client.query({
+ //   query: gql
+ //   `
+ //   query {
+ //     village(id: 3) {
+ //      name
+ //      description
+ //     }
+ //   }
+ //  `
+ // })
+ // .then(result => console.log('village',result));
 
 ReactDOM.render(
   <BrowserRouter>
