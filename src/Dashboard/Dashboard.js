@@ -2,11 +2,11 @@ import React from 'react';
 import './Dashboard.css';
 import VillageContainer from '../VillageContainer/VillageContainer';
 import { useQuery, useMutation } from "@apollo/client";
+import NewVillageForm from '../NewVillageForm/NewVillageForm.js'
 import { updateUser } from '../graphQL/mutations/UpdateUser';
 import { villagesQuery } from '../graphQL/queries/GetVillage';
-import Nav from '../Nav/Nav';
 
-const Dashboard = () => {
+const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen }) => {
 // const { data, loading } = useQuery(villagesQuery, {
 //   variables: {
 //     id: "3"
@@ -19,16 +19,21 @@ const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //look into error and refetch
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
-      <Nav />
+      <h1>My Villages</h1>
       <VillageContainer />
+      {villageFormOpen && <NewVillageForm
+      handleVillageChange={handleVillageChange}
+      newVillage={newVillage}
+      addVillageMembers={addVillageMembers}
+      setVillageFormOpen= {setVillageFormOpen}
+      />}
       <button onClick={() => mutateUser({
         variables: {
           email: 'donna@gmail.com',
-          address: '3333 Trial Pl.',
-          name: 'Gina'
+          address: '222 Trial Pl.',
+          name: 'Todd'
         }
-      })}> YOYOYOYOYOY
+      })}> GraphQL Mutation Trial
       </button>
     </div>
   )

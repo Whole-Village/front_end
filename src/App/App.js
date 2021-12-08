@@ -8,6 +8,7 @@ import VillageHome from '../VillageHome/VillageHome';
 import './App.css';
 function App() {
   const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: []});
+  const [villageFormOpen, setVillageFormOpen] = useState(false);
 
   const handleVillageChange = (e) => {
     setNewVillage((prevProps) => ({
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header setVillageFormOpen={setVillageFormOpen}/>
       <Switch>
         <Route exact path="/">
           <Redirect to="/home" />
@@ -35,7 +36,13 @@ function App() {
         }/>
         <Route
           exact path="/dashboard" render={() =>
-            <Dashboard />
+            <Dashboard
+              handleVillageChange={handleVillageChange}
+              newVillage={newVillage}
+              addVillageMembers={addVillageMembers}
+              villageFormOpen={villageFormOpen}
+              setVillageFormOpen= {setVillageFormOpen}
+            />
         }/>
         <Route exact path="/villages/:id" render={({ match }) => {
 					let villageId = match.params.id;

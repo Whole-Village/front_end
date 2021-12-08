@@ -1,7 +1,6 @@
 .App {
   display: flex;
   flex-direction: column;
-  padding-top: 21px;
   align-items: center;
   text-align: center;
   background-image:url("../assets/diverse-village.jpg");

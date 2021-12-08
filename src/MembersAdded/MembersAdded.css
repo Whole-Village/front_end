@@ -2,5 +2,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2em;
+  height: 2.15em;
+  width: 20em;
+  /* border: 2px solid blue; */
+}
+.added-villager-container {
+  display: flex;
+  flex-direction: row;
+  /* border: 2px solid red; */
+}
+.added-villagers {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 28em;
+  /* border: 2px solid black; */
 }
