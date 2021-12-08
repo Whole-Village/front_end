@@ -22,6 +22,10 @@ const VillageHome = ({ id }) => {
     setFormStatus(false)
   }
 
+  const closeForm = () => {
+    setFormStatus(false)
+  }
+
   return (
     <div className="village-home">
       <NavVillageHome />
@@ -31,9 +35,9 @@ const VillageHome = ({ id }) => {
       <h3 className="villagers-sub">Villagers</h3>
       </div>
       <div className="sub">
-      {isFormOpen && <NewEvent />}
+      {isFormOpen && <NewEvent sumitForm={submitForm} closeForm={closeForm}/>}
         <div className="events">
-          <Events sumitForm={submitForm}/>
+          <Events />
         </div>
         <div className="villagers">
         </div>
