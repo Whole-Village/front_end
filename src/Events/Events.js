@@ -4,9 +4,14 @@ import EventCard from '../EventCard/EventCard';
 const village = villageData.village
 const Events = () => {
   console.log(village)
-  const eventCards = village.events.map(elem => {
+  const sortedEvents = village.events.sort((a, b) => {
+    console.log(a)
+    return parseInt(b.date) - parseInt(a.date)
+  })
+  const eventCards = sortedEvents.map(elem => {
       return (
         <div>
+        <p className="event-date">{elem.date}</p>
         <EventCard
         id={elem.id}
         type={elem.type}
