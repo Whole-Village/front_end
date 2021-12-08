@@ -33,11 +33,8 @@ form {
   border: 0px;
   color: #E8902D;
   cursor: pointer;
-  font-size: 16px;
-  border: 1px solid #E8902D;
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
+  font-size: 20px;
+  border: 0px;
 }
 
 .name-label, .date-label, .time-label, .adult-label {
@@ -142,12 +139,28 @@ form {
   display: flex;
   justify-content: center;
   align-self: flex-end;
-  grid-row: 6;
+  grid-row: 7;
   grid-column: 2;
   background-color: rgb(255, 255, 255);
   border: 2px solid #E8902D;
   border-radius: 10px;
   color: #E8902D;
   cursor: pointer;
+}
+
+.error-msg {
+  grid-row: 6;
+  grid-column: 2;
+  color: red;
+  font-size: 10px;
+  width: 300px;
+}
+
+.warning-msg {
+  grid-row: 6;
+  grid-column: 2;
+  color: #E8902D;
+  font-size: 10px;
+  width: 300px;
 }
  /* orange: E8902D */

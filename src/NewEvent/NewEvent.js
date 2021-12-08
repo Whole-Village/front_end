@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 const NewEvent = ({ submitForm, closeForm }) => {
   const[value, setValue] = useState({name: '', date: '', time: '', description: '', adultRequired: ''});
+  const [error, setError] = useState(false)
 
   const onChange = (event) => {
     setValue({...value, [event.target.name]: event.target.value});
@@ -14,14 +15,14 @@ const NewEvent = ({ submitForm, closeForm }) => {
     if (value.name && value.date && value.time && value.description && value.adultRequired) {
       submitForm()
     } else {
-      console.log('Please fill out all required inputs')
+      setError(true)
     }
   }
 
 
   return (
     <div className="form-container">
-    <button className="close-form" onClick={closeForm}>X</button>
+    <button className="close-form" onClick={closeForm}>x</button>
       <form className="form">
         <label htmlFor="name" className="name-label">NAME</label>
         <input type="text" style={{width:300}} name="name" className="name-input" onChange={onChange}/>
@@ -37,6 +38,8 @@ const NewEvent = ({ submitForm, closeForm }) => {
         <label htmlFor="description" className="description-label">DESCRIPTION</label>
         <input type="text" style={{height:100, width:300}} name="description" className="description-input" onChange={onChange} />
         <input type="submit" onClick={checkFields} className="submit-btn" style={{width:300}} />
+        {!error && <p className="warning-msg">Please complete all fields before clicking submit. Thank you!</p>}
+        {error && <p className="error-msg">All fields are required to create an event. Please fill in missing information and submit again. Thank you!</p>}
       </form>
     </div>
   )

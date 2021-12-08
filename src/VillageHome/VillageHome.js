@@ -20,6 +20,7 @@ const VillageHome = ({ id }) => {
   const submitForm = (event) => {
     event.preventDefault()
     setFormStatus(false)
+    console.log('boop')
   }
 
   const closeForm = () => {
