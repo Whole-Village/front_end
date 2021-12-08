@@ -21,7 +21,7 @@ const NewEvent = ({ submitForm, closeForm }) => {
 
   return (
     <div className="form-container">
-    <button onClick={closeForm}>X</button>
+    <button className="close-form" onClick={closeForm}>X</button>
       <form className="form">
         <label htmlFor="name" className="name-label">NAME</label>
         <input type="text" style={{width:300}} name="name" className="name-input" onChange={onChange}/>
