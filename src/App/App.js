@@ -2,7 +2,6 @@ import {useState} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
-// import NewEvent from '../NewEvent/NewEvent';
 import VillageHome from '../VillageHome/VillageHome';
 import './App.css';
 function App() {
