@@ -2,11 +2,11 @@ import React from 'react';
 import './VillageHome.css'
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
-// import NewVillageForm from '../NewVillageForm/NewVillageForm';
+import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import { villages } from '../Fixtures/Villages';
 import { useState } from 'react';
 
-const VillageHome = ({ id }) => {
+const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
   const [isFormOpen, setFormStatus] = useState(false)
   const villageData = villages.filter((village) => {
     return parseInt(village.id) === 1})
@@ -40,6 +40,13 @@ const VillageHome = ({ id }) => {
         </div>
         <div className="villagers">
         </div>
+        {villageFormOpen && <NewVillageForm
+          handleVillageChange={handleVillageChange}
+          newVillage={newVillage}
+          addVillageMembers={addVillageMembers}
+          setVillageFormOpen={setVillageFormOpen}
+          addVillageDescription={addVillageDescription}
+        />}
       </div>
       <div className="button-container">
         <button className="create-event" onClick={showEventForm}>Create a New Event</button>
