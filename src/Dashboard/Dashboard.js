@@ -6,7 +6,7 @@ import NewVillageForm from '../NewVillageForm/NewVillageForm.js'
 import { updateUser } from '../graphQL/mutations/UpdateUser';
 // import { villagesQuery } from '../graphQL/queries/GetVillage';
 
-const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen }) => {
+const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription }) => {
 
 const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //loading is a boolean I can use it for conditional rendering
@@ -19,7 +19,8 @@ const [mutateUser, { data, loading }] =  useMutation(updateUser)
       handleVillageChange={handleVillageChange}
       newVillage={newVillage}
       addVillageMembers={addVillageMembers}
-      setVillageFormOpen= {setVillageFormOpen}
+      setVillageFormOpen={setVillageFormOpen}
+      addVillageDescription={addVillageDescription}
       />}
       <button onClick={() => mutateUser({
         variables: {
