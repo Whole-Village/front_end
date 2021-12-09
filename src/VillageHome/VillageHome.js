@@ -9,8 +9,8 @@ import { useState } from 'react';
 
 const VillageHome = ({ id }) => {
   const [isFormOpen, setFormStatus] = useState(false)
-  const villageData = villages.filter((elem) => {
-    return parseInt(elem.id) === 1})
+  const villageData = villages.filter((village) => {
+    return parseInt(village.id) === 1})
 
   const showEventForm = () => {
     return (
@@ -26,7 +26,7 @@ const VillageHome = ({ id }) => {
   return (
     <div className="village-home">
       <NavVillageHome />
-      <h2>Welcome to {villageData[0].name}!</h2>
+      <h2>Welcome to the {villageData[0].name} Village!</h2>
       <div className="sub">
       {isFormOpen && <NewEvent />}
         <div className="events">

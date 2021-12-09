@@ -3,11 +3,11 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 // import NewEvent from '../NewEvent/NewEvent';
-import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import VillageHome from '../VillageHome/VillageHome';
 import './App.css';
 function App() {
-  const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: []});
+  const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: [], village_description: ''});
+  const [villageFormOpen, setVillageFormOpen] = useState(false);
 
   const handleVillageChange = (e) => {
     setNewVillage((prevProps) => ({
@@ -19,23 +19,28 @@ function App() {
       ...prevProps, village_invitees: allMembers}))
   }
 
+  const addVillageDescription = (e) => {
+    setNewVillage((prevProps) => ({
+      ...prevProps, village_description: e}))
+  }
+
   return (
     <div className="App">
-      <Header />
+      <Header setVillageFormOpen={setVillageFormOpen}/>
       <Switch>
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
-        <Route exact path="/home" render={() =>
-            <NewVillageForm
+        <Route
+          exact path="/dashboard" render={() =>
+            <Dashboard
               handleVillageChange={handleVillageChange}
               newVillage={newVillage}
               addVillageMembers={addVillageMembers}
+              villageFormOpen={villageFormOpen}
+              setVillageFormOpen= {setVillageFormOpen}
+              addVillageDescription= {addVillageDescription}
             />
-        }/>
-        <Route
-          exact path="/dashboard" render={() =>
-            <Dashboard />
         }/>
         <Route exact path="/villages/:id" render={({ match }) => {
 					let villageId = match.params.id;

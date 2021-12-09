@@ -1,49 +1,90 @@
-.new-village-form {
+.new-village-form-modal {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   background-color: #00b7eb;
-  margin-top:  40px;
-  width: 90%;
-  height: 25em;
+  margin-top:  60px;
+  width: 60em;
+  height: 30em;
   border-radius: 50px;
-  opacity: 0.85;
+  position: absolute;
+  z-index: 2;
+  /* border: solid 2px purple; */
+}
+
+.village-form-header {
+  display: flex;
+  margin-top: 1em;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-name {
+  width: 90%;
+  padding-left: 3%;
 }
 
 .village-data-input {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-content: flex-start;
+  height: 5em;
+  flex-wrap: wrap;
   margin-top: 2em;
   color: black;
+  /* border: solid 2px green; */
+}
+
+.village-input {
+  /* border: solid 2px orange; */
+  height: 3em;
+}
+
+.invitees {
+  max-height: 58%;
+  /* border: 2px solid yellow; */
 }
 
 .roster {
-  display: flex;
-  flex-direction: column;
+  height: 14em;
+  /* border: 2px solid black; */
 }
 
-.add-member-btn, .remove-member-btn {
+.added-villagers {
+  display: flex;
+  /* border: 2px solid red; */
+
+}
+
+.add-member-btn, .remove-member-btn, .close-btn {
   height: 2.5em;
   background-color: #00b7eb;
   border: none;
 }
 
-label, input {
+.village-data-label, .create-village-btn  {
   height: 2em;
+  margin-left: 1em;
 }
 
-label {
-  font-weight: bold;
-  margin-left: 25px;
-}
-
-input {
+.village-data {
   width: 260px;
-  margin: 0px 4px 10px 9px;
+  margin-left: 2px;
   border: 1px solid #575a89;
   border-radius: 6px;
 }
 
-.material-icons {
+.material-icons, .village-headers {
   font-size: 24px;
+  color: black;
+}
+.close-btn {
+  height: 30px;
+}
+.create-village-btn {
+  width: 100px;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  border: none;
+  align-self: center;
 }
