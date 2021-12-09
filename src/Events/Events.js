@@ -2,27 +2,32 @@ import React from 'react';
 import { villageData } from '../Fixtures/Villages';
 import EventCard from '../EventCard/EventCard';
 const village = villageData.village
+
 const Events = () => {
-  console.log(village)
-  const eventCards = village.events.map(elem => {
+  const sortedEvents = village.events.sort((a, b) => {
+    return parseInt(b.date) - parseInt(a.date)
+  })
+
+  const eventCards = sortedEvents.map(elem => {
       return (
         <div>
-        <EventCard
-        id={elem.id}
-        type={elem.type}
-        name={elem.name}
-        date={elem.date}
-        description={elem.description}
-        time={elem.time}
-        adult_required={elem.adult_required}
-        />
+          <p className="event-date">{elem.date}</p>
+          <EventCard
+          id={elem.id}
+          type={elem.type}
+          name={elem.name}
+          date={elem.date}
+          description={elem.description}
+          time={elem.time}
+          adult_required={elem.adult_required}
+          />
         </div>
       )
     })
 
   return (
     <div>
-    {eventCards}
+      {eventCards}
     </div>
   )
 }
