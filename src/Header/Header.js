@@ -1,4 +1,4 @@
-import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = ({ setVillageFormOpen }) => {
@@ -13,7 +13,7 @@ return(
         <div className='start-village'>
           <button className='start-village-btn' onClick={() => setVillageFormOpen(true)}>Start Village</button>
           <button className='my-events-btn'>My Events</button>
-          <button className='my-dashboard-btn'>My Dashboard</button>
+          {!useLocation().pathname.includes('/dashboard') && <button className='my-dashboard-btn'>My Dashboard</button> }
           <button className='my-account-btn'>Manage Account</button>
         </div>
       </div>
