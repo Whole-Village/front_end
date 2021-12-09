@@ -17,23 +17,30 @@ a {
   color: black;
 }
 
-.sub {
+.sub, .village-subheaders {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 5%;
 }
 
 .events, .villagers {
   width: 40%;
   height: 60vh;
-  background-color: rgb(255, 19, 104, 0.75);
+  background-color: rgb(255, 19, 104);
   border-radius: 25px;
   padding: 15px;
+  overflow: scroll;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.event-date {
+  color: white;
+  text-align: left;
+  font-size: 20px;
 }
 
 .event-card {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255, 0.75);
   border-radius: 15px;
   margin-bottom: 15px;
   padding: 10px;
@@ -48,5 +55,38 @@ a {
 
 .form-container {
   position: absolute;
-  margin-left: 25%;
+  margin-left: 15%;
+}
+
+.create-event, .invite-new {
+  margin-top: 20px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  width: 300px;
+  text-align: center;
+  padding: 17px 48px;
+  color: #fff;
+  background-color: #E88D22;
+  height: 48px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.create-event, .events-sub {
+  margin-left: 100px;
+  width: 300px;
+}
+
+.invite-new, .villagers-sub {
+  margin-right: 100px;
+  width: 300px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
 }

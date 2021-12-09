@@ -1,9 +1,8 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import './VillageHome.css'
-import NavVillageHome from '../NavVillageHome/NavVillageHome';
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
+// import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import { villages } from '../Fixtures/Villages';
 import { useState } from 'react';
 
@@ -23,20 +22,29 @@ const VillageHome = ({ id }) => {
     setFormStatus(false)
   }
 
+  const closeForm = () => {
+    setFormStatus(false)
+  }
+
   return (
     <div className="village-home">
-      <NavVillageHome />
-      <h2>Welcome to the {villageData[0].name} Village!</h2>
+      <h2 className="village-name">Welcome to {villageData[0].name}!</h2>
+      <div className="village-subheaders">
+        <h3 className="events-sub">Village Events</h3>
+        <h3 className="villagers-sub">Villagers</h3>
+      </div>
       <div className="sub">
-      {isFormOpen && <NewEvent />}
+        {isFormOpen && <NewEvent sumitForm={submitForm} closeForm={closeForm}/>}
         <div className="events">
-          <p>Upcoming Events</p>
-          <button onClick={showEventForm}>Create a New Event</button>
-          <Events sumitForm={submitForm}/>
+          <Events />
         </div>
         <div className="villagers">
         </div>
-        </div>
+      </div>
+      <div className="button-container">
+        <button className="create-event" onClick={showEventForm}>Create a New Event</button>
+        <button className="invite-new">Invite More Villagers</button>
+      </div>
     </div>
   )
 }
