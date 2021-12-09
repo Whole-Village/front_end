@@ -25,10 +25,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header setVillageFormOpen={setVillageFormOpen}/>
+      <Header
+      setVillageFormOpen={setVillageFormOpen}/>
       <Switch>
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/dashboard" />
         </Route>
         <Route
           exact path="/dashboard" render={() =>
@@ -44,7 +45,15 @@ function App() {
         <Route exact path="/villages/:id" render={({ match }) => {
 					let villageId = match.params.id;
 						return (
-							<VillageHome villageId={villageId}/>
+							<VillageHome
+              villageId={villageId}
+              handleVillageChange={handleVillageChange}
+              newVillage={newVillage}
+              addVillageMembers={addVillageMembers}
+              villageFormOpen={villageFormOpen}
+              setVillageFormOpen={setVillageFormOpen}
+              addVillageDescription={addVillageDescription}
+              />
             )}
         }/>
       </Switch>
