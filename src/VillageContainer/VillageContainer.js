@@ -13,7 +13,6 @@ const villageCards = userVillages.map((village, i) => {
   );
 })
 
-console.log(villageCards)
   return (
     <div className="village-container">
     {villageCards}
