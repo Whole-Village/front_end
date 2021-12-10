@@ -1,7 +1,6 @@
 import React from "react";
 import './VillageContainer.css'
 import VillageCard from '../VillageCard/VillageCard'
-import { villages } from '../Fixtures/Villages';
 
 const VillageContainer = ({ userVillages }) => {
 
