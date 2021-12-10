@@ -1,4 +1,4 @@
-import { useState, useEffect, afterCreate } from 'react';
+import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import VillageContainer from '../VillageContainer/VillageContainer';
 // import { useMutation, useQuery } from "@apollo/client";
