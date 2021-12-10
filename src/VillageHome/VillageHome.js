@@ -4,21 +4,24 @@ import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import { useState, useEffect } from 'react';
-import { eventsQuery } from '../graphQL/queries/GetEvents';
-import { useQuery } from "@apollo/client";
+import { villagesQuery } from '../graphQL/queries/GetVillage';
+import { useQuery, useMutation } from "@apollo/client";
+import { createEvent } from '../graphQL/mutations/CreateEvent';
 
-const VillageHome = ({ villageId, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
+
+const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
   const [isFormOpen, setFormStatus] = useState(false)
-  const [events, setEvents] = useState([]);
-  const { data } = useQuery(eventsQuery, {
+  const [currentVillage, setCurrentVillage] = useState({})
+
+  const { data } = useQuery(villagesQuery, {
     variables: {
-      villageId }
+      id }
     }
   );
 
   useEffect(() => {
     if(data) {
-      setEvents(data)
+      setCurrentVillage(data.village)
     }
   }, [data])
 
@@ -29,8 +32,19 @@ const VillageHome = ({ villageId, handleVillageChange, newVillage, addVillageMem
     )
   }
 
-  const submitForm = (event) => {
+  const [mutateUser, { stuff, loading }] =  useMutation(createEvent)
+
+  const submitForm = (event, value) => {
     event.preventDefault()
+    mutateUser({
+      variables: {
+        name: value.name,
+        description: value.description,
+        date: value.date,
+        time: value.time,
+        adultRequired: value.adultRequired
+      }
+    })
     setFormStatus(false)
   }
 
@@ -40,15 +54,15 @@ const VillageHome = ({ villageId, handleVillageChange, newVillage, addVillageMem
 
   return (
     <div className="village-home">
-      <h2 className="village-name">Welcome to !</h2>
+      <h2 className="village-name">Welcome to {currentVillage.name}!</h2>
       <div className="village-subheaders">
         <h3 className="events-sub">Village Events</h3>
         <h3 className="villagers-sub">Villagers</h3>
       </div>
       <div className="sub">
-        {isFormOpen && <NewEvent sumitForm={submitForm} closeForm={closeForm}/>}
+        {isFormOpen && <NewEvent sumbitForm={submitForm} closeForm={closeForm}/>}
         <div className="events">
-          <Events />
+          <Events villageId={id}/>
         </div>
         <div className="villagers">
         </div>
