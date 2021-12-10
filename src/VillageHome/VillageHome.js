@@ -6,11 +6,12 @@ import NewVillageForm from '../NewVillageForm/NewVillageForm';
 import { villages } from '../Fixtures/Villages';
 import { useState } from 'react';
 
-const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
+const VillageHome = ({ villageId, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, userVillages }) => {
   const [isFormOpen, setFormStatus] = useState(false)
-  const villageData = villages.filter((village) => {
-    return parseInt(village.id) === 1})
 
+  const currentVillage = userVillages.filter((village) => {
+    return village.id === villageId})
+    console.log(currentVillage[0].name)
   const showEventForm = () => {
     return (
       setFormStatus(true)
@@ -28,7 +29,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 
   return (
     <div className="village-home">
-      <h2 className="village-name">Welcome to {villageData[0].name}!</h2>
+      <h2 className="village-name">Welcome to {currentVillage[0].name}!</h2>
       <div className="village-subheaders">
         <h3 className="events-sub">Village Events</h3>
         <h3 className="villagers-sub">Villagers</h3>
