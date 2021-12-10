@@ -1,14 +1,29 @@
-import React from 'react';
-import { villageData } from '../Fixtures/Villages';
+import { useState, useEffect } from 'react';
+import { eventsQuery } from '../graphQL/queries/GetEvents';
+import { useQuery } from "@apollo/client";
+
 import EventCard from '../EventCard/EventCard';
-const village = villageData.village
 
-const Events = () => {
-  const sortedEvents = village.events.sort((a, b) => {
-    return parseInt(b.date) - parseInt(a.date)
-  })
+const Events = ({ villageId }) => {
+  const [villageEvents, setVillageEvents] = useState([]);
 
-  const eventCards = sortedEvents.map(elem => {
+  const { data } = useQuery(eventsQuery, {
+    variables: {
+      villageId }
+    }
+  );
+
+  useEffect(() => {
+    if(data) {
+      setVillageEvents(data.events)
+    }
+  }, [data])
+
+  // const sortedEvents = events.sort((a, b) => {
+  //   return parseInt(b.date) - parseInt(a.date)
+  // })
+
+  const eventCards = villageEvents.map(elem => {
       return (
         <div>
           <p className="event-date">{elem.date}</p>
