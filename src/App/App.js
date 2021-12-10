@@ -1,12 +1,30 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 import VillageHome from '../VillageHome/VillageHome';
+import { userQuery } from '../graphQL/queries/GetUser';
+import { useQuery } from "@apollo/client";
 import './App.css';
+
+
 function App() {
   const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: [], village_description: ''});
   const [villageFormOpen, setVillageFormOpen] = useState(false);
+  const [userVillages, setUserVillages] = useState([]);
+  const email = "priya@gmail.com";
+  const { loading, error, data } = useQuery(userQuery, {
+    variables: {
+      email }
+    }
+  );
+
+  useEffect(() => {
+    if(data) {
+      setUserVillages(data.user.villages)
+      console.log(data.user.villages)
+    }
+  },[data])
 
   const handleVillageChange = (e) => {
     setNewVillage((prevProps) => ({
@@ -40,6 +58,7 @@ function App() {
               villageFormOpen={villageFormOpen}
               setVillageFormOpen= {setVillageFormOpen}
               addVillageDescription= {addVillageDescription}
+              userVillages={userVillages}
             />
         }/>
         <Route exact path="/villages/:id" render={({ match }) => {
@@ -53,6 +72,7 @@ function App() {
               villageFormOpen={villageFormOpen}
               setVillageFormOpen={setVillageFormOpen}
               addVillageDescription={addVillageDescription}
+              userVillages={userVillages}
               />
             )}
         }/>
