@@ -22,7 +22,6 @@ function App() {
   useEffect(() => {
     if(data) {
       setUserVillages(data.user.villages)
-      console.log(data.user.villages)
     }
   },[data])
 
@@ -65,14 +64,13 @@ function App() {
 					let villageId = match.params.id;
 						return (
 							<VillageHome
-              villageId={villageId}
+              id={villageId}
               handleVillageChange={handleVillageChange}
               newVillage={newVillage}
               addVillageMembers={addVillageMembers}
               villageFormOpen={villageFormOpen}
               setVillageFormOpen={setVillageFormOpen}
               addVillageDescription={addVillageDescription}
-              userVillages={userVillages}
               />
             )}
         }/>
