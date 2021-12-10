@@ -1,16 +1,16 @@
-import { useState, useEffect, afterCreate } from 'react';
+import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import VillageContainer from '../VillageContainer/VillageContainer';
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import NewVillageForm from '../NewVillageForm/NewVillageForm.js'
-import { updateUser } from '../graphQL/mutations/UpdateUser';
+// import { updateUser } from '../graphQL/mutations/UpdateUser';
 import { userQuery } from '../graphQL/queries/GetUser';
 
 
 const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription }) => {
   const [user, setUser] = useState([]);
   const email = "priya@gmail.com";
-  const { loading, error, data } = useQuery(userQuery, {
+  const { data } = useQuery(userQuery, {
     variables: {
       email }
     }
