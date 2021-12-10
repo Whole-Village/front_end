@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const villagesQuery = gql`
-  query Village($id: ID!) {
+  query village($id: ID!) {
     village(id: $id) {
      name
      description
