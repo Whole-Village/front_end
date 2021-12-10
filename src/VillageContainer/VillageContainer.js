@@ -1,19 +1,19 @@
 import React from "react";
 import './VillageContainer.css'
 import VillageCard from '../VillageCard/VillageCard'
-import { villages } from '../Fixtures/Villages';
 
-const VillageContainer = () => {
+const VillageContainer = ({ userVillages }) => {
 
-const villageCards = villages.map((elem, i) => {
+const villageCards = userVillages.map((village, i) => {
   return (
-  <VillageCard 
+  <VillageCard
     key={i}
-    id={elem.id}
-    name={elem.name} />
+    id={village.id}
+    name={village.name} />
   );
 })
 
+console.log(villageCards)
   return (
     <div className="village-container">
     {villageCards}
