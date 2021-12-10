@@ -3,15 +3,26 @@ import './VillageHome.css'
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
-import { villages } from '../Fixtures/Villages';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { eventsQuery } from '../graphQL/queries/GetEvents';
+import { useQuery } from "@apollo/client";
 
-const VillageHome = ({ villageId, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, userVillages }) => {
+const VillageHome = ({ villageId, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
   const [isFormOpen, setFormStatus] = useState(false)
+  const [events, setEvents] = useState([]);
+  const { data } = useQuery(eventsQuery, {
+    variables: {
+      villageId }
+    }
+  );
 
-  const currentVillage = userVillages.filter((village) => {
-    return village.id === villageId})
-    console.log(currentVillage[0].name)
+  useEffect(() => {
+    if(data) {
+      setEvents(data)
+    }
+  }, [data])
+
+
   const showEventForm = () => {
     return (
       setFormStatus(true)
@@ -29,7 +40,7 @@ const VillageHome = ({ villageId, handleVillageChange, newVillage, addVillageMem
 
   return (
     <div className="village-home">
-      <h2 className="village-name">Welcome to {currentVillage[0].name}!</h2>
+      <h2 className="village-name">Welcome to !</h2>
       <div className="village-subheaders">
         <h3 className="events-sub">Village Events</h3>
         <h3 className="villagers-sub">Villagers</h3>
