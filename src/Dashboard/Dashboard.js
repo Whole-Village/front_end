@@ -1,27 +1,12 @@
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import VillageContainer from '../VillageContainer/VillageContainer';
-import { useMutation, useQuery } from "@apollo/client";
+// import { useMutation, useQuery } from "@apollo/client";
 import NewVillageForm from '../NewVillageForm/NewVillageForm.js'
-import { updateUser } from '../graphQL/mutations/UpdateUser';
-import { userQuery } from '../graphQL/queries/GetUser';
 
 
-const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription }) => {
-  const email = "priya@gmail.com";
-  const { loading, error, data } = useQuery(userQuery, {
-    variables: {
-      email }
-    }
-  );
-console.log(data.user.villages)
-  // const [user, setUser] = useState({});
 
-  // useEffect(() => {
-  //   if(data){
-  //   console.log('data', data);
-  //   }
-  // },[])
+const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription, userVillages }) => {
 
 // const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //loading is a boolean I can use it for conditional rendering
@@ -29,7 +14,7 @@ console.log(data.user.villages)
   return (
     <div className="dashboard">
       <h1>My Villages</h1>
-      <VillageContainer userVillages={data.user.villages}/>
+      <VillageContainer userVillages={userVillages}/>
       {villageFormOpen && <NewVillageForm
       handleVillageChange={handleVillageChange}
       newVillage={newVillage}

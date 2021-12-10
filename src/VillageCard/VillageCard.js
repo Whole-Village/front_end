@@ -8,34 +8,10 @@ const VillageCard = ({ id, name }) => {
     <>
     <NavLink className="navlink__village-card" to={`/villages/${id}`}>
       <section className="village-card">
-        <p>Soccer Team</p>
+        <p>{name}</p>
       </section>
     </NavLink>
-    <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section className="village-card">
-        <p>Soccer Team</p>
-      </section>
-    </NavLink>
-        <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section className="village-card">
-        <p>Soccer Team</p>
-      </section>
-    </NavLink>
-        <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section className="village-card">
-        <p>Soccer Team</p>
-      </section>
-    </NavLink>
-        <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section className="village-card">
-        <p>Soccer Team</p>
-      </section>
-    </NavLink>
-        <NavLink className="navlink__village-card" to={`/villages/${id}`}>
-      <section className="village-card">
-        <p>Soccer Team</p>
-      </section>
-    </NavLink>
+
     </>
   )
 }
