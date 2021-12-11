@@ -18,18 +18,18 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     }
   }, [data, setVillageEvents])
 
-  const sortedEvents = () => {
-    const copyOfEvents =
-    villageEvents.sort((a, b) => {
-      return parseInt(b.date) - parseInt(a.date)
-  })
-    setVillageEvents(copyOfEvents)
-  }
+  // const sortedEvents = () => {
+  //   const copyOfEvents =
+  //   villageEvents.sort((a, b) => {
+  //     return parseInt(b.date) - parseInt(a.date)
+  // })
+  //   setVillageEvents(copyOfEvents)
+  // }
   
-  const eventCards = villageEvents.map(elem => {
+  const eventCards = villageEvents.map((elem, i) => {
     let uniqueKey = new Date().getTime();
       return (
-        <div>
+        <div key={i}>
           <p className="event-date">{elem.date}</p>
           <EventCard
           id={elem.id}
