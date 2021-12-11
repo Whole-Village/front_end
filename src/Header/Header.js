@@ -17,9 +17,9 @@ return(
       <div className='navigation-bar'>
         <div className='start-village'>
           <button className='start-village-btn' onClick={() => setVillageFormOpen(true)}>Start Village</button>
-          <button className='my-events-btn'>My Events</button>
+        {/* TO DO: Add My Events link */}
           {!useLocation().pathname.includes('/dashboard') && <button className='my-dashboard-btn' onClick={returnToDashboard}>My Dashboard</button> }
-          <button className='my-account-btn'>Manage Account</button>
+          {/* TO DO: Add a Manage Account link */}
         </div>
       </div>
     </header>
