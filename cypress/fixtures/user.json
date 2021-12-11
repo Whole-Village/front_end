@@ -7,12 +7,12 @@
       "villages": [
         {
           "id": "3",
-          "name": "Soccer team",
+          "name": "[TEST]Soccer team",
           "__typename": "Village"
         },
         {
           "id": "4",
-          "name": "Ms. Stewart 3rd Grade class",
+          "name": "[TEST]Ms. Stewart 3rd Grade class",
           "__typename": "Village"
         },
         {
