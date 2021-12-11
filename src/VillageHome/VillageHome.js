@@ -11,9 +11,10 @@ import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
   const [isFormOpen, setFormStatus] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
   const [villageEvents, setVillageEvents] = useState([]);
-  const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
+  const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: null});
   const [newEvent, { error, loading }] =  useMutation(createEvent)
   const { data } = useQuery(villagesQuery, {
     variables: {
@@ -57,15 +58,22 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
     setVillageEvents([...villageEvents, eventData])
   }
 
+  const handleCheckBox = (e) => {
+      setIsChecked(!isChecked);
+      onChange(e)
+}
+
   const onChange = (e) => {
     console.log(eventData)
-    if(e.target.name === 'adultRequired' && e.target.value === 'true') {
-      const adultRequired = true;
-      setEventData({...eventData, [e.target.name]: adultRequired})
-    } else if (e.target.name === 'adultRequired' && e.target.value === 'false') {
-      const adultRequired = false;
-      setEventData({...eventData, [e.target.name]: adultRequired})
-    } else if(e.target.name !== 'adultRequired') {
+    if(e.target.name === 'adultRequired') {
+      if (isChecked) {
+        const required = false;
+        setEventData({...eventData, adultRequired: required})
+        console.log('should be false' ,eventData.adultRequired)
+      }
+      const required = true;
+      setEventData({...eventData, adultRequired: required})
+      } else if (e.target.name !== 'adultRequired') {
       setEventData({...eventData, [e.target.name]: e.target.value});
     }
   };
@@ -88,7 +96,8 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           setEventData={setEventData}
           onChange={onChange}
           submitEvent={submitEvent}
-          setCurrentVillage
+          isChecked={isChecked}
+          handleCheckBox={handleCheckBox}
           />}
         <div className="events">
           <Events
