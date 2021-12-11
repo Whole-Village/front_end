@@ -7,14 +7,14 @@ const NewEvent = ({ submitEvent, closeForm, eventData, setEventData, onChange })
 
   const checkFields = (e) => {
     e.preventDefault()
-    if (!eventData.name && !eventData.date && !eventData.time && !eventData.description && !eventData.adultRequired) {
-      setError(true)
-    } else if(eventData.name && eventData.date && eventData.time && eventData.description && eventData.adultRequired){
+    if (eventData.name && eventData.date && eventData.time && eventData.description && eventData.adultRequired) {
       setError(false)
       closeForm()
       submitEvent()
+    } else {
+      setError(true)
+      }
     }
-  }
 
   return (
     <div className="form-container">
@@ -35,8 +35,8 @@ const NewEvent = ({ submitEvent, closeForm, eventData, setEventData, onChange })
         <input type="text" style={{height:100, width:300}} name="description" className="description-input" onChange={onChange} />
         <button onClick={e => checkFields(e)} className="submit-btn" style={{width:300}}>Submit
         </button>
-        {error && <p className="warning-msg">Please complete all fields before clicking submit. Thank you!</p>}
-        {!error && <p className="error-msg">All fields are required to create an event. Please fill in missing information and submit again. Thank you!</p>}
+        {!error && <p className="warning-msg">Please complete all fields before clicking submit. Thank you!</p>}
+        {error && <p className="error-msg">All fields are required to create an event. Please fill in missing information and submit again. Thank you!</p>}
       </form>
     </div>
   )

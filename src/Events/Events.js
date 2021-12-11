@@ -18,11 +18,12 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     }
   }, [data, setVillageEvents])
 
-  // const sortedEvents = events.sort((a, b) => {
+  // const sortedEvents = villageEvents.sort((a, b) => {
   //   return parseInt(b.date) - parseInt(a.date)
   // })
 
   const eventCards = villageEvents.map(elem => {
+    console.log(villageEvents)
     let uniqueKey = new Date().getTime();
       return (
         <div>
