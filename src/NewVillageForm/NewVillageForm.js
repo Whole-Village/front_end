@@ -30,6 +30,7 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
       <form className='village-data-input'>
         <label className='village-data-label'>Village Name
           <input className='village-data'
+            id='village-name'
             type='text'
             name='village_name'
             value={newVillage.village_name}
@@ -38,6 +39,7 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
         </label>
         <label className='village-data-label'>Village Description
           <input className='village-data'
+            id='village-desc'
             type='text'
             name='village_description'
             value={newVillage.village_description}
@@ -46,6 +48,7 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
         </label>
         <label className='village-data-label'>Invitee Email
           <input className='village-data'
+          id='invitee-email'
             type='text'
             name='email'
             value={villageMember.email}

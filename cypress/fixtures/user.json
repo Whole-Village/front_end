@@ -7,7 +7,7 @@
       "villages": [
         {
           "id": "3",
-          "name": "[TEST]Soccer team",
+          "name": "[TEST] Soccer team",
           "__typename": "Village"
         },
         {
