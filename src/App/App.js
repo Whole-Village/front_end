@@ -13,7 +13,7 @@ function App() {
   const [villageFormOpen, setVillageFormOpen] = useState(false);
   const [userVillages, setUserVillages] = useState([]);
   const email = "priya@gmail.com";
-  const { loading, error, data } = useQuery(userQuery, {
+  const { data } = useQuery(userQuery, {
     variables: {
       email }
     }
