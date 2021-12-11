@@ -7,7 +7,7 @@ const NewEvent = ({ submitEvent, closeForm, eventData, setEventData, onChange })
 
   const checkFields = (e) => {
     e.preventDefault()
-    if (eventData.name && eventData.date && eventData.time && eventData.description && eventData.adultRequired) {
+    if (eventData.name && eventData.date && eventData.time && eventData.description) {
       setError(false)
       closeForm()
       submitEvent()

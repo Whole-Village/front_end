@@ -58,6 +58,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
   }
 
   const onChange = (e) => {
+    console.log(eventData)
     if(e.target.name === 'adultRequired' && e.target.value === 'true') {
       const adultRequired = true;
       setEventData({...eventData, [e.target.name]: adultRequired})

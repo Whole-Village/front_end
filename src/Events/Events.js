@@ -23,9 +23,9 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     villageEvents.sort((a, b) => {
       return parseInt(b.date) - parseInt(a.date)
   })
-  return copyOfEvents;
+    setVillageEvents(copyOfEvents)
   }
-
+  
   const eventCards = villageEvents.map(elem => {
     let uniqueKey = new Date().getTime();
       return (
