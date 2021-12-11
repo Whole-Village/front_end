@@ -9,7 +9,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 
-const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
+const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
   const [isFormOpen, setFormStatus] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
@@ -116,6 +116,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           addVillageMembers={addVillageMembers}
           setVillageFormOpen={setVillageFormOpen}
           addVillageDescription={addVillageDescription}
+          postNewVillage={postNewVillage}
         />}
       </div>
       <div className="button-container">
