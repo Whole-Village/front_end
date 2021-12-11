@@ -11,11 +11,10 @@ import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
   const [isFormOpen, setFormStatus] = useState(false)
-  const [error, setError] = useState(false)
   const [currentVillage, setCurrentVillage] = useState({})
   const [villageEvents, setVillageEvents] = useState([]);
   const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
-  const [newEvent, { fetchedEvents, loading }] =  useMutation(createEvent)
+  const [newEvent, { error, loading }] =  useMutation(createEvent)
   const { data } = useQuery(villagesQuery, {
     variables: {
       id }
@@ -26,6 +25,13 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
     if(data) {
       console.log(data.village)
       setCurrentVillage(data.village)
+    }
+    //we need to do loading/error handling here
+    if(loading) {
+      console.log('...loading')
+    }
+    if(error) {
+      console.log(error)
     }
   }, [data])
 
