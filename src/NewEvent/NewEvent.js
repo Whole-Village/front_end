@@ -31,7 +31,7 @@ const NewEvent = ({ submitEvent, closeForm, eventData, setEventData, onChange, i
         <input type="time" style={{width:300}} name="time" className="time-input" onChange={onChange}/>
 
         <label  htmlFor="adultRequired" className="yes-label">All Whole Village events default to require parent attendance. If this event does NOT require parent attendance, please check this box.</label>
-        <input type="checkbox" name="adultRequired" value="true" className="yes-input" checked={isChecked} onChange={handleCheckBox} />
+        <input type="checkbox" name="adultRequired" value="false" className="yes-input" checked={isChecked} onChange={handleCheckBox} />
 
         <label htmlFor="description" className="description-label">DESCRIPTION</label>
         <input type="text" style={{height:100, width:300}} name="description" className="description-input" onChange={onChange} />

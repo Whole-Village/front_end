@@ -14,7 +14,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
   const [villageEvents, setVillageEvents] = useState([]);
-  const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: null});
+  const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
   const [newEvent, { error, loading }] =  useMutation(createEvent)
   const { data } = useQuery(villagesQuery, {
     variables: {
@@ -64,18 +64,29 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 }
 
   const onChange = (e) => {
-    console.log(eventData)
-    if(e.target.name === 'adultRequired') {
-      if (isChecked) {
-        const required = false;
-        setEventData({...eventData, adultRequired: required})
-        console.log('should be false' ,eventData.adultRequired)
-      }
-      const required = true;
-      setEventData({...eventData, adultRequired: required})
-      } else if (e.target.name !== 'adultRequired') {
+    // const required = true;
+    // const notRequired = false;
+    console.log('event', eventData)
+    console.log('checked?', isChecked)
+    if (e.target.name === 'adultRequired' && isChecked) {
+      setEventData({...eventData, [e.target.name]: isChecked})
+    } else if (e.target.name === 'adultRequired' && !isChecked) {
+      setEventData({...eventData, [e.target.name]: isChecked})
+    } else {
       setEventData({...eventData, [e.target.name]: e.target.value});
     }
+
+    // if(e.target.name === 'adultRequired') {
+    //   if (isChecked) {
+    //     const required = false;
+    //     setEventData({...eventData, adultRequired: required})
+    //     console.log('should be false' ,eventData.adultRequired)
+    //   }
+    //   const required = true;
+    //   setEventData({...eventData, adultRequired: required})
+    //   } else if (e.target.name !== 'adultRequired') {
+    //   setEventData({...eventData, [e.target.name]: e.target.value});
+    // }
   };
 
   const closeForm = () => {
