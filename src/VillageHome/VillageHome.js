@@ -33,7 +33,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
     if(error) {
       console.log(error)
     }
-  }, [data])
+  }, [data, error, loading])
 
 
   const showEventForm = () => {
