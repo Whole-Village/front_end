@@ -18,6 +18,8 @@ function App() {
       email }
     }
   );
+  // const { loading, error, data } <--Need to add error/loading conditionals for user
+
 
   useEffect(() => {
     if(data) {
