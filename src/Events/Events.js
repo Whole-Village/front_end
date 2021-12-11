@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { eventsQuery } from '../graphQL/queries/GetEvents';
 import { useQuery } from "@apollo/client";
 
@@ -16,7 +16,7 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     if(data) {
       setVillageEvents(data.events)
     }
-  }, [data])
+  }, [data, setVillageEvents])
 
   // const sortedEvents = events.sort((a, b) => {
   //   return parseInt(b.date) - parseInt(a.date)
