@@ -11,8 +11,10 @@ import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
   const [isFormOpen, setFormStatus] = useState(false)
+  const [error, setError] = useState(false)
   const [currentVillage, setCurrentVillage] = useState({})
-  const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: ''});
+  const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
+  const [newEvent, { fetchedEvents, loading }] =  useMutation(createEvent)
   const { data } = useQuery(villagesQuery, {
     variables: {
       id }
@@ -21,6 +23,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 
   useEffect(() => {
     if(data) {
+      console.log(data.village.events)
       setCurrentVillage(data.village)
     }
   }, [data])
@@ -33,21 +36,30 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
   }
 
 
-  const [newEvent, { stuff, loading }] =  useMutation(createEvent)
-
-  const submitForm = (eventData) => {
-    console.log(eventData)
-    // newEvent({
-    //   variables: {
-    //     name: eventData.name,
-    //     description: eventData.description,
-    //     date: eventData.date,
-    //     time: eventData.time,
-    //     adultRequired: eventData.adultRequired
-    //   }
-    // })
-    setFormStatus(false)
+  const submitEvent = () => {
+    newEvent({
+      variables: {
+        villageId: id,
+        name: eventData.name,
+        description: eventData.description,
+        date: eventData.date,
+        time: eventData.time,
+        adultRequired: eventData.adultRequired
+      }
+    })
   }
+
+  const onChange = (e) => {
+    if(e.target.name === 'adultRequired' && e.target.value === 'true') {
+      const adultRequired = true;
+      setEventData({...eventData, [e.target.name]: adultRequired})
+    } else if (e.target.name === 'adultRequired' && e.target.value === 'false') {
+      const adultRequired = false;
+      setEventData({...eventData, [e.target.name]: adultRequired})
+    } else if(e.target.name !== 'adultRequired') {
+      setEventData({...eventData, [e.target.name]: e.target.value});
+    }
+  };
 
   const closeForm = () => {
     setFormStatus(false)
@@ -61,7 +73,14 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
         <h3 className="villagers-sub">Villagers</h3>
       </div>
       <div className="sub">
-        {isFormOpen && <NewEvent sumbitForm={submitForm} closeForm={closeForm} formInput={eventData} setForm={setEventData}/>}
+        {isFormOpen && <NewEvent
+          closeForm={closeForm}
+          eventData={eventData}
+          setEventData={setEventData}
+          onChange={onChange}
+          submitEvent={submitEvent}
+          setCurrentVillage
+          />}
         <div className="events">
           <Events villageId={id}/>
         </div>

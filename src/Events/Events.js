@@ -24,11 +24,13 @@ const Events = ({ villageId }) => {
   // })
 
   const eventCards = villageEvents.map(elem => {
+    let uniqueKey = new Date().getTime();
       return (
         <div>
           <p className="event-date">{elem.date}</p>
           <EventCard
           id={elem.id}
+          key={uniqueKey}
           type={elem.type}
           name={elem.name}
           date={elem.date}
