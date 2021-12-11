@@ -4,14 +4,13 @@ import { useQuery } from "@apollo/client";
 
 import EventCard from '../EventCard/EventCard';
 
-const Events = ({ villageId }) => {
-  const [villageEvents, setVillageEvents] = useState([]);
+const Events = ({ villageId, villageEvents, setVillageEvents }) => {
 
   const { data } = useQuery(eventsQuery, {
     variables: {
-      villageId }
+      villageId
     }
-  );
+  });
 
   useEffect(() => {
     if(data) {

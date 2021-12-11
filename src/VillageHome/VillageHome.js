@@ -13,6 +13,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
   const [isFormOpen, setFormStatus] = useState(false)
   const [error, setError] = useState(false)
   const [currentVillage, setCurrentVillage] = useState({})
+  const [villageEvents, setVillageEvents] = useState([]);
   const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
   const [newEvent, { fetchedEvents, loading }] =  useMutation(createEvent)
   const { data } = useQuery(villagesQuery, {
@@ -23,7 +24,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 
   useEffect(() => {
     if(data) {
-      console.log(data.village.events)
+      console.log(data.village)
       setCurrentVillage(data.village)
     }
   }, [data])
@@ -47,6 +48,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
         adultRequired: eventData.adultRequired
       }
     })
+    setVillageEvents([...villageEvents, eventData])
   }
 
   const onChange = (e) => {
@@ -82,7 +84,11 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           setCurrentVillage
           />}
         <div className="events">
-          <Events villageId={id}/>
+          <Events
+          villageId={id}
+          villageEvents={villageEvents}
+          setVillageEvents={setVillageEvents}
+          />
         </div>
         <div className="villagers">
         </div>
