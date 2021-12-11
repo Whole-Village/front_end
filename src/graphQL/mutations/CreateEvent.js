@@ -1,7 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 
 export const createEvent = gql`
-mutation createEvent($villageId: ID!, $name: String!, $description: String!, $date: String, $time: String, $adultRequired: Boolean){
+mutation CreateEvent($villageId: ID, $name: String!, $description: String!, $date: String!, $time: String!, $adultRequired: Boolean!){
     createEvent(input: {
      villageId: $villageId,
      name: $name,
