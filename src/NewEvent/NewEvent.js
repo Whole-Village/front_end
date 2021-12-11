@@ -2,22 +2,22 @@ import React from 'react';
 import './NewEvent.css';
 import { useState } from 'react';
 
-const NewEvent = ({ submitForm, closeForm }) => {
-  const[value, setValue] = useState({name: '', date: '', time: '', description: '', adultRequired: ''});
+const NewEvent = ({ submitForm, closeForm, formInput, setForm }) => {
+  // const[value, setValue] = useState({name: '', date: '', time: '', description: '', adultRequired: ''});
   const [error, setError] = useState(false)
 
   const onChange = (event) => {
-    setValue({...value, [event.target.name]: event.target.value});
+    setForm({...formInput, [event.target.name]: event.target.value});
   };
 
-  const checkFields = (event) => {
-    event.preventDefault()
-    if (value.name && value.date && value.time && value.description && value.adultRequired) {
-      submitForm()
-    } else {
-      setError(true)
-    }
-  }
+  // const checkFields = (event, value) => {
+  //   event.preventDefault()
+  //   if (!value.name && !value.date && !value.time && !value.description && !value.adultRequired) {
+  //     setError(true)
+  //   } else {
+  //     submitForm(value)
+  //   }
+  // }
 
 
   return (
@@ -32,12 +32,13 @@ const NewEvent = ({ submitForm, closeForm }) => {
         <input type="time" style={{width:300}} name="time" className="time-input" onChange={onChange}/>
         <label className="adult-label">Is an adult required?</label>
         <label  htmlFor="adultRequired" className="yes-label">Yes</label>
-        <input type="radio" name="adult" className="yes-input" onChange={onChange} value={true}/>
+        <input type="radio" name="adultRequired" className="yes-input" onChange={onChange} value={true}/>
         <label  htmlFor="adultRequired" className="no-label">No</label>
-        <input type="radio" name="adult" className="no-input" onChange={onChange} value={false}/>
+        <input type="radio" name="adultRequired" className="no-input" onChange={onChange} value={false}/>
         <label htmlFor="description" className="description-label">DESCRIPTION</label>
         <input type="text" style={{height:100, width:300}} name="description" className="description-input" onChange={onChange} />
-        <input type="submit" onClick={checkFields} className="submit-btn" style={{width:300}} />
+        <button onClick={() => submitForm(formInput)} className="submit-btn" style={{width:300}}>Button
+        </button>
         {!error && <p className="warning-msg">Please complete all fields before clicking submit. Thank you!</p>}
         {error && <p className="error-msg">All fields are required to create an event. Please fill in missing information and submit again. Thank you!</p>}
       </form>

@@ -12,7 +12,7 @@ import { createEvent } from '../graphQL/mutations/CreateEvent';
 const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
   const [isFormOpen, setFormStatus] = useState(false)
   const [currentVillage, setCurrentVillage] = useState({})
-
+  const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: ''});
   const { data } = useQuery(villagesQuery, {
     variables: {
       id }
@@ -32,19 +32,20 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
     )
   }
 
-  const [mutateUser, { stuff, loading }] =  useMutation(createEvent)
 
-  const submitForm = (event, value) => {
-    event.preventDefault()
-    mutateUser({
-      variables: {
-        name: value.name,
-        description: value.description,
-        date: value.date,
-        time: value.time,
-        adultRequired: value.adultRequired
-      }
-    })
+  const [newEvent, { stuff, loading }] =  useMutation(createEvent)
+
+  const submitForm = (eventData) => {
+    console.log(eventData)
+    // newEvent({
+    //   variables: {
+    //     name: eventData.name,
+    //     description: eventData.description,
+    //     date: eventData.date,
+    //     time: eventData.time,
+    //     adultRequired: eventData.adultRequired
+    //   }
+    // })
     setFormStatus(false)
   }
 
@@ -60,7 +61,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
         <h3 className="villagers-sub">Villagers</h3>
       </div>
       <div className="sub">
-        {isFormOpen && <NewEvent sumbitForm={submitForm} closeForm={closeForm}/>}
+        {isFormOpen && <NewEvent sumbitForm={submitForm} closeForm={closeForm} formInput={eventData} setForm={setEventData}/>}
         <div className="events">
           <Events villageId={id}/>
         </div>
