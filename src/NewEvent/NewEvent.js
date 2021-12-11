@@ -33,7 +33,7 @@ const NewEvent = ({ submitEvent, closeForm, eventData, setEventData, onChange })
         <input type="radio" name="adultRequired" className="no-input" onChange={onChange} value="false"/>
         <label htmlFor="description" className="description-label">DESCRIPTION</label>
         <input type="text" style={{height:100, width:300}} name="description" className="description-input" onChange={onChange} />
-        <button onClick={e => checkFields(e)} className="submit-btn" style={{width:300}}>Button
+        <button onClick={e => checkFields(e)} className="submit-btn" style={{width:300}}>Submit
         </button>
         {!error && <p className="warning-msg">Please complete all fields before clicking submit. Thank you!</p>}
         {error && <p className="error-msg">All fields are required to create an event. Please fill in missing information and submit again. Thank you!</p>}
