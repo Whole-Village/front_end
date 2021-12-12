@@ -150,4 +150,31 @@ describe('Village Home User Flows', () => {
     .contains('Parent Presence Not Required! Enjoy a break. 🥳')
   })
 
+  it('Should see an error and not be able to submit the form unless all required fields are filled out', () => {
+    cy.get('.create-event')
+    .click()
+    cy.get('.name-input')
+    .type('Roller Derby Night')
+    .should('have.value', 'Roller Derby Night')
+    cy.get('.date-input')
+    .type('2022-05-05')
+    .should('have.value', '2022-05-05')
+    cy.get('.time-input')
+    .type('11:11')
+    .should('have.value', '11:11')
+    cy.get('.yes-input')
+    .click()
+    cy.get('.submit-btn')
+    .click()
+    cy.get('.error-msg')
+    .contains('All fields are required to create an event. Please fill in missing information and submit again. Thank you!')
+  })
+
+  it('Should be able to close the form without submitting', () => {
+    cy.get('.create-event')
+    .click()
+    cy.get('.close-form')
+    .click()
+  })
+
 })
