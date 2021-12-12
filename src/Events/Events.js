@@ -17,15 +17,15 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
       setVillageEvents(data.events)
     }
   }, [data, setVillageEvents])
-
-  const sortedEvents = () => {
-    const copyOfEvents =
-    villageEvents.sort((a, b) => {
-      return parseInt(b.date) - parseInt(a.date)
-  })
-    setVillageEvents(copyOfEvents)
-  }
-  
+  console.log(villageEvents)
+  // const sortedEvents = () => {
+  //   const copyOfEvents =
+  //   villageEvents.sort((a, b) => {
+  //     return parseInt(b.date) - parseInt(a.date)
+  // })
+  //   setVillageEvents(copyOfEvents)
+  // }
+  //
   const eventCards = villageEvents.map(elem => {
     let uniqueKey = new Date().getTime();
       return (
