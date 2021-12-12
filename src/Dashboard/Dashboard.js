@@ -4,7 +4,7 @@ import VillageContainer from '../VillageContainer/VillageContainer';
 import NewVillageForm from '../NewVillageForm/NewVillageForm.js'
 
 
-const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription, userVillages, postNewVillage }) => {
+const Dashboard = ({ handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription, userVillages, postNewVillage }) => {
 
 // const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //loading is a boolean I can use it for conditional rendering
