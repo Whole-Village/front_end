@@ -1,0 +1,24 @@
+{
+  "data": {
+    "events": [
+        {
+          "name": "Anna's Birthday Bonanza",
+          "adultRequired": "true",
+          "date": "2022-06-29",
+          "description": "Anna's Birthday Party!",
+          "time": "20:00",
+          "villageName": "Skate After School",
+          "__typename": "Event"
+        },
+      {
+        "name": "Taylor Swift Album Release Party",
+        "adultRequired": "true",
+        "date": "2022-11-11",
+        "description": "Let's get together to listen to T Swift's new ablum and cry togehter!",
+        "time": "11:00",
+        "villageName": "Skate After School",
+        "__typename": "Event"
+      }
+    ]
+  }
+}

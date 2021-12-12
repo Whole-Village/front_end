@@ -21,26 +21,26 @@ const NewEvent = ({ submitEvent, closeForm, eventData, setEventData, onEventForm
     <div className="form-container">
     <button className="close-form" onClick={closeForm}>x</button>
       <form className="form">
-        <label htmlFor="name" className="name-label">NAME</label>
+        <label htmlFor="name" className="name-label">NAME <span>*</span></label>
         <input type="text" style={{width:300}} name="name" className="name-input" onChange={onEventFormChange}/>
 
-        <label htmlFor="date" className="date-label">DATE</label>
+        <label htmlFor="date" className="date-label">DATE <span>*</span></label>
         <input type="date" style={{width:300}} name="date" className="date-input" onChange={onEventFormChange}/>
 
-        <label htmlFor="time" className="time-label">TIME</label>
+        <label htmlFor="time" className="time-label">TIME <span>*</span></label>
         <input type="time" style={{width:300}} name="time" className="time-input" onChange={onEventFormChange}/>
 
         <label  htmlFor="adultRequired" className="yes-label">All Whole Village events default to require parent attendance. If this event does NOT require parent attendance, please check this box.</label>
         <input type="checkbox" name="adultRequired" value="false" className="yes-input" checked={isChecked} onChange={handleCheckBox} />
 
-        <label htmlFor="description" className="description-label">DESCRIPTION</label>
+        <label htmlFor="description" className="description-label">DESCRIPTION <span>*</span></label>
         <input type="text" style={{height:100, width:300}} name="description" className="description-input" onChange={onEventFormChange} />
 
         <button onClick={e => checkFields(e)} className="submit-btn" style={{width:300}}>Submit
         </button>
 
-        {!error && <p className="warning-msg">Please complete all fields before clicking submit. Thank you!</p>}
-        {error && <p className="error-msg">All fields are required to create an event. Please fill in missing information and submit again. Thank you!</p>}
+        {!error && <p className="warning-msg"><span>*</span> Denotes required field.</p>}
+        {error && <p className="error-msg">Required field missing! Please fill out all required field and re-submit.</p>}
       </form>
     </div>
   )

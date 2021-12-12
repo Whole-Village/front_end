@@ -22,7 +22,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       id }
     }
   );
-
   useEffect(() => {
     if(data) {
       setCurrentVillage(data.village)

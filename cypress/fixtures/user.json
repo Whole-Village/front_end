@@ -1,0 +1,32 @@
+{
+  "data": {
+    "user": {
+      "firstName": "Priya",
+      "lastName": "Poopoo",
+      "id": "14",
+      "villages": [
+        {
+          "id": "3",
+          "name": "[TEST] Soccer team",
+          "__typename": "Village"
+        },
+        {
+          "id": "4",
+          "name": "[TEST]Ms. Stewart 3rd Grade class",
+          "__typename": "Village"
+        },
+        {
+          "id": "5",
+          "name": "Selwyn Village Neighborhood Kids",
+          "__typename": "Village"
+        },
+        {
+          "id": "5",
+          "name": "Selwyn Village Neighborhood Kids",
+          "__typename": "Village"
+        }
+      ],
+      "__typename": "User"
+    }
+  }
+}
