@@ -1,0 +1,22 @@
+{
+  "data": {
+    "events": [
+        {
+          "adultRequired": "true",
+          "date": "2022-06-29",
+          "description": "Anna's Birthday Party!",
+          "time": "20:00",
+          "villageName": "Skate After School",
+          "__typename": "Event"
+        },
+      {
+        "adultRequired": "true",
+        "date": "2022-06-29",
+        "description": "Anna's Birthday Party!",
+        "time": "20:00",
+        "villageName": "Skate After School",
+        "__typename": "Event"
+      }
+    ]
+  }
+}
