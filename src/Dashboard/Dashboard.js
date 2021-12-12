@@ -16,6 +16,7 @@ const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, village
       {villageFormOpen && <NewVillageForm
       handleVillageChange={handleVillageChange}
       newVillage={newVillage}
+      setNewVillage={setNewVillage}
       addVillageMembers={addVillageMembers}
       setVillageFormOpen={setVillageFormOpen}
       addVillageDescription={addVillageDescription}

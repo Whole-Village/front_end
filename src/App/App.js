@@ -38,6 +38,7 @@ function App() {
   const addVillageMembers = (allMembers) => {
     setNewVillage((prevProps) => ({
       ...prevProps, village_invitees: allMembers}))
+      console.log(newVillage.village_invitees)
   }
 
   const addVillageDescription = (e) => {
@@ -46,11 +47,13 @@ function App() {
   }
 
   const postNewVillage = () => {
-    console.log(typeof(newVillage.village_name), newVillage.village_description)
+    console.log(newVillage.village_invitees)
+    console.log(typeof(newVillage.village_name), newVillage.village_description, newVillage.village_invitees)
     villageToCreate({
       variables: {
         name: newVillage.village_name,
-        description: newVillage.village_description
+        description: newVillage.village_description,
+        userEmails: ["priya@gmail.com"]
       }
     })
     setVillageFormOpen(false)
@@ -69,6 +72,7 @@ function App() {
             <Dashboard
               handleVillageChange={handleVillageChange}
               newVillage={newVillage}
+              setNewVillage={setNewVillage}
               addVillageMembers={addVillageMembers}
               villageFormOpen={villageFormOpen}
               setVillageFormOpen= {setVillageFormOpen}
@@ -84,6 +88,7 @@ function App() {
               id={villageId}
               handleVillageChange={handleVillageChange}
               newVillage={newVillage}
+              setNewVillage={setNewVillage}
               addVillageMembers={addVillageMembers}
               villageFormOpen={villageFormOpen}
               setVillageFormOpen={setVillageFormOpen}

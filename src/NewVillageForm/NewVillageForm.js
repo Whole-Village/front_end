@@ -3,19 +3,24 @@ import MembersAdded from '../MembersAdded/MembersAdded';
 import './NewVillageForm.css';
 
 
-const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, setVillageFormOpen, addVillageDescription, postNewVillage}) => {
+const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, setVillageFormOpen, addVillageDescription, postNewVillage, setNewVillage}) => {
   const [villageMember, addVillageMember] = useState({email: ''})
   const [villageMembers, setVillageMembers] = useState([])
 
   const handleAddedVillageMember = (e) => {
     e.preventDefault();
-    setVillageMembers([...villageMembers, villageMember])
+    setVillageMembers([...villageMembers, villageMember.email])
+    console.log(villageMembers)
     addVillageMembers(villageMembers)
+    setNewVillage((prevProps) => ({...prevProps, village_invitees: villageMembers}))
+    console.log(newVillage)
+    console.log('onClick for add member:', villageMembers)
   }
 
   const handleVillageMemberChange = (e) => {
     addVillageMember((prevProps) => ({
       ...prevProps, [e.target.name]: e.target.value}))
+      console.log(villageMember)
       console.log(villageMember)
   }
 
