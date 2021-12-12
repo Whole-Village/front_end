@@ -1,9 +1,9 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import './VillageHome.css'
+import VillageMembers from '../VillageMembers/VillageMembers';
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
-import { useState, useEffect } from 'react';
 import { villagesQuery } from '../graphQL/queries/GetVillage';
 import { useQuery, useMutation } from "@apollo/client";
 import { createEvent } from '../graphQL/mutations/CreateEvent';
@@ -118,6 +118,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           />
         </div>
         <div className="villagers">
+          <VillageMembers />
         </div>
         {villageFormOpen && <NewVillageForm
           handleVillageChange={handleVillageChange}
