@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { eventsQuery } from '../graphQL/queries/GetEvents';
 import { useQuery } from "@apollo/client";
-
+import './Even'
 import EventCard from '../EventCard/EventCard';
 
 const Events = ({ villageId, villageEvents, setVillageEvents }) => {
@@ -68,7 +68,7 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
 
   return (
     <div>
-      {eventCards.length < 1 ? <p>There are no upcoming events!</p> : eventCards}
+      {eventCards.length < 1 ? <p className="village-home-error">There are no upcoming events!</p> : eventCards}
     </div>
   )
 }
