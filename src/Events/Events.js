@@ -12,8 +12,27 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     }
   });
 
+
+
   useEffect(() => {
     if(data) {
+      const filterUpcomingEvents = () => {
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        const yyyy = today.getFullYear();
+        if (dd < 10) {
+          dd = '0' + dd;
+        }
+        if (mm < 10) {
+          mm = '0' + mm;
+        }
+        today = yyyy + '-' + mm + '-' + dd;
+        const filteredEvents = data.events.filter((elem) => {
+          return elem.date >= today;
+        })
+        return filteredEvents;
+      }
       setVillageEvents(data.events)
       const upcomingEvents = filterUpcomingEvents();
       sortUpcomingEventsAscending(upcomingEvents);
@@ -21,22 +40,7 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     }
   }, [data, setVillageEvents])
 
-  const filterUpcomingEvents = () => {
-      let today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth() + 1;
-      const yyyy = today.getFullYear();
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      today = yyyy + '-' + mm + '-' + dd;
-      return data.events.filter((elem) => {
-      return elem.date >= today;
-    })
-  }
+  
 
   const sortUpcomingEventsAscending = (events) => {
     return events.sort((a,b) => {
