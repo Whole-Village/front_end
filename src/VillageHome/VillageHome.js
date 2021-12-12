@@ -45,6 +45,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
 
 
   const submitEvent = () => {
+    console.log(eventData.date)
     newEvent({
       variables: {
         villageId: id,
@@ -64,8 +65,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
 }
 
   const onEventFormChange = (e) => {
-    // console.log('event', eventData)
-    // console.log('checked?', isChecked)
     if (e.target.name === 'adultRequired' && isChecked) {
       setEventData({...eventData, [e.target.name]: isChecked})
     } else if (e.target.name === 'adultRequired' && !isChecked) {
