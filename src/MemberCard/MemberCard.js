@@ -1,8 +1,11 @@
 import React from 'react';
 
-const MemberCard = () => {
+const MemberCard = ({firstName, lastName, email}) => {
   return(
-    <p>Trial</p>
+    <div className="member-card">
+      <p>{`Name: ${firstName} ${lastName}`}</p>
+      <p>{`Email: ${email}`}</p>
+    </div>
   )
 }
 

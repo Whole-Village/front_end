@@ -13,6 +13,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
   const [isFormOpen, setFormStatus] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
+  const [villageMembers, setVillageMembers] = useState([])
   const [villageEvents, setVillageEvents] = useState([]);
   const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
   const [newEvent, { error, loading }] =  useMutation(createEvent)
@@ -24,7 +25,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 
   useEffect(() => {
     if(data) {
-      console.log(data.village)
       setCurrentVillage(data.village)
     }
     //we need to do loading/error handling here
@@ -118,7 +118,11 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           />
         </div>
         <div className="villagers">
-          <VillageMembers />
+          <VillageMembers
+            villageId={id}
+            setVillageMembers={setVillageMembers}
+            villageMembers={villageMembers}
+          />
         </div>
         {villageFormOpen && <NewVillageForm
           handleVillageChange={handleVillageChange}
