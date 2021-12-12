@@ -160,6 +160,10 @@ form {
   grid-row: 6;
   grid-column: 2;
   color: #E8902D;
-  font-size: 10px;
+  font-size: 14px;
   width: 300px;
+}
+span {
+  color: red;
+  font-size: 14px;
 }
