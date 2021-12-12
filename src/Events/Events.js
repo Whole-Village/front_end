@@ -13,12 +13,20 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
   });
 
   useEffect(() => {
+    
     if(data) {
-      console.log(data.events)
+      setVillageEvents(data.events)
+      const upcomingEvents = filterUpcomingEvents();
+      sortUpcomingEventsAscending(upcomingEvents);
+      setVillageEvents(upcomingEvents)
+    }
+  }, [data, setVillageEvents])
+
+  const filterUpcomingEvents = () => {
       let today = new Date();
       let dd = today.getDate();
       let mm = today.getMonth() + 1;
-      let yyyy = today.getFullYear();
+      const yyyy = today.getFullYear();
       if (dd < 10) {
         dd = '0' + dd;
       }
@@ -26,39 +34,19 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
         mm = '0' + mm;
       }
       today = yyyy + '-' + mm + '-' + dd;
-      setVillageEvents(data.events)
-      const upcomingEvents = data.events.filter((elem) => {
-        return elem.date >= today;
-      })
+      return data.events.filter((elem) => {
+      return elem.date >= today;
+    })
+  }
 
-      upcomingEvents.sort((a,b) => {
-        a = a.date.split('-').join('');
-        b = b.date.split('-').join('');
-        return a > b ? 1 : a < b ? -1 : 0;
-      })
-   console.log('upcoming after sort', upcomingEvents)
+  const sortUpcomingEventsAscending = (events) => {
+    return events.sort((a,b) => {
+      a = a.date.split('-').join('');
+      b = b.date.split('-').join('');
+      return a > b ? 1 : a < b ? -1 : 0;
+    })
+  }
 
-      setVillageEvents(upcomingEvents)
-    }
-  }, [data, setVillageEvents])
-
-
-  
-
-
-  // const removePastEvents = () => {
-  //   let today = new Date();
-  //   let dd = today.getDate();
-  //   let mm = today.getMonth();
-  //   let yyyy = today.getFullYear();
-
-  //   const upcomingEvents = villageEvents.filter((elem) => {
-  //     return elem.date >= today;
-  //   })
-
-  //   console.log(upcomingEvents)
-  // }
-  
   const eventCards = villageEvents.map((elem, i) => {
     let uniqueKey = new Date().getTime();
       return (
@@ -80,7 +68,6 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
 
   return (
     <div>
-      {/* {sortedEvents} */}
       {eventCards}
       {/* TO DO: Add a message for no Events */}
     </div>
