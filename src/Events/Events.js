@@ -68,8 +68,7 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
 
   return (
     <div>
-      {eventCards}
-      {/* TO DO: Add a message for no Events */}
+      {eventCards.length < 1 ? <p>There are no upcoming events!</p> : eventCards}
     </div>
   )
 }
