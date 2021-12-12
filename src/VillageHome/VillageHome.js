@@ -1,18 +1,19 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import './VillageHome.css'
+import VillageMembers from '../VillageMembers/VillageMembers';
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
-import { useState, useEffect } from 'react';
 import { villagesQuery } from '../graphQL/queries/GetVillage';
 import { useQuery, useMutation } from "@apollo/client";
 import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 
-const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription }) => {
+const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
   const [isFormOpen, setFormStatus] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
+  const [villageMembers, setVillageMembers] = useState([])
   const [villageEvents, setVillageEvents] = useState([]);
   const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
   const [newEvent, { error, loading }] =  useMutation(createEvent)
@@ -24,7 +25,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 
   useEffect(() => {
     if(data) {
-      console.log(data.village)
       setCurrentVillage(data.village)
     }
     //we need to do loading/error handling here
@@ -61,12 +61,10 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 
   const handleCheckBox = (e) => {
       setIsChecked(!isChecked);
-      onChange(e)
+      onEventFormChange(e)
 }
 
-  const onChange = (e) => {
-    // const required = true;
-    // const notRequired = false;
+  const onEventFormChange = (e) => {
     if (e.target.name === 'adultRequired' && isChecked) {
       setEventData({...eventData, [e.target.name]: isChecked})
     } else if (e.target.name === 'adultRequired' && !isChecked) {
@@ -74,18 +72,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
     } else {
       setEventData({...eventData, [e.target.name]: e.target.value});
     }
-
-    // if(e.target.name === 'adultRequired') {
-    //   if (isChecked) {
-    //     const required = false;
-    //     setEventData({...eventData, adultRequired: required})
-    //     console.log('should be false' ,eventData.adultRequired)
-    //   }
-    //   const required = true;
-    //   setEventData({...eventData, adultRequired: required})
-    //   } else if (e.target.name !== 'adultRequired') {
-    //   setEventData({...eventData, [e.target.name]: e.target.value});
-    // }
   };
 
   const closeForm = () => {
@@ -104,7 +90,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           closeForm={closeForm}
           eventData={eventData}
           setEventData={setEventData}
-          onChange={onChange}
+          onEventFormChange={onEventFormChange}
           submitEvent={submitEvent}
           isChecked={isChecked}
           handleCheckBox={handleCheckBox}
@@ -117,13 +103,20 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           />
         </div>
         <div className="villagers">
+          <VillageMembers
+            villageId={id}
+            setVillageMembers={setVillageMembers}
+            villageMembers={villageMembers}
+          />
         </div>
         {villageFormOpen && <NewVillageForm
           handleVillageChange={handleVillageChange}
           newVillage={newVillage}
+          setNewVillage={setNewVillage}
           addVillageMembers={addVillageMembers}
           setVillageFormOpen={setVillageFormOpen}
           addVillageDescription={addVillageDescription}
+          postNewVillage={postNewVillage}
         />}
       </div>
       <div className="button-container">

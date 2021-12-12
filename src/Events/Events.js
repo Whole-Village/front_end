@@ -40,8 +40,6 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     }
   }, [data, setVillageEvents])
 
-  
-
   const sortUpcomingEventsAscending = (events) => {
     return events.sort((a,b) => {
       a = a.date.split('-').join('');
@@ -51,9 +49,9 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
   }
 
   const eventCards = villageEvents.map((elem, i) => {
-    let uniqueKey = new Date().getTime();
+    let uniqueKey = Math.random();
       return (
-        <div key={i}>
+        <div key={Math.random()}>
           <p className="event-date">{elem.date}</p>
           <EventCard
           id={elem.id}
