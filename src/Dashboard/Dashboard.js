@@ -4,8 +4,7 @@ import VillageContainer from '../VillageContainer/VillageContainer';
 import NewVillageForm from '../NewVillageForm/NewVillageForm.js'
 
 
-
-const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription, userVillages }) => {
+const Dashboard = ({ handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen, addVillageDescription, userVillages, postNewVillage }) => {
 
 // const [mutateUser, { data, loading }] =  useMutation(updateUser)
 //loading is a boolean I can use it for conditional rendering
@@ -17,9 +16,11 @@ const Dashboard = ({ handleVillageChange, newVillage, addVillageMembers, village
       {villageFormOpen && <NewVillageForm
       handleVillageChange={handleVillageChange}
       newVillage={newVillage}
+      setNewVillage={setNewVillage}
       addVillageMembers={addVillageMembers}
       setVillageFormOpen={setVillageFormOpen}
       addVillageDescription={addVillageDescription}
+      postNewVillage={postNewVillage}
       />}
       {/* <button onClick={() => mutateUser({
         variables: {

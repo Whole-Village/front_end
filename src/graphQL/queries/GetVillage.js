@@ -5,6 +5,11 @@ export const villagesQuery = gql`
     village(id: $id) {
      name
      description
+     users {
+       firstName
+       lastName
+       email
+     }
     }
   }
  `
