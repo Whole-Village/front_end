@@ -18,18 +18,10 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     }
   }, [data, setVillageEvents])
 
-  // const sortedEvents = () => {
-  //   const copyOfEvents =
-  //   villageEvents.sort((a, b) => {
-  //     return parseInt(b.date) - parseInt(a.date)
-  // })
-  //   setVillageEvents(copyOfEvents)
-  // }
-  
   const eventCards = villageEvents.map((elem, i) => {
-    let uniqueKey = new Date().getTime();
+    let uniqueKey = Math.random();
       return (
-        <div key={i}>
+        <div key={Math.random()}>
           <p className="event-date">{elem.date}</p>
           <EventCard
           id={elem.id}

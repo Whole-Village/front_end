@@ -60,14 +60,12 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
 
   const handleCheckBox = (e) => {
       setIsChecked(!isChecked);
-      onChange(e)
+      onEventFormChange(e)
 }
 
-  const onChange = (e) => {
-    // const required = true;
-    // const notRequired = false;
-    console.log('event', eventData)
-    console.log('checked?', isChecked)
+  const onEventFormChange = (e) => {
+    // console.log('event', eventData)
+    // console.log('checked?', isChecked)
     if (e.target.name === 'adultRequired' && isChecked) {
       setEventData({...eventData, [e.target.name]: isChecked})
     } else if (e.target.name === 'adultRequired' && !isChecked) {
@@ -75,18 +73,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
     } else {
       setEventData({...eventData, [e.target.name]: e.target.value});
     }
-
-    // if(e.target.name === 'adultRequired') {
-    //   if (isChecked) {
-    //     const required = false;
-    //     setEventData({...eventData, adultRequired: required})
-    //     console.log('should be false' ,eventData.adultRequired)
-    //   }
-    //   const required = true;
-    //   setEventData({...eventData, adultRequired: required})
-    //   } else if (e.target.name !== 'adultRequired') {
-    //   setEventData({...eventData, [e.target.name]: e.target.value});
-    // }
   };
 
   const closeForm = () => {
@@ -105,7 +91,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
           closeForm={closeForm}
           eventData={eventData}
           setEventData={setEventData}
-          onChange={onChange}
+          onEventFormChange={onEventFormChange}
           submitEvent={submitEvent}
           isChecked={isChecked}
           handleCheckBox={handleCheckBox}
