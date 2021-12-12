@@ -14,16 +14,49 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
 
   useEffect(() => {
     if(data) {
+      console.log(data.events)
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth() + 1;
+      let yyyy = today.getFullYear();
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      today = yyyy + '-' + mm + '-' + dd;
       setVillageEvents(data.events)
+      const upcomingEvents = data.events.filter((elem) => {
+        return elem.date >= today;
+      })
+
+      upcomingEvents.sort((a,b) => {
+        a = a.date.split('-').join('');
+        b = b.date.split('-').join('');
+        return a > b ? 1 : a < b ? -1 : 0;
+      })
+   console.log('upcoming after sort', upcomingEvents)
+
+      setVillageEvents(upcomingEvents)
     }
   }, [data, setVillageEvents])
 
-  // const sortedEvents = () => {
-  //   const copyOfEvents =
-  //   villageEvents.sort((a, b) => {
-  //     return parseInt(b.date) - parseInt(a.date)
-  // })
-  //   setVillageEvents(copyOfEvents)
+
+  
+
+
+  // const removePastEvents = () => {
+  //   let today = new Date();
+  //   let dd = today.getDate();
+  //   let mm = today.getMonth();
+  //   let yyyy = today.getFullYear();
+
+  //   const upcomingEvents = villageEvents.filter((elem) => {
+  //     return elem.date >= today;
+  //   })
+
+  //   console.log(upcomingEvents)
   // }
   
   const eventCards = villageEvents.map((elem, i) => {
@@ -47,7 +80,9 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
 
   return (
     <div>
+      {/* {sortedEvents} */}
       {eventCards}
+      {/* TO DO: Add a message for no Events */}
     </div>
   )
 }
