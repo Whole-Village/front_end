@@ -21,7 +21,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, addVillageMembers, v
       id }
     }
   );
-
   useEffect(() => {
     if(data) {
       console.log(data.village)
