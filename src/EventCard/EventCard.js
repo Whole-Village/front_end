@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EventCard = ({ id, type, name, date, description, time, adult_required }) => {
+const EventCard = ({ id, type, name, date, description, time, adult_required, uniqueKey }) => {
   return (
     <div className="event-card">
       <p className="event-details">Event: {name}</p>
