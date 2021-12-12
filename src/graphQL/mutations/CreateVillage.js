@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const createEvent = gql`
+export const createVillage = gql`
 mutation createVillage($name: String!, $description: String){
     createVillage(
      name: $name,

@@ -3,7 +3,7 @@ import MembersAdded from '../MembersAdded/MembersAdded';
 import './NewVillageForm.css';
 
 
-const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, setVillageFormOpen, addVillageDescription}) => {
+const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, setVillageFormOpen, addVillageDescription, postNewVillage}) => {
   const [villageMember, addVillageMember] = useState({email: ''})
   const [villageMembers, setVillageMembers] = useState([])
 
@@ -66,7 +66,7 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
           setVillageMembers={setVillageMembers}
           />
         </div>
-        <button className='create-village-btn' onClick={() =>setVillageFormOpen(false)}>Create Village!</button>
+        <button className='create-village-btn' onClick={postNewVillage}>Create Village!</button>
       </div>
     </div>
   )
