@@ -126,7 +126,7 @@ describe('Village Home User Flows', () => {
     .type('Meet us at the rink to cheer on our favorite Derby Girl, CinderHella!!')
     .should('have.value', 'Meet us at the rink to cheer on our favorite Derby Girl, CinderHella!!')
     cy.get('.warning-msg')
-    .contains('Please complete all fields before clicking submit. Thank you!')
+    .contains('* Denotes required field.')
     .should('be.visible')
     cy.get('.submit-btn')
     .click()
@@ -167,7 +167,7 @@ describe('Village Home User Flows', () => {
     cy.get('.submit-btn')
     .click()
     cy.get('.error-msg')
-    .contains('All fields are required to create an event. Please fill in missing information and submit again. Thank you!')
+    .contains('Required field missing! Please fill out all required field and re-submit.')
   })
 
   it('Should be able to close the form without submitting', () => {
