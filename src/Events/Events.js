@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { eventsQuery } from '../graphQL/queries/GetEvents';
 import { useQuery } from "@apollo/client";
-import './Even'
+import './Events.css'
 import EventCard from '../EventCard/EventCard';
 
 const Events = ({ villageId, villageEvents, setVillageEvents }) => {
@@ -13,7 +13,6 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
   });
 
   useEffect(() => {
-    
     if(data) {
       setVillageEvents(data.events)
       const upcomingEvents = filterUpcomingEvents();
