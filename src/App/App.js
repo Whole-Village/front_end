@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
+import NoPath from '../NoPath/NoPath';
 import {useMutation} from '@apollo/client';
 import { createVillage } from '../graphQL/mutations/CreateVillage';
 import VillageHome from '../VillageHome/VillageHome';
@@ -16,11 +17,12 @@ function App() {
   const [userVillages, setUserVillages] = useState([]);
   const [villageToCreate] = useMutation(createVillage)
   const email = "priya@gmail.com";
-  const { data } = useQuery(userQuery, {
+  const { data, refetch } = useQuery(userQuery, {
     variables: {
       email }
     }
   );
+  refetch();
   // const { loading, error, data } <--Need to add error/loading conditionals for user
 
 
@@ -97,6 +99,7 @@ function App() {
               />
             )}
         }/>
+        <Route component={ NoPath } />
       </Switch>
     </div>
   );

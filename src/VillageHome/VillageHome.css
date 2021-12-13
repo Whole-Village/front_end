@@ -39,7 +39,7 @@ a {
   font-size: 20px;
 }
 
-.event-card {
+.event-card, .member-card {
   background-color: rgb(255, 255, 255, 0.75);
   border-radius: 15px;
   margin-bottom: 15px;
@@ -47,7 +47,7 @@ a {
   font-family: 'Sarala', sans-serif;
 }
 
-.event-details {
+.event-details, .member-details {
   margin-top: 10px;
   text-align: left;
 }
