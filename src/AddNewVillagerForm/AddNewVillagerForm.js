@@ -22,7 +22,7 @@ const AddNewVillagerForm = ({ setNewVillagerFormOpen }) => {
   console.log(newVillageMembers)
   return(
     <div className='new-villager-form-modal'>
-    //need to change to form, but currently a div for my sanity
+    {//need to change to form, but currently a div for my sanity}
       <div>
         <h3>New Villager Invite Form</h3>
         <label className='new-invitee-label'>New Invitee Email
