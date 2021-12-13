@@ -1,16 +1,19 @@
 describe('Dashboard User Flows', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://whole-village-be.herokuapp.com/graphql', (req) => {
-  if (req.body.operationName === 'user') {
-    req.reply({ fixture: 'user'});
-    }}
-  )
-  .visit('http://localhost:3000/dashboard')
+      if (req.body.operationName === 'user') {
+        req.reply({ fixture: 'user'});
+      if (req.body.operationName === 'createVillage') {
+        req.reply({ fixture: 'newVillage'});
+      }
+      }}
+    )
+    .visit('http://localhost:3000/dashboard')
   })
 
   it('Should see a header', () => {
-  cy.get('h1').contains('My Villages')
-})
+    cy.get('h1').contains('My Villages')
+  })
 
   it('Should see navigation links', () => {
     cy.get('.navigation-bar').first().contains('Start Village')
@@ -64,8 +67,20 @@ describe('Dashboard User Flows', () => {
   })
 
     it('Should take a user to a village', () => {
-    cy.get('.village-container').first().click()
-    .get('.events-sub')
-    .contains('Village Events')
-})
+      cy.get('.village-container').first().click()
+      .get('.events-sub')
+      .contains('Village Events')
+    })
+
+    it('Should be able to submit the Create a Village', () => {
+    cy.get('.start-village-btn').click()
+    .wait(500)
+    cy.get(':nth-child(1) > .village-data').type('Example Village')
+    cy.get(':nth-child(2) > .village-data').type('Example Description')
+    cy.get(':nth-child(3) > .village-data').type('[TEST]ExampleInvitee@example.com')
+    cy.get('.create-village-btn')
+    .click();
+    cy.get(':nth-child(4) > .village-container')
+    .contains('[TEST]Example Village');
+    })
 })
