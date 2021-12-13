@@ -4,6 +4,7 @@ import VillageMembers from '../VillageMembers/VillageMembers';
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
+import AddNewVillagerForm from '../AddNewVillagerForm/AddNewVillagerForm';
 import { villagesQuery } from '../graphQL/queries/GetVillage';
 import { useQuery, useMutation } from "@apollo/client";
 import { createEvent } from '../graphQL/mutations/CreateEvent';
@@ -12,7 +13,7 @@ import { createEvent } from '../graphQL/mutations/CreateEvent';
 const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
 
   const [isFormOpen, setFormOpenStatus] = useState(false)
-  const [isNewVillagerFormOpen, setNewVillagerFormStatus] = useState(false)
+  const [isNewVillagerFormOpen, setNewVillagerFormOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
   const [villageMembers, setVillageMembers] = useState([])
@@ -108,10 +109,14 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
           addVillageDescription={addVillageDescription}
           postNewVillage={postNewVillage}
         />}
+        {isNewVillagerFormOpen && <AddNewVillagerForm
+          addVillageMembers={addVillageMembers}
+          setNewVillagerFormOpen={setNewVillagerFormOpen}
+        />}
       </div>
       <div className="button-container">
         <button className="create-event" onClick={() => setFormOpenStatus(true)}>Create a New Event</button>
-        <button className="invite-new">Invite More Villagers</button>
+        <button className="invite-new" onClick={() => setNewVillagerFormOpen(true)}>Invite More Villagers</button>
       </div>
     </div>
   )
