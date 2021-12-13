@@ -80,7 +80,7 @@ describe('Dashboard User Flows', () => {
     cy.get(':nth-child(3) > .village-data').type('[TEST]ExampleInvitee@example.com')
     cy.get('.create-village-btn')
     .click();
-    cy.get(':nth-child(4) > .village-container')
+    cy.get(':nth-child(4) > .village-card')
     .contains('[TEST]Example Village');
     })
 })
