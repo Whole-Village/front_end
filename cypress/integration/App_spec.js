@@ -50,6 +50,7 @@ describe('Dashboard User Flows', () => {
           .get('.add-member-btn')
           .click()
             cy.get('.remove-member-btn > .material-icons')
+            .wait(700)
             .click()
               .get('.added-villagers')
               .should('be.empty');
