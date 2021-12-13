@@ -44,16 +44,16 @@ describe('Dashboard User Flows', () => {
 
 
   it("Should be able to delete a invitee from invitee list", () => {
-      cy.get('.start-village-btn').click()
-
-          cy.get('.village-email-input')
-          .type('ExampleInvitee@example.com')
+      cy.get('.start-village-btn')
+      .click()
+        cy.get('.village-email-input')
+        .type('ExampleInvitee@example.com')
           .get('.add-member-btn')
           .click()
-          .get('.remove-member-btn')
-          .click()
-          .get('.added-villagers')
-          .should('be.empty');
+            cy.get('.remove-member-btn > .material-icons')
+            .click()
+              .get('.added-villagers')
+              .should('be.empty');
   })
 
     it("Should be able to close the start village form", () => {
