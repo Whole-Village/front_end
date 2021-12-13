@@ -42,7 +42,6 @@ describe('Dashboard User Flows', () => {
           .contains('ExampleInvitee@example.com')
   })
 
-
   it("Should be able to delete a invitee from invitee list", () => {
       cy.get('.start-village-btn')
       .click()
