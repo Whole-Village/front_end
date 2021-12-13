@@ -10,7 +10,9 @@ import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 
 const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
-  const [isFormOpen, setFormStatus] = useState(false)
+
+  const [isFormOpen, setFormOpenStatus] = useState(false)
+  const [isNewVillagerFormOpen, setNewVillagerFormStatus] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
   const [villageMembers, setVillageMembers] = useState([])
@@ -22,6 +24,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       id }
     }
   );
+
   useEffect(() => {
     if(data) {
       setCurrentVillage(data.village)
@@ -34,14 +37,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       console.log(error)
     }
   }, [data, error, loading])
-
-
-  const showEventForm = () => {
-    return (
-      setFormStatus(true)
-    )
-  }
-
 
   const submitEvent = () => {
     console.log(eventData.date)
@@ -73,10 +68,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
     }
   };
 
-  const closeForm = () => {
-    setFormStatus(false)
-  }
-
   return (
     <div className="village-home">
       <h2 className="village-name">Welcome to {currentVillage.name}!</h2>
@@ -86,7 +77,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       </div>
       <div className="sub">
         {isFormOpen && <NewEvent
-          closeForm={closeForm}
+          setFormOpenStatus={setFormOpenStatus}
           eventData={eventData}
           setEventData={setEventData}
           onEventFormChange={onEventFormChange}
@@ -119,7 +110,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
         />}
       </div>
       <div className="button-container">
-        <button className="create-event" onClick={showEventForm}>Create a New Event</button>
+        <button className="create-event" onClick={() => setFormOpenStatus(true)}>Create a New Event</button>
         <button className="invite-new">Invite More Villagers</button>
       </div>
     </div>
