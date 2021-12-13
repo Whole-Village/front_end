@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
+import NoPath from '../NoPath/NoPath';
 import {useMutation} from '@apollo/client';
 import { createVillage } from '../graphQL/mutations/CreateVillage';
 import VillageHome from '../VillageHome/VillageHome';
@@ -97,6 +98,7 @@ function App() {
               />
             )}
         }/>
+        <Route component={ NoPath } />
       </Switch>
     </div>
   );
