@@ -8,7 +8,7 @@ const VillageCard = ({ id, name }) => {
     <>
     <NavLink className="navlink__village-card" to={`/villages/${id}`}>
       <section className="village-card">
-        <p>{name}</p>
+        <p className="village-name">{name}</p>
       </section>
     </NavLink>
 
