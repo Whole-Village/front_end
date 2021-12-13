@@ -67,7 +67,7 @@ function App() {
     e.preventDefault()
     if (newVillage.village_name && newVillage.village_description && newVillage.village_invitees) {
       setError(false)
-      postNewVillage();
+      postNewVillage(e, villageMembers);
     } else {
       setError(true)
       }

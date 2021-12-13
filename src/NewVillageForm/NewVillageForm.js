@@ -47,7 +47,7 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
           value={villageMember.email}
           onChange={e => handleVillageMemberChange(e)}
         />
-        <button className='add-member-btn' onClick={handleAddedVillageMember}>
+        <button className='add-member-btn' onClick={(e) => handleAddedVillageMember(e)}>
             <span className="material-icons">
               person_add
             </span>
@@ -60,9 +60,11 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
           villageMembers={villageMembers}
           setVillageMembers={setVillageMembers}
           />
-        </div>{!error && <p className="warning-msg-2"><span>*</span> Denotes required field.</p>}
+        </div>
+        {!error && <p className="warning-msg-2"><span>*</span> Denotes required field.</p>}
         {error && <p className="error-msg-2">Required field missing! Please fill out all required field and re-submit.</p>}
-        <button className='create-village-btn' onClick={checkVillageFields(villageMembers)}>Create Village!</button>
+
+        <button className='create-village-btn' onClick={(e) => postNewVillage(e, villageMembers)}>Create Village!</button>
       </div>
     </div>
   )
