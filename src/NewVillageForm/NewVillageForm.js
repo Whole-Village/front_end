@@ -26,21 +26,21 @@ const NewVillageForm = ({ handleVillageChange, newVillage, setVillageFormOpen, a
         </button>
       </header>
       <form className='village-data-input'>
-        <label className='village-name-label'>Village Name</label>
+        <label className='village-name-label'>Name<span>*</span></label>
         <input className='village-name-input'
           type='text'
           name='village_name'
           value={newVillage.village_name}
           onChange={handleVillageChange}
           />
-        <label className='village-description-label'>Village Description</label>
+        <label className='village-description-label'>Description<span>*</span></label>
         <input className='village-description-input'
           type='text'
           name='village_description'
           value={newVillage.village_description}
           onChange={(e) => addVillageDescription(e.target.value)}
         />
-        <label className='village-email-label'>Invitee Email</label>
+        <label className='village-email-label'>Invitee Email<span>*</span></label>
         <input className='village-email-input'
           type='text'
           name='email'

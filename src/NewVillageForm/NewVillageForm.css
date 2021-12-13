@@ -43,7 +43,7 @@
   font-weight: bold;
   color: #E8902D;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-self: center;
 }
 
@@ -64,7 +64,7 @@
   font-weight: bold;
   color: #E8902D;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-self: flex-start;
 }
 
@@ -85,7 +85,7 @@
   font-weight: bold;
   color: #E8902D;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-self: center;
 }
 
