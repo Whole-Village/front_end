@@ -25,7 +25,6 @@ function App() {
   );
   refetch();
 
-
   useEffect(() => {
     if(data) {
       setUserVillages(data.user.villages)
