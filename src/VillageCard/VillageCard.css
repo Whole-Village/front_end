@@ -13,16 +13,24 @@
 .navlink__village-card {
     text-decoration: none;
 }
-.wrapper {
+/* .wrapper {
     width: 100%;
     padding-left: 300px;
-}
+} */
 
-section p {
-    margin: 0;
-    width: 100px;
-    height: 50px;
-    text-align: center;
-    font-size: 20px;
-    color: #FFFFFF;
+ .village-name {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  width: 150px;
+  height: 100px;
+  text-align: center;
+  color: #FFFFFF;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1em;
+  max-height: 2em;
+  /* font-size: 16px; */
 }

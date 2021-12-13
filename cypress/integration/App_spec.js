@@ -47,18 +47,18 @@ describe('Dashboard User Flows', () => {
   })
 
 
-  it("Should be able to delete a invitee from invitee list", () => {
-      cy.get('.start-village-btn').click()
-
-          cy.get('.village-data-input > :nth-child(3)')
-          .type('ExampleInvitee@example.com')
-          .get('.add-member-btn')
-          .click()
-          .get('.remove-member-btn')
-          .click()
-          .get('.added-villagers')
-          .should('be.empty');
-  })
+  // it("Should be able to delete a invitee from invitee list", () => {
+  //     cy.get('.start-village-btn').click()
+  //
+  //         cy.get('.village-data-input > :nth-child(3)')
+  //         .type('ExampleInvitee@example.com')
+  //         .get('.add-member-btn')
+  //         .click()
+  //         .get('.remove-member-btn')
+  //         .click()
+  //         .get('.added-villagers')
+  //         .should('be.empty');
+  // })
 
     it("Should be able to close the start village form", () => {
       cy.get('.start-village-btn').click()
@@ -67,7 +67,7 @@ describe('Dashboard User Flows', () => {
   })
 
     it('Should take a user to a village', () => {
-      cy.get('.village-container').first().click()
+      cy.get('[href="/villages/3"] > .village-card').click()
       .get('.events-sub')
       .contains('Village Events')
     })
@@ -83,4 +83,6 @@ describe('Dashboard User Flows', () => {
     cy.get(':nth-child(4) > .village-card')
     .contains('[TEST]Example Village');
     })
+
 })
+
