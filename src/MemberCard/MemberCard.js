@@ -3,8 +3,8 @@ import React from 'react';
 const MemberCard = ({firstName, lastName, email}) => {
   return(
     <div className="member-card">
-      <p>{`Name: ${firstName} ${lastName}`}</p>
-      <p>{`Email: ${email}`}</p>
+      <p className="member-details">{`Name: ${firstName} ${lastName}`}</p>
+      <p className="member-details">{`Email: ${email}`}</p>
     </div>
   )
 }
