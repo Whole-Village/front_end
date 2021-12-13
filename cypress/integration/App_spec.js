@@ -22,20 +22,19 @@ describe('Dashboard User Flows', () => {
 
   it('Should display a form to start a villege', () => {
     cy.get('.start-village-btn').click()
-    .wait(500)
-    cy.get('.new-village-form-modal').should('exist');
-    cy.get(':nth-child(1) > .village-data').type('Example Village')
+    cy.get('.new-village-form-modal').should('be.visible');
+    cy.get('.village-name-input').type('Example Village')
     .should('have.value', 'Example Village')
-    cy.get(':nth-child(2) > .village-data').type('Example Description')
+    cy.get('.village-description-input').type('Example Description')
     .should('have.value', 'Example Description')
-    cy.get(':nth-child(3) > .village-data').type('ExampleInvitee@example.com')
+    cy.get('.village-email-input').type('ExampleInvitee@example.com')
     .should('have.value', 'ExampleInvitee@example.com')
   })
 
   it("Should be able to show village invitee list", () => {
       cy.get('.start-village-btn').click()
 
-          cy.get('.village-data-input > :nth-child(3)')
+          cy.get('.village-email-input')
           .type('ExampleInvitee@example.com')
           .get('.add-member-btn')
           .click()
@@ -44,18 +43,18 @@ describe('Dashboard User Flows', () => {
   })
 
 
-  // it("Should be able to delete a invitee from invitee list", () => {
-  //     cy.get('.start-village-btn').click()
-  //
-  //         cy.get('.village-data-input > :nth-child(3)')
-  //         .type('ExampleInvitee@example.com')
-  //         .get('.add-member-btn')
-  //         .click()
-  //         .get('.remove-member-btn')
-  //         .click()
-  //         .get('.added-villagers')
-  //         .should('be.empty');
-  // })
+  it("Should be able to delete a invitee from invitee list", () => {
+      cy.get('.start-village-btn').click()
+
+          cy.get('.village-email-input')
+          .type('ExampleInvitee@example.com')
+          .get('.add-member-btn')
+          .click()
+          .get('.remove-member-btn')
+          .click()
+          .get('.added-villagers')
+          .should('be.empty');
+  })
 
     it("Should be able to close the start village form", () => {
       cy.get('.start-village-btn').click()
