@@ -3,7 +3,7 @@ import MembersAdded from '../MembersAdded/MembersAdded';
 import './NewVillageForm.css';
 
 
-const NewVillageForm = ({ handleVillageChange, newVillage, setVillageFormOpen, addVillageDescription, postNewVillage –}) => {
+const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, setVillageFormOpen, addVillageDescription, postNewVillage, setNewVillage, checkVillageFields, setError, error}) => {
   const [villageMember, addVillageMember] = useState({email: ''})
   const [villageMembers, setVillageMembers] = useState([])
 
@@ -60,8 +60,9 @@ const NewVillageForm = ({ handleVillageChange, newVillage, setVillageFormOpen, a
           villageMembers={villageMembers}
           setVillageMembers={setVillageMembers}
           />
-        </div>
-        <button className='create-village-btn' onClick={(e) => postNewVillage(e, villageMembers)}>Create Village!</button>
+        </div>{!error && <p className="warning-msg-2"><span>*</span> Denotes required field.</p>}
+        {error && <p className="error-msg-2">Required field missing! Please fill out all required field and re-submit.</p>}
+        <button className='create-village-btn' onClick={checkVillageFields(villageMembers)}>Create Village!</button>
       </div>
     </div>
   )

@@ -63,7 +63,7 @@ function App() {
     setVillageFormOpen(false)
   }
 
-  const checkVillageFields = (e) => {
+  const checkVillageFields = (e, villageMembers) => {
     e.preventDefault()
     if (newVillage.village_name && newVillage.village_description && newVillage.village_invitees) {
       setError(false)

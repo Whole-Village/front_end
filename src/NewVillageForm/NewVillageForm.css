@@ -168,3 +168,12 @@
   color: #E8902D;
   cursor: pointer;
 }
+
+.warning-msg-2 {
+  text-align: left;
+}
+
+.error-msg-2 {
+  width: 100%;
+  color: red;
+}
