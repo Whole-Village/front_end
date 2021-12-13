@@ -15,6 +15,7 @@ function App() {
   const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: [], village_description: ''});
   const [villageFormOpen, setVillageFormOpen] = useState(false);
   const [userVillages, setUserVillages] = useState([]);
+  const [error, setError] = useState(false);
   const [villageToCreate] = useMutation(createVillage)
   const email = "priya@gmail.com";
   const { data, refetch } = useQuery(userQuery, {
@@ -62,6 +63,16 @@ function App() {
     setVillageFormOpen(false)
   }
 
+  const checkVillageFields = (e) => {
+    e.preventDefault()
+    if (newVillage.village_name && newVillage.village_description && newVillage.village_invitees) {
+      setError(false)
+      postNewVillage();
+    } else {
+      setError(true)
+      }
+    }
+
   return (
     <div className="App">
       <Header
@@ -82,6 +93,9 @@ function App() {
               addVillageDescription= {addVillageDescription}
               userVillages={userVillages}
               postNewVillage={postNewVillage}
+              checkVillageFields={checkVillageFields}
+              setError={setError}
+              error={error}
             />
         }/>
         <Route exact path="/villages/:id" render={({ match }) => {
