@@ -64,7 +64,7 @@ describe('Dashboard User Flows', () => {
   })
 
     it('Should take a user to a village', () => {
-    cy.get('.village-container').first().click()
+    cy.get('[href="/villages/3"] > .village-card').click()
     .get('.events-sub')
     .contains('Village Events')
 })
