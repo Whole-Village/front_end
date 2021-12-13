@@ -24,7 +24,6 @@ function App() {
     }
   );
   refetch();
-  // const { loading, error, data } <--Need to add error/loading conditionals for user
 
 
   useEffect(() => {
@@ -50,17 +49,21 @@ function App() {
 
   const postNewVillage = (e, roster) => {
     e.preventDefault()
-    // setNewVillage((prevProps) => ({...prevProps, village_invitees: roster}))
     newVillage.village_invitees = roster
-    console.log(newVillage.village_invitees)
-    villageToCreate({
-      variables: {
-        name: newVillage.village_name,
-        description: newVillage.village_description,
-        userEmails: newVillage.village_invitees
+    if (newVillage.village_name && newVillage.village_description && roster.length > 0) {
+      console.log(newVillage.village_invitees)
+      villageToCreate({
+        variables: {
+          name: newVillage.village_name,
+          description: newVillage.village_description,
+          userEmails: newVillage.village_invitees
+        }
+      })
+      setVillageFormOpen(false)
+    } else {
+      setError(true)
       }
-    })
-    setVillageFormOpen(false)
+
   }
 
   const checkVillageFields = (e, villageMembers) => {
