@@ -17,11 +17,12 @@ function App() {
   const [userVillages, setUserVillages] = useState([]);
   const [villageToCreate] = useMutation(createVillage)
   const email = "priya@gmail.com";
-  const { data } = useQuery(userQuery, {
+  const { data, refetch } = useQuery(userQuery, {
     variables: {
       email }
     }
   );
+  refetch();
   // const { loading, error, data } <--Need to add error/loading conditionals for user
 
 
