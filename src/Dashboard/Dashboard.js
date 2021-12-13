@@ -22,14 +22,6 @@ const Dashboard = ({ handleVillageChange, newVillage, setNewVillage, addVillageM
       addVillageDescription={addVillageDescription}
       postNewVillage={postNewVillage}
       />}
-      {/* <button onClick={() => mutateUser({
-        variables: {
-          email: 'donna@gmail.com',
-          address: '222 Trial Pl.',
-          name: 'Todd'
-        }
-      })}> {!loading && data}Trial for graphQL Mutation
-      </button> */}
     </div>
   )
 }

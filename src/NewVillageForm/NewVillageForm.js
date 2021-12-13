@@ -1,9 +1,9 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import MembersAdded from '../MembersAdded/MembersAdded';
 import './NewVillageForm.css';
 
 
-const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, setVillageFormOpen, addVillageDescription, postNewVillage, setNewVillage}) => {
+const NewVillageForm = ({ handleVillageChange, newVillage, setVillageFormOpen, addVillageDescription, postNewVillage }) => {
   const [villageMember, addVillageMember] = useState({email: ''})
   const [villageMembers, setVillageMembers] = useState([])
 
@@ -11,17 +11,10 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
     e.preventDefault();
     setVillageMembers([...villageMembers, villageMember.email])
     console.log(villageMembers)
-    addVillageMembers(villageMembers)
-    setNewVillage((prevProps) => ({...prevProps, village_invitees: villageMembers}))
-    console.log(newVillage)
-    console.log('onClick for add member:', villageMembers)
   }
 
   const handleVillageMemberChange = (e) => {
-    addVillageMember((prevProps) => ({
-      ...prevProps, [e.target.name]: e.target.value}))
-      console.log(villageMember)
-      console.log(villageMember)
+    addVillageMember({[e.target.name]: e.target.value})
   }
 
   return(
@@ -54,9 +47,9 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
             type='text'
             name='email'
             value={villageMember.email}
-            onChange={e => handleVillageMemberChange(e)}
+            onChange={(e) => handleVillageMemberChange(e)}
           />
-          <button className='add-member-btn' onClick={handleAddedVillageMember}>
+          <button className='add-member-btn' onClick={(e) => handleAddedVillageMember(e)}>
             <span className="material-icons">
               person_add
             </span>
@@ -71,7 +64,7 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
           setVillageMembers={setVillageMembers}
           />
         </div>
-        <button className='create-village-btn' onClick={postNewVillage}>Create Village!</button>
+        <button className='create-village-btn' onClick={(e) => postNewVillage(e, villageMembers)}>Create Village!</button>
       </div>
     </div>
   )

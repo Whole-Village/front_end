@@ -38,7 +38,6 @@ function App() {
   const addVillageMembers = (allMembers) => {
     setNewVillage((prevProps) => ({
       ...prevProps, village_invitees: allMembers}))
-      console.log(newVillage.village_invitees)
   }
 
   const addVillageDescription = (e) => {
@@ -46,14 +45,16 @@ function App() {
       ...prevProps, village_description: e}))
   }
 
-  const postNewVillage = () => {
+  const postNewVillage = (e, roster) => {
+    e.preventDefault()
+    // setNewVillage((prevProps) => ({...prevProps, village_invitees: roster}))
+    newVillage.village_invitees = roster
     console.log(newVillage.village_invitees)
-    console.log(typeof(newVillage.village_name), newVillage.village_description, newVillage.village_invitees)
     villageToCreate({
       variables: {
         name: newVillage.village_name,
         description: newVillage.village_description,
-        userEmails: ["priya@gmail.com"]
+        userEmails: newVillage.village_invitees
       }
     })
     setVillageFormOpen(false)
