@@ -185,9 +185,6 @@ describe('Village Home User Flows', () => {
 describe.only('Village Home/Events Sad Path Testing', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://whole-village-be.herokuapp.com/graphql', (req) => {
-    //   if (req.body.operationName === 'village') {
-    //   req.reply({ fixture: 'village'});
-    // }
       if (req.body.operationName === 'events') {
       req.reply({ fixture: 'noEvents' })
     }
