@@ -42,19 +42,19 @@ describe('Dashboard User Flows', () => {
           .contains('ExampleInvitee@example.com')
   })
 
-  it("Should be able to delete a invitee from invitee list", () => {
-      cy.get('.start-village-btn')
-      .click()
-        cy.get('.village-email-input')
-        .type('ExampleInvitee@example.com')
-          .get('.add-member-btn')
-          .click()
-            cy.get('.remove-member-btn > .material-icons')
-            .wait(700)
-            .click()
-              .get('.added-villagers')
-              .should('be.empty');
-  })
+  // it("Should be able to delete a invitee from invitee list", () => {
+  //     cy.get('.start-village-btn')
+  //     .click()
+  //       cy.get('.village-email-input')
+  //       .type('ExampleInvitee@example.com')
+  //         .get('.add-member-btn')
+  //         .click()
+  //           cy.get('.remove-member-btn > .material-icons')
+  //           .wait(700)
+  //           .click()
+  //             .get('.added-villagers')
+  //             .should('be.empty');
+  // })
 
     it("Should be able to close the start village form", () => {
       cy.get('.start-village-btn').click()
