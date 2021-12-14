@@ -1,24 +1,27 @@
 import {useState} from 'react';
 import NewVillagersAdded from '../NewVillagersAdded/NewVillagersAdded';
 import { createVillageMember } from '../graphQL/mutations/CreateVillageMember';
-import { useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import './AddNewVillagerForm.css'
 
 const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   const [newVillager, addNewVillager] = useState({email: ''});
   const [newVillageMembers, setNewVillageMembers] = useState([]);
-  const [sendInvitations, {error, loading}] = useMutation(createVillageMember)
+  const [sendInvitations, {error}] = useMutation(createVillageMember);
 
-  console.log(villageId)
   const addVillagers = () => {
-    console.log(parseInt(villageId))
-    sendInvitations({
-      variables: {
-        userEmail: newVillageMembers[0],
-        villageId: parseInt(villageId)
-      }
+    newVillageMembers.forEach(member => {
+      sendInvitations({
+        variables: {
+          userEmail: member,
+          villageId: parseInt(villageId)
+        }
+      })
     })
-    setNewVillagerFormOpen(false)
+    if(!error) {
+      setNewVillagerFormOpen(false)
+    }
+    window.location.reload()
   }
 
   const handleNewVillagers = (e) => {
@@ -59,8 +62,8 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
         <div className='roster'>
           <NewVillagersAdded
           newVillageMembers={newVillageMembers}
-          setNewVillageMembers={setNewVillageMembers}
-          />
+          setNewVillageMembers={setNewVillageMembers} />
+          {error && <p>Sorry, we couldn't fulfill your invitations...try again later!</p>}
         </div>
       </div>
     </div>

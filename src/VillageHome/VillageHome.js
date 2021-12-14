@@ -51,7 +51,9 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
         adultRequired: eventData.adultRequired
       }
     })
-    setVillageEvents([...villageEvents, eventData])
+    // setVillageEvents([...villageEvents, eventData])
+    //soooo dirty!!!!!!!!?
+    window.location.reload()
   }
 
   const handleCheckBox = (e) => {
