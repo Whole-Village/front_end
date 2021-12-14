@@ -11,7 +11,7 @@ const Dashboard = ({ handleVillageChange, newVillage, setNewVillage, addVillageM
 //look into error and refetch
   return (
     <div className="dashboard">
-      <h1>My Villages</h1>
+      <h1>Villages</h1>
       <VillageContainer userVillages={userVillages}/>
       {villageFormOpen && <NewVillageForm
       handleVillageChange={handleVillageChange}

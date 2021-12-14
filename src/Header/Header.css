@@ -43,11 +43,33 @@ header {
 }
 
 
-.start-village-btn, .my-events-btn, .my-account-btn, .my-dashboard-btn {
+.start-village-btn, .my-events-btn, .my-account-btn, .my-dashboard-btn, .children-btn {
   background: none;
   border: none;
   cursor: pointer;
   margin: .3em;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  border-radius: 25px;
+  background-color: rgb(255, 255, 255, 0.50);
+  z-index: 1;
+  width: 100px;
+}
+
+.dropdown p {
+  color: black;
+  display: block;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.show {
+  display:block;
 }
 
 /* .start-village-btn, .my-events-btn, .my-account-btn: cursor {

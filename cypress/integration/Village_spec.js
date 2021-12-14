@@ -21,7 +21,7 @@ describe('Village Home User Flows', () => {
 
   it('Should see the NavBar', () => {
     cy.get('.start-village-btn')
-    .contains('Start Village')
+    .contains('Start a New Village')
     .should('be.visible')
     cy.get('.my-events-btn')
     .contains('My Events')
