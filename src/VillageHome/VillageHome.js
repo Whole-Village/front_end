@@ -38,13 +38,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
     }
   }, [data, error, loading])
 
-
-  const showEventForm = () => {
-    return (
-      setIsFormOpen(true)
-    )
-  }
-
   const submitEvent = () => {
     newEvent({
       variables: {
