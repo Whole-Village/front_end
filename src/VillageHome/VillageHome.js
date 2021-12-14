@@ -4,12 +4,15 @@ import VillageMembers from '../VillageMembers/VillageMembers';
 import Events from '../Events/Events';
 import NewEvent from '../NewEvent/NewEvent';
 import NewVillageForm from '../NewVillageForm/NewVillageForm';
+import AddNewVillagerForm from '../AddNewVillagerForm/AddNewVillagerForm';
 import { villagesQuery } from '../graphQL/queries/GetVillage';
 import { useQuery, useMutation } from "@apollo/client";
 import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
-  const [isFormOpen, setFormStatus] = useState(false)
+
+  const [isFormOpen, setFormOpenStatus] = useState(false)
+  const [isNewVillagerFormOpen, setNewVillagerFormOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
   const [villageMembers, setVillageMembers] = useState([])
@@ -53,7 +56,9 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
         adultRequired: eventData.adultRequired
       }
     })
-    setVillageEvents([...villageEvents, eventData])
+    // setVillageEvents([...villageEvents, eventData])
+    //soooo dirty!!!!!!!!?
+    window.location.reload()
   }
 
   const handleCheckBox = (e) => {
@@ -71,10 +76,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
     }
   };
 
-  const closeForm = () => {
-    setFormStatus(false)
-  }
-
   return (
     <div className="village-home">
       <h2 className="village-name">Welcome to {currentVillage.name}!</h2>
@@ -84,7 +85,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       </div>
       <div className="sub">
         {isFormOpen && <NewEvent
-          closeForm={closeForm}
+          setFormOpenStatus={setFormOpenStatus}
           eventData={eventData}
           setEventData={setEventData}
           onEventFormChange={onEventFormChange}
@@ -115,10 +116,15 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
           addVillageDescription={addVillageDescription}
           postNewVillage={postNewVillage}
         />}
+        {isNewVillagerFormOpen && <AddNewVillagerForm
+          villageId={id}
+          addVillageMembers={addVillageMembers}
+          setNewVillagerFormOpen={setNewVillagerFormOpen}
+        />}
       </div>
       <div className="button-container">
-        <button className="create-event" onClick={showEventForm}>Create a New Event</button>
-        <button className="invite-new">Invite More Villagers</button>
+        <button className="create-event" onClick={() => setFormOpenStatus(true)}>Create a New Event</button>
+        <button className="invite-new" onClick={() => setNewVillagerFormOpen(true)}>Invite More Villagers</button>
       </div>
     </div>
   )
