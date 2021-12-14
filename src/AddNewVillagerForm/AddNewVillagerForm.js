@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import NewVillagersAdded from '../NewVillagersAdded/NewVillagersAdded';
 import { createVillageMember } from '../graphQL/mutations/CreateVillageMember';
-import { useQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import './AddNewVillagerForm.css'
 
 const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
