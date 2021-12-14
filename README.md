@@ -1,4 +1,4 @@
-# Ru-Pedia
+# Whole Village
 ### Turing Mod 4 Capstone Project // Front End
 
 
