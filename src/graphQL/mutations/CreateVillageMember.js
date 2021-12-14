@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const createVillageMember = gql`
     mutation createVillageMember($userEmail: String!, $villageId: ID!){
-      createVillage(
+      createVillageMember(
       userEmail: $userEmail,
       villageId: $villageId
       ) {

@@ -1,10 +1,25 @@
 import {useState} from 'react';
 import NewVillagersAdded from '../NewVillagersAdded/NewVillagersAdded';
+import { createVillageMember } from '../graphQL/mutations/CreateVillageMember';
+import { useMutation } from "@apollo/client";
 import './AddNewVillagerForm.css'
 
-const AddNewVillagerForm = ({ setNewVillagerFormOpen }) => {
+const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   const [newVillager, addNewVillager] = useState({email: ''});
   const [newVillageMembers, setNewVillageMembers] = useState([]);
+  const [sendInvitations, {error, loading}] = useMutation(createVillageMember)
+
+  console.log(villageId)
+  const addVillagers = () => {
+    console.log(parseInt(villageId))
+    sendInvitations({
+      variables: {
+        userEmail: newVillageMembers[0],
+        villageId: parseInt(villageId)
+      }
+    })
+    setNewVillagerFormOpen(false)
+  }
 
   const handleNewVillagers = (e) => {
     e.preventDefault();
@@ -37,7 +52,7 @@ const AddNewVillagerForm = ({ setNewVillagerFormOpen }) => {
           </span>
         </button>
         </label>
-        <button className='send-invite' onClick={() => setNewVillagerFormOpen(false)}>Invite!</button>
+        <button className='send-invite' onClick={addVillagers}>Invite!</button>
       </div>
       <div className='invitees'>
         <h2 className='village-headers'>Village Invite List</h2>

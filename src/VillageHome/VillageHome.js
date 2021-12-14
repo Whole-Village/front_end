@@ -110,6 +110,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
           postNewVillage={postNewVillage}
         />}
         {isNewVillagerFormOpen && <AddNewVillagerForm
+          villageId={id}
           addVillageMembers={addVillageMembers}
           setNewVillagerFormOpen={setNewVillagerFormOpen}
         />}
