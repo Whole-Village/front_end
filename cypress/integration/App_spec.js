@@ -9,11 +9,11 @@ describe('Dashboard User Flows', () => {
   })
 
   it('Should see a header', () => {
-  cy.get('h1').contains('My Villages')
+  cy.get('h1').contains('Villages')
 })
 
   it('Should see navigation links', () => {
-    cy.get('.navigation-bar').first().contains('Start Village')
+    cy.get('.navigation-bar').first().contains('Start a New Village')
 })
 
   it('Should display a user\'s villages', () => {
@@ -59,7 +59,7 @@ describe('Dashboard User Flows', () => {
     it("Should be able to close the start village form", () => {
       cy.get('.start-village-btn').click()
       .get('.close-btn').click()
-      .get('h1').contains('My Villages')
+      .get('h1').contains('Villages')
   })
 
     it('Should take a user to a village', () => {
