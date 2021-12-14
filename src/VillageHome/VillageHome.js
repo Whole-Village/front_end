@@ -9,10 +9,9 @@ import { villagesQuery } from '../graphQL/queries/GetVillage';
 import { useQuery, useMutation } from "@apollo/client";
 import { createEvent } from '../graphQL/mutations/CreateEvent';
 
-
 const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
 
-  const [isFormOpen, setFormOpenStatus] = useState(false)
+  const [isFormOpen, setIsFormOpen] = useState(false)
   const [isNewVillagerFormOpen, setNewVillagerFormOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
@@ -40,7 +39,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
   }, [data, error, loading])
 
   const submitEvent = () => {
-    console.log(eventData.date)
     newEvent({
       variables: {
         villageId: id,
@@ -57,8 +55,8 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
   }
 
   const handleCheckBox = (e) => {
-      setIsChecked(!isChecked);
-      onEventFormChange(e)
+    setIsChecked(!isChecked);
+    onEventFormChange(e);
 }
 
   const onEventFormChange = (e) => {
@@ -80,7 +78,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       </div>
       <div className="sub">
         {isFormOpen && <NewEvent
-          setFormOpenStatus={setFormOpenStatus}
+          setIsFormOpen={setIsFormOpen}
           eventData={eventData}
           setEventData={setEventData}
           onEventFormChange={onEventFormChange}
@@ -118,7 +116,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
         />}
       </div>
       <div className="button-container">
-        <button className="create-event" onClick={() => setFormOpenStatus(true)}>Create a New Event</button>
+        <button className="create-event" onClick={() => setIsFormOpen(true)}>Create a New Event</button>
         <button className="invite-new" onClick={() => setNewVillagerFormOpen(true)}>Invite More Villagers</button>
       </div>
     </div>
