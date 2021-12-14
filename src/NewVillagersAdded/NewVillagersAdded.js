@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers, noInviteeError }) => {
+const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers, noInviteeError, serverError }) => {
 
   const removeVillageMember = (villagerEmail) => {
     console.log(newVillageMembers)
@@ -15,7 +15,7 @@ const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers, noInviteeE
     return(
       <div className='village-member-card' key={Math.random()}>
         <div className="added-villager-container">
-          {noInviteeError ? <p>You haven't entered any new invitees. Try again, please!</p>:
+          {serverError ? <p>You haven't entered any new invitees. Try again, please!</p>:
           <>
           <div className='village-member-email'>{member}</div>
             <button className='remove-member-btn' onClick={() => removeVillageMember(member)}>

@@ -9,7 +9,7 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   const [newVillageMembers, setNewVillageMembers] = useState([]);
   const [sendInvitations, {data, loading}] = useMutation(createVillageMember);
   const [noInviteeError, setNoInviteeError] = useState(false)
-  const [serverError, setServerError] = useState([])
+  const [serverError, setServerError] = useState('')
   // const [noInviteeError, setNoInviteeError] = useState({[member]:d.createVillageMember.errors[0]})
   const addVillagers = () => {
       sendInvitations({
@@ -17,16 +17,21 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
           userEmail: newVillageMembers[0],
           villageId: parseInt(villageId)
         },
-        onCompleted: d => setServerError([d.createVillageMember.errors[0]])
+        onCompleted: d => displayError(d.createVillageMember.errors[0])
       })
     // console.log(d.createVillageMember.errors[0])
     // console.log(data?.createVillageMember.errors)
 
-    setNewVillagerFormOpen(false)
+    // setNewVillagerFormOpen(false)
     // window.location.reload()
   }
 
-  console.log(data)
+  const displayError = (error) => {
+    if (error === 'User must exist') {
+      setServerError(error)
+    }
+    return
+  }
 
   const handleNewVillagers = (e) => {
     e.preventDefault();
@@ -72,7 +77,9 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
           <NewVillagersAdded
           noInviteeError={noInviteeError}
           newVillageMembers={newVillageMembers}
-          setNewVillageMembers={setNewVillageMembers} />
+          setNewVillageMembers={setNewVillageMembers}
+          serverError={serverError}
+          />
         </div>
       </div>
     </div>
