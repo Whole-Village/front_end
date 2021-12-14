@@ -12,21 +12,21 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   const [serverError, setServerError] = useState('')
   // const [noInviteeError, setNoInviteeError] = useState({[member]:d.createVillageMember.errors[0]})
   const addVillagers = () => {
+    if(!noInviteeError) {
       sendInvitations({
         variables: {
           userEmail: newVillageMembers[0],
           villageId: parseInt(villageId)
         },
-        onCompleted: d => displayError(d.createVillageMember.errors[0])
+        onCompleted: d => populateServerError(d.createVillageMember.errors[0])
       })
-    // console.log(d.createVillageMember.errors[0])
-    // console.log(data?.createVillageMember.errors)
-
+    }
     // setNewVillagerFormOpen(false)
+    setNoInviteeError(false)
     // window.location.reload()
   }
 
-  const displayError = (error) => {
+  const populateServerError = (error) => {
     if (error === 'User must exist') {
       setServerError(error)
     }
@@ -34,7 +34,7 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   }
 
   const handleNewVillagers = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if(newVillageMembers.length === 0) {
       setNewVillageMembers([...newVillageMembers, newVillager.email])
     }
