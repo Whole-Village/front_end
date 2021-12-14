@@ -15,6 +15,8 @@ function App() {
   const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: [], village_description: ''});
   const [villageFormOpen, setVillageFormOpen] = useState(false);
   const [userVillages, setUserVillages] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUserChildren, setCurrentUserChildren] = useState([]);
   const [error, setError] = useState(false);
   const [villageToCreate] = useMutation(createVillage)
   const email = "priya@gmail.com";
@@ -28,8 +30,12 @@ function App() {
   useEffect(() => {
     if(data) {
       setUserVillages(data.user.villages)
+      setCurrentUser(data.user)
     }
   },[data])
+
+
+
 
   const handleVillageChange = (e) => {
     setNewVillage((prevProps) => ({
@@ -78,7 +84,11 @@ function App() {
   return (
     <div className="App">
       <Header
-      setVillageFormOpen={setVillageFormOpen}/>
+      setVillageFormOpen={setVillageFormOpen}
+      setCurrentUserChildren={setCurrentUserChildren}
+      currentUserChildren={currentUserChildren}
+      currentUser={currentUser}
+      />
       <Switch>
         <Route exact path="/">
           <Redirect to="/dashboard" />
