@@ -7,10 +7,14 @@ import './AddNewVillagerForm.css'
 const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   const [newVillager, addNewVillager] = useState({email: ''});
   const [newVillageMembers, setNewVillageMembers] = useState([]);
-  const [sendInvitations, {error}] = useMutation(createVillageMember);
+  const [sendInvitations] = useMutation(createVillageMember);
+  const [noInviteeError, setNoInviteeError] = useState(false)
 
   const addVillagers = () => {
-    newVillageMembers.forEach(member => {
+    console.log(newVillageMembers[0].length === 0 || !newVillageMembers)
+
+    if(!noInviteeError) {
+      newVillageMembers.forEach(member => {
       sendInvitations({
         variables: {
           userEmail: member,
@@ -18,10 +22,10 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
         }
       })
     })
-    if(!error) {
-      setNewVillagerFormOpen(false)
-    }
+    setNewVillagerFormOpen(false)
     window.location.reload()
+    }
+
   }
 
   const handleNewVillagers = (e) => {
@@ -29,7 +33,9 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
     if(!newVillageMembers.includes(newVillager.email)) {
       setNewVillageMembers([...newVillageMembers, newVillager.email])
     }
-    console.log(newVillageMembers)
+    if(!newVillager.email) {
+      setNoInviteeError(true)
+    }
   }
 
   const handleInviteNewVillager = (e) => {
@@ -37,7 +43,7 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
     addNewVillager({[e.target.name]: e.target.value})
       console.log(newVillager)
   }
-  console.log(newVillageMembers)
+
   return(
     <div className='new-villager-form-modal'>
       <div>
@@ -61,9 +67,9 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
         <h2 className='village-headers'>Village Invite List</h2>
         <div className='roster'>
           <NewVillagersAdded
+          noInviteeError={noInviteeError}
           newVillageMembers={newVillageMembers}
           setNewVillageMembers={setNewVillageMembers} />
-          {error && <p>Sorry, we couldn't fulfill your invitations...try again later!</p>}
         </div>
       </div>
     </div>

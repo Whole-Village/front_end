@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers }) => {
+const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers, noInviteeError }) => {
 
   const removeVillageMember = (villagerEmail) => {
     console.log(newVillageMembers)
@@ -15,12 +15,16 @@ const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers }) => {
     return(
       <div className='village-member-card' key={Math.random()}>
         <div className="added-villager-container">
+          {noInviteeError ? <p>You haven't entered any new invitees. Try again, please!</p>:
+          <>
           <div className='village-member-email'>{member}</div>
-          <button className='remove-member-btn' onClick={() => removeVillageMember(member)}>
-            <span className='material-icons'>
-              person_remove_alt_1
-            </span>
-          </button>
+            <button className='remove-member-btn' onClick={() => removeVillageMember(member)}>
+              <span className='material-icons'>
+                person_remove_alt_1
+              </span>
+            </button>
+          </>
+          }
         </div>
       </div>
     )
