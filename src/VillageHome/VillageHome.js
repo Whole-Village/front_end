@@ -11,7 +11,7 @@ import { createEvent } from '../graphQL/mutations/CreateEvent';
 
 const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
 
-  const [isFormOpen, setFormOpenStatus] = useState(false)
+  const [isFormOpen, setIsFormOpen] = useState(false)
   const [isNewVillagerFormOpen, setNewVillagerFormOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
   const [currentVillage, setCurrentVillage] = useState({})
@@ -41,7 +41,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
 
   const showEventForm = () => {
     return (
-      setFormStatus(true)
+      setIsFormOpen(true)
     )
   }
 
@@ -85,7 +85,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       </div>
       <div className="sub">
         {isFormOpen && <NewEvent
-          setFormOpenStatus={setFormOpenStatus}
+          setIsFormOpen={setIsFormOpen}
           eventData={eventData}
           setEventData={setEventData}
           onEventFormChange={onEventFormChange}
