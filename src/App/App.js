@@ -26,7 +26,7 @@ function App() {
     }
   );
   refetch();
-
+  
   useEffect(() => {
     if(data) {
       setUserVillages(data.user.villages)
@@ -56,7 +56,6 @@ function App() {
     e.preventDefault()
     newVillage.village_invitees = roster
     if (newVillage.village_name && newVillage.village_description && roster.length > 0) {
-      console.log(newVillage.village_invitees)
       villageToCreate({
         variables: {
           name: newVillage.village_name,
@@ -68,7 +67,6 @@ function App() {
     } else {
       setError(true)
       }
-
   }
 
   const checkVillageFields = (e, villageMembers) => {
@@ -80,6 +78,29 @@ function App() {
       setError(true)
       }
     }
+
+  const checkRouteMatch = (match) => {
+    let villageId = match.params.id;
+    const villageMatch = userVillages.filter((village) => {
+      return village.id === villageId
+    })
+    if (villageMatch.length > 0) {
+      return (
+        <VillageHome
+        id={villageId}
+        handleVillageChange={handleVillageChange}
+        newVillage={newVillage}
+        setNewVillage={setNewVillage}
+        addVillageMembers={addVillageMembers}
+        villageFormOpen={villageFormOpen}
+        setVillageFormOpen={setVillageFormOpen}
+        addVillageDescription={addVillageDescription}
+        postNewVillage={postNewVillage}
+        /> )
+    } else {
+      return <NoPath />;
+    }
+  }
 
   return (
     <div className="App">
@@ -111,21 +132,8 @@ function App() {
             />
         }/>
         <Route exact path="/villages/:id" render={({ match }) => {
-					let villageId = match.params.id;
-						return (
-							<VillageHome
-              id={villageId}
-              handleVillageChange={handleVillageChange}
-              newVillage={newVillage}
-              setNewVillage={setNewVillage}
-              addVillageMembers={addVillageMembers}
-              villageFormOpen={villageFormOpen}
-              setVillageFormOpen={setVillageFormOpen}
-              addVillageDescription={addVillageDescription}
-              postNewVillage={postNewVillage}
-              />
-            )}
-        }/>
+          return checkRouteMatch(match)
+        }} />
         <Route component={ NoPath } />
       </Switch>
     </div>

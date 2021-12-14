@@ -2,7 +2,7 @@ import React from 'react';
 import './NewEvent.css';
 import { useState } from 'react';
 
-const NewEvent = ({ submitEvent, setFormOpenStatus, eventData, setEventData, onEventFormChange, isChecked, handleCheckBox }) => {
+const NewEvent = ({ submitEvent, setIsFormOpen, eventData, setEventData, onEventFormChange, isChecked, handleCheckBox }) => {
   const [error, setError] = useState(false);
 
 
@@ -10,7 +10,7 @@ const NewEvent = ({ submitEvent, setFormOpenStatus, eventData, setEventData, onE
     e.preventDefault()
     if (eventData.name && eventData.date && eventData.time && eventData.description) {
       setError(false)
-      setFormOpenStatus(false)
+      setIsFormOpen(false)
       submitEvent()
     } else {
       setError(true)
@@ -19,7 +19,7 @@ const NewEvent = ({ submitEvent, setFormOpenStatus, eventData, setEventData, onE
 
   return (
     <div className="form-container">
-    <button className="close-form" onClick={() => setFormOpenStatus(false)}>x</button>
+    <button className="close-form" onClick={() => setIsFormOpen(false)}>x</button>
       <form className="form">
         <label htmlFor="name" className="name-label">NAME <span>*</span></label>
         <input type="text" style={{width:300}} name="name" className="name-input" onChange={onEventFormChange}/>
