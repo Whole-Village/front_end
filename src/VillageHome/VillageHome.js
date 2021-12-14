@@ -8,7 +8,6 @@ import { villagesQuery } from '../graphQL/queries/GetVillage';
 import { useQuery, useMutation } from "@apollo/client";
 import { createEvent } from '../graphQL/mutations/CreateEvent';
 
-
 const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVillageMembers, villageFormOpen, setVillageFormOpen,addVillageDescription, postNewVillage }) => {
   const [isFormOpen, setFormStatus] = useState(false)
   const [isChecked, setIsChecked] = useState(false);
@@ -22,6 +21,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       id }
     }
   );
+
   useEffect(() => {
     if(data) {
       setCurrentVillage(data.village)
@@ -42,9 +42,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
     )
   }
 
-
   const submitEvent = () => {
-    console.log(eventData.date)
     newEvent({
       variables: {
         villageId: id,
@@ -59,8 +57,8 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
   }
 
   const handleCheckBox = (e) => {
-      setIsChecked(!isChecked);
-      onEventFormChange(e)
+    setIsChecked(!isChecked);
+    onEventFormChange(e);
 }
 
   const onEventFormChange = (e) => {
