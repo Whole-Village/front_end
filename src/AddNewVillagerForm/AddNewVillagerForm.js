@@ -8,21 +8,28 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   const [newVillager, addNewVillager] = useState({email: ''});
   const [newVillageMembers, setNewVillageMembers] = useState([]);
   const [sendInvitations, {data, loading}] = useMutation(createVillageMember);
-  const [noInviteeError, setNoInviteeError] = useState(false)
+  const [noInviteeListed, setNoInviteeListed] = useState('')
   const [serverError, setServerError] = useState('')
   // const [noInviteeError, setNoInviteeError] = useState({[member]:d.createVillageMember.errors[0]})
   const addVillagers = () => {
-    if(!noInviteeError) {
-      sendInvitations({
+    setNoInviteeListed('');
+    setServerError('');
+      if(newVillager.email) {
+        sendInvitations({
         variables: {
-          userEmail: newVillageMembers[0],
+          userEmail: newVillager.email,
           villageId: parseInt(villageId)
         },
         onCompleted: d => populateServerError(d.createVillageMember.errors[0])
       })
-    }
-    // setNewVillagerFormOpen(false)
-    setNoInviteeError(false)
+      }
+      if(!newVillager.email) {
+      setNoInviteeListed('Please add an email to be invited')
+      }
+      
+    
+    
+    // setNoInviteeError(false)
     // window.location.reload()
   }
 
@@ -30,27 +37,28 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
     if (error === 'User must exist') {
       setServerError(error)
     }
+    if (!error) {
+      setNewVillagerFormOpen(false)
+      window.location.reload();
+    }
     return
   }
 
-  const handleNewVillagers = (e) => {
-    // e.preventDefault();
-    if(newVillageMembers.length === 0) {
-      setNewVillageMembers([...newVillageMembers, newVillager.email])
-    }
-    if(!newVillager.email) {
-      setNoInviteeError(true)
-    }
-  }
+  // const handleNewVillagers = (e) => {
+  //   // e.preventDefault();
+  //   if(newVillageMembers.length === 0) {
+  //     setNewVillageMembers([...newVillageMembers, newVillager.email])
+  //   }
+  //   if(!newVillager.email) {
+  //     setNoInviteeError(true)
+  //   }
+  // }
 
   const handleInviteNewVillager = (e) => {
     e.preventDefault()
     addNewVillager({[e.target.name]: e.target.value})
       console.log(newVillager)
   }
-
-  console.log(data)
-  console.log(data?.createVillageMember.errors)
 
   return(
     <div className='new-villager-form-modal'>
@@ -63,24 +71,29 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
             value={newVillager.email}
             onChange={e => handleInviteNewVillager(e)}
           />
-        <button className='add-member-btn' onClick={(e) => handleNewVillagers(e)}>
+        {/* <button className='add-member-btn' onClick={(e) => handleNewVillagers(e)}>
           <span className="material-icons">
             person_add
           </span>
-        </button>
+        </button> */}
         </label>
         <button className='send-invite' onClick={addVillagers}>Invite!</button>
       </div>
       <div className='invitees'>
+      {noInviteeListed && <p>{noInviteeListed}</p>}
+      {serverError === "User must exist" && <p>User must exist!  Please try again!</p>}
+      <button className="material-icons close-btn" onClick={() => setNewVillagerFormOpen(false)}>
+          highlight_off
+        </button>
         <h2 className='village-headers'>Village Invite List</h2>
-        <div className='roster'>
+        {/* <div className='roster'>
           <NewVillagersAdded
           noInviteeError={noInviteeError}
           newVillageMembers={newVillageMembers}
           setNewVillageMembers={setNewVillageMembers}
           serverError={serverError}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   )
