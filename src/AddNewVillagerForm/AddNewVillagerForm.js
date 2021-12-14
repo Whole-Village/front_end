@@ -9,32 +9,28 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
   const [newVillageMembers, setNewVillageMembers] = useState([]);
   const [sendInvitations, {data, loading}] = useMutation(createVillageMember);
   const [noInviteeError, setNoInviteeError] = useState(false)
+  const [serverError, setServerError] = useState([])
   // const [noInviteeError, setNoInviteeError] = useState({[member]:d.createVillageMember.errors[0]})
-
   const addVillagers = () => {
-      newVillageMembers.forEach(member => {
       sendInvitations({
         variables: {
-          userEmail: member,
+          userEmail: newVillageMembers[0],
           villageId: parseInt(villageId)
         },
-        onCompleted: d => console.log(d.createVillageMember.errors[0]),
-        // onCompleted: d => {
-        //   setNoInviteeError({...noInviteeError, [member]: d.createVillageMember.errors[0]})
-        // }
+        onCompleted: d => setServerError([d.createVillageMember.errors[0]])
       })
-    })
-    // console.log(data)
+    // console.log(d.createVillageMember.errors[0])
     // console.log(data?.createVillageMember.errors)
+
     setNewVillagerFormOpen(false)
     // window.location.reload()
   }
 
-  console.log(loading)
+  console.log(data)
 
   const handleNewVillagers = (e) => {
     e.preventDefault();
-    if(!newVillageMembers.includes(newVillager.email)) {
+    if(newVillageMembers.length === 0) {
       setNewVillageMembers([...newVillageMembers, newVillager.email])
     }
     if(!newVillager.email) {
