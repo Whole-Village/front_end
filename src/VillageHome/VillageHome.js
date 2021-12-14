@@ -123,7 +123,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
         />}
       </div>
       <div className="button-container">
-        <button className="create-event" onClick={() => setFormOpenStatus(true)}>Create a New Event</button>
+        <button className="create-event" onClick={() => setIsFormOpen(true)}>Create a New Event</button>
         <button className="invite-new" onClick={() => setNewVillagerFormOpen(true)}>Invite More Villagers</button>
       </div>
     </div>
