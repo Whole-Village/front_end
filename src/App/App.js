@@ -20,7 +20,7 @@ function App() {
   const [error, setError] = useState(false);
   const [villageToCreate] = useMutation(createVillage)
   const email = "priya@gmail.com";
-  const { data, refetch } = useQuery(userQuery, {
+  const { data } = useQuery(userQuery, {
     variables: {
       email }
     }
