@@ -7,7 +7,11 @@ An application to help parents stay organized and connected to other parents on 
 
 Visit our <a href="https://whole-village.herokuapp.com/dashboard">deployed site</a>!
 
-## Author
+## Snapshot of Application
+
+When a user visits the app, they will see a list of villages that they are a member of on their dashboard. The user can click one of their villages to be taken to that village's dashboard. On each village dashboard, the user will see a list of events that are upcoming in order from nearest to farthest out on the Village Events panel. A user can select the "Create Event" button to add an event and its respective details. 
+
+## Authors
 
 - [Anna Johnson](https://www.github.com/annnuuuh)
 - [Nadia Naji](https://github.com/najinl)
