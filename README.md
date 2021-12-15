@@ -9,7 +9,7 @@ Visit our <a href="https://whole-village.herokuapp.com/dashboard">deployed site<
 
 ## Snapshot of Application
 
-When a user visits the app, they will see a list of villages that they are a member of on their dashboard. The user can click one of their villages to be taken to that village's dashboard. On each village dashboard, the user will see a list of events that are upcoming in order from nearest to farthest out on the Village Events panel. A user can select the "Create Event" button to add an event and its respective details. 
+When a user visits the app, they will see a list of villages that they are a member of on their dashboard. The user can click one of their villages to be taken to that village's dashboard. On each village dashboard, the user will see a list of events that are upcoming in order from closest date to farthest date on the Village Events panel. A user can select the "Create Event" button to add an event and its respective details to the Village Events panel. On the village dashboard, all village members can be seen on the "Villager" panel and new members can be invited via the "Invite More Villagers" button below the Villages panel. A navigation bar is avaialable at the top of the application to get you back and forth between the users dashboard and individual village dashboards.
 
 ## Authors
 
