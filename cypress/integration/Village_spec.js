@@ -181,3 +181,20 @@ describe('Village Home User Flows', () => {
   })
 
 })
+
+describe.only('Village Home/Events Sad Path Testing', () => {
+  beforeEach(() => {
+    cy.intercept('POST', 'https://whole-village-be.herokuapp.com/graphql', (req) => {
+      if (req.body.operationName === 'events') {
+      req.reply({ fixture: 'noEvents' })
+    }
+    })
+    .visit('http://localhost:3000/villages/5')
+  })
+
+  it('Should display an error message if there are no events to display', () => {
+    cy.get('.events')
+    .contains('There are no upcoming events!')
+    .should('be.visible');
+  })
+})

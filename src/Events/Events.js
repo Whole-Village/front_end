@@ -12,8 +12,6 @@ const Events = ({ villageId, villageEvents, setVillageEvents }) => {
     }
   });
 
-
-
   useEffect(() => {
     if(data) {
       const filterUpcomingEvents = () => {

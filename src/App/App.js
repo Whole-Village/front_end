@@ -20,12 +20,12 @@ function App() {
   const [error, setError] = useState(false);
   const [villageToCreate] = useMutation(createVillage)
   const email = "priya@gmail.com";
-  const { data, refetch } = useQuery(userQuery, {
+  const { data } = useQuery(userQuery, {
     variables: {
       email }
     }
   );
-  refetch();
+  // refetch();
   
   useEffect(() => {
     if(data) {
@@ -64,6 +64,7 @@ function App() {
         }
       })
       setVillageFormOpen(false)
+      window.location.reload();
     } else {
       setError(true)
       }

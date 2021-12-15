@@ -1,0 +1,22 @@
+{
+  "data": {
+    "createVillage": {
+      "village": {
+        "id": "23",
+        "name": "TESTVILLAGE",
+        "description": "New Village created for Cypress Testing",
+        "users": [
+          {
+            "firstName": "Priya",
+            "lastName": "Poopoo",
+            "email": "priya@gmail.com",
+            "__typename": "User"
+          }
+        ],
+        "__typename": "Village"
+      },
+      "errors": [],
+      "__typename": "CreateVillagePayload"
+    }
+  }
+}
