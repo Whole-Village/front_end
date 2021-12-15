@@ -18,7 +18,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
   const [villageMembers, setVillageMembers] = useState([])
   const [villageEvents, setVillageEvents] = useState([]);
   const[eventData, setEventData] = useState({name: '', date: '', time: '', description: '', adultRequired: true});
-  const [newEvent, { error, loading }] =  useMutation(createEvent)
+  const [newEvent] =  useMutation(createEvent)
   const { data } = useQuery(villagesQuery, {
     variables: {
       id }
@@ -28,14 +28,8 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
   useEffect(() => {
     if(data) {
       setCurrentVillage(data.village)
-    }
-    if(loading) {
-      console.log('...loading')
-    }
-    if(error) {
-      console.log(error)
-    }
-  }, [data, error, loading])
+  }, [data])
+
   const submitEvent = () => {
     newEvent({
       variables: {

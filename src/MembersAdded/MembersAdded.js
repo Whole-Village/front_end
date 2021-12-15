@@ -5,10 +5,8 @@ import './MembersAdded.css'
 const MembersAdded = ({ villageMembers, setVillageMembers }) => {
 
   const removeVillageMember = (villagerEmail) => {
-    console.log(villageMembers)
     const updatedVillageList = villageMembers.filter(villager => villager !== villagerEmail)
     setVillageMembers(updatedVillageList)
-    console.log(villageMembers)
   }
 
   const villageInvitee = villageMembers.map(member => {

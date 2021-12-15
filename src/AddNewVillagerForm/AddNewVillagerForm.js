@@ -38,7 +38,7 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
     if (error === 'User must exist') {
       setServerError(error)
     }
-    if (!error || !duplicateEmailError) {
+    if (!error && !duplicateEmailError) {
       setNewVillagerFormOpen(false)
       window.location.reload();
     }

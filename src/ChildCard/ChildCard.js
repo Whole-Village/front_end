@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ChildCard = ({ id, key, firstName, lastName }) => {
+const ChildCard = ({ id, firstName, lastName }) => {
   return (
     <div className="child-card">
       <p className="child-name">{firstName}</p>
