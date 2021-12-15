@@ -29,13 +29,19 @@ When a user visits the app, they will see a list of villages that they are a mem
 <img src="https://media.giphy.com/media/WZ2Bhmj1n2p8bE65LO/giphy.gif" width="700" height="450" data-canonical-src="https://media.giphy.com/media/nh2H2pnONWGMVcf6Vd/giphy.gif" style="max-width: 100%;">
 <img src="https://media.giphy.com/media/lGVcFcZhid8gsFIcJh/giphy.gif" width="700" height="450" data-canonical-src="https://media.giphy.com/media/nh2H2pnONWGMVcf6Vd/giphy.gif" style="max-width: 100%;">
 <img src="https://media.giphy.com/media/gzl7DS8OMnlTRPsZjJ/giphy.gif" width="700" height="450" data-canonical-src="https://media.giphy.com/media/nh2H2pnONWGMVcf6Vd/giphy.gif" style="max-width: 100%;">
-<img src="https://media.giphy.com/media/cpGXGusymfgsUG2XHU/giphy.gif" style="max-width: 100%;">
+<img src="https://media.giphy.com/media/cpGXGusymfgsUG2XHU/giphy.gif" width="700" height="450" style="max-width: 100%;">
 
 ## Dev Installation
 
 ## Challenges
 
 ## Wins
+
+- Learning and implementing Apollo Client in a short amount of time
+- Defining the data needs and format for the front end through collaboration with the back end team
+- Working asynchronously to tackle various parts of the project and resolving merge conflicts as they arose
+- Utilizing resources such as web documents and mentors to expand knowledge base and maximize application performance
+- Utilizing the Git Rebase utility to integrate changes from one branch onto another.
 
 ## Future Features
 
