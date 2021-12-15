@@ -25,7 +25,7 @@ function App() {
       email }
     }
   );
-  refetch();
+  // refetch();
   
   useEffect(() => {
     if(data) {
@@ -64,6 +64,7 @@ function App() {
         }
       })
       setVillageFormOpen(false)
+      window.location.reload();
     } else {
       setError(true)
       }
