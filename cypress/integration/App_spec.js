@@ -71,12 +71,13 @@ describe('Dashboard User Flows', () => {
       .contains('Village Events')
     })
 
-    it('Should be able to submit the Create a Village', () => {
+    it.only('Should be able to submit the Create a Village', () => {
     cy.get('.start-village-btn').click()
     .wait(500)
-    cy.get(':nth-child(1) > .village-data').type('Example Village')
-    cy.get(':nth-child(2) > .village-data').type('Example Description')
-    cy.get(':nth-child(3) > .village-data').type('[TEST]ExampleInvitee@example.com')
+    cy.get('.village-name-input').type('Example Village')
+    cy.get('.village-description-input').type('Example Description')
+    cy.get('.village-email-input').type('[TEST]ExampleInvitee@example.com')
+    cy.get('.add-member-btn').click();
     cy.get('.create-village-btn')
     .click();
     cy.get(':nth-child(4) > .village-card')
