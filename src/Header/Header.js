@@ -1,29 +1,44 @@
 import { useLocation, useHistory } from 'react-router-dom';
+import Children from '../Children/Children';
 import './Header.css';
 
-const Header = ({ setVillageFormOpen }) => {
-let history  = useHistory();
 
-const returnToDashboard = () => {
+const Header = ({ setVillageFormOpen, setCurrentUserChildren, currentUserChildren, currentUser }) => {
+  let history  = useHistory();
+  const userId = currentUser.id;
+  const returnToDashboard = () => {
   history.push('/dashboard')
-  console.log(history)
+  }
+
+  const toggleDropdown = () => {
+  return (document.getElementById("myDropdown").classList.toggle("show"))
 }
-return(
-    <header className='wholevillage-logo'>
-      <div className='logo'>
-        <p className='app-title'><span className="first-letter">W</span>holevillage</p>
-        <p className='app-mission'>connecting parents</p>
-      </div>
-      <div className='navigation-bar'>
-        <div className='start-village'>
-          <button className='start-village-btn' onClick={() => setVillageFormOpen(true)}>Start Village</button>
-          <button className='my-events-btn'>My Events</button>
-          {!useLocation().pathname.includes('/dashboard') && <button className='my-dashboard-btn' onClick={returnToDashboard}>My Dashboard</button> }
-          <button className='my-account-btn'>Manage Account</button>
+
+  return(
+      <header className='wholevillage-logo'>
+        <div className='logo'>
+          <p className='app-title'><span className="first-letter">W</span>holevillage</p>
+          <p className='app-mission'>connecting parents</p>
         </div>
-      </div>
-    </header>
-  )
-}
+        <div className='navigation-bar'>
+          <div className='start-village'>
+            <p>Welcome, {currentUser.firstName}!</p>
+            <button className="children-btn" onClick={toggleDropdown}>Children</button>
+            <div class="dropdown" id="myDropdown">
+              <Children
+                children={currentUserChildren}
+                setChildren={setCurrentUserChildren}
+                userId={userId}
+              />
+            </div>
+            <button className='start-village-btn' onClick={() => setVillageFormOpen(true)}>Start a New Village</button>
+            <button className='my-events-btn'>My Events</button>
+            {!useLocation().pathname.includes('/dashboard') && <button className='my-dashboard-btn' onClick={returnToDashboard}>My Dashboard</button> }
+            <button className='my-account-btn'>Manage Account</button>
+          </div>
+        </div>
+      </header>
+    )
+  }
 
 export default Header;

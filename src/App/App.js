@@ -15,6 +15,9 @@ function App() {
   const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: [], village_description: ''});
   const [villageFormOpen, setVillageFormOpen] = useState(false);
   const [userVillages, setUserVillages] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUserChildren, setCurrentUserChildren] = useState([]);
+  const [error, setError] = useState(false);
   const [villageToCreate] = useMutation(createVillage)
   const email = "priya@gmail.com";
   const { data, refetch } = useQuery(userQuery, {
@@ -23,14 +26,16 @@ function App() {
     }
   );
   refetch();
-  // const { loading, error, data } <--Need to add error/loading conditionals for user
-
-
+  
   useEffect(() => {
     if(data) {
       setUserVillages(data.user.villages)
+      setCurrentUser(data.user)
     }
   },[data])
+
+
+
 
   const handleVillageChange = (e) => {
     setNewVillage((prevProps) => ({
@@ -40,7 +45,6 @@ function App() {
   const addVillageMembers = (allMembers) => {
     setNewVillage((prevProps) => ({
       ...prevProps, village_invitees: allMembers}))
-      console.log(newVillage.village_invitees)
   }
 
   const addVillageDescription = (e) => {
@@ -48,23 +52,64 @@ function App() {
       ...prevProps, village_description: e}))
   }
 
-  const postNewVillage = () => {
-    console.log(newVillage.village_invitees)
-    console.log(typeof(newVillage.village_name), newVillage.village_description, newVillage.village_invitees)
-    villageToCreate({
-      variables: {
-        name: newVillage.village_name,
-        description: newVillage.village_description,
-        userEmails: ["priya@gmail.com"]
+  const postNewVillage = (e, roster) => {
+    e.preventDefault()
+    newVillage.village_invitees = roster
+    if (newVillage.village_name && newVillage.village_description && roster.length > 0) {
+      villageToCreate({
+        variables: {
+          name: newVillage.village_name,
+          description: newVillage.village_description,
+          userEmails: newVillage.village_invitees
+        }
+      })
+      setVillageFormOpen(false)
+    } else {
+      setError(true)
       }
+  }
+
+  const checkVillageFields = (e, villageMembers) => {
+    e.preventDefault()
+    if (newVillage.village_name && newVillage.village_description && newVillage.village_invitees) {
+      setError(false)
+      postNewVillage(e, villageMembers);
+    } else {
+      setError(true)
+      }
+    }
+
+  const checkRouteMatch = (match) => {
+    let villageId = match.params.id;
+    const villageMatch = userVillages.filter((village) => {
+      return village.id === villageId
     })
-    setVillageFormOpen(false)
+    if (villageMatch.length > 0) {
+      return (
+        <VillageHome
+        id={villageId}
+        handleVillageChange={handleVillageChange}
+        newVillage={newVillage}
+        setNewVillage={setNewVillage}
+        addVillageMembers={addVillageMembers}
+        villageFormOpen={villageFormOpen}
+        setVillageFormOpen={setVillageFormOpen}
+        addVillageDescription={addVillageDescription}
+        postNewVillage={postNewVillage}
+        /> )
+    } else {
+      return <NoPath />;
+    }
   }
 
   return (
     <div className="App">
       <Header
-      setVillageFormOpen={setVillageFormOpen}/>
+      setVillageFormOpen={setVillageFormOpen}
+      setCurrentUserChildren={setCurrentUserChildren}
+      currentUserChildren={currentUserChildren}
+      currentUser={currentUser}
+      />
       <Switch>
         <Route exact path="/">
           <Redirect to="/dashboard" />
@@ -81,24 +126,14 @@ function App() {
               addVillageDescription= {addVillageDescription}
               userVillages={userVillages}
               postNewVillage={postNewVillage}
+              checkVillageFields={checkVillageFields}
+              setError={setError}
+              error={error}
             />
         }/>
         <Route exact path="/villages/:id" render={({ match }) => {
-					let villageId = match.params.id;
-						return (
-							<VillageHome
-              id={villageId}
-              handleVillageChange={handleVillageChange}
-              newVillage={newVillage}
-              setNewVillage={setNewVillage}
-              addVillageMembers={addVillageMembers}
-              villageFormOpen={villageFormOpen}
-              setVillageFormOpen={setVillageFormOpen}
-              addVillageDescription={addVillageDescription}
-              postNewVillage={postNewVillage}
-              />
-            )}
-        }/>
+          return checkRouteMatch(match)
+        }} />
         <Route component={ NoPath } />
       </Switch>
     </div>

@@ -1,0 +1,26 @@
+.new-villager-form-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #00b7eb;
+  margin-top:  60px;
+  width: 60em;
+  height: 30em;
+  border-radius: 50px;
+  position: absolute;
+  z-index: 2;
+  /* border: solid 2px purple; */
+}
+
+.new-invitee-label {
+  white-space: nowrap;
+}
+
+.send-invite {
+  width: 100px;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  border: none;
+  align-self: center;
+}
