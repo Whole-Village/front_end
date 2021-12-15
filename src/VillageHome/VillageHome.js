@@ -36,7 +36,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
       console.log(error)
     }
   }, [data, error, loading])
-
   const submitEvent = () => {
     newEvent({
       variables: {
