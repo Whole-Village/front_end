@@ -19,7 +19,7 @@ const NewEvent = ({ submitEvent, setIsFormOpen, eventData, setEventData, onEvent
 
   return (
     <div className="form-container">
-    <button className="close-form" onClick={() => setIsFormOpen(false)}>x</button>
+    <button className="material-icons close-btn" onClick={() => setIsFormOpen(false)}>highlight_off</button>
       <form className="form">
         <label htmlFor="name" className="name-label">NAME <span>*</span></label>
         <input type="text" style={{width:300}} name="name" className="name-input" onChange={onEventFormChange}/>

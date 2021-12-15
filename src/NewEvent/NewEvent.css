@@ -25,7 +25,7 @@ form {
   height: 400px;
 }
 
-.close-form {
+.close-btn {
   padding-right: 6px;
   padding-bottom: 8px;
   align-self: flex-end;
