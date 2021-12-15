@@ -6,7 +6,7 @@ import './AddNewVillagerForm.css'
 
 const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage }) => {
   const [newVillager, addNewVillager] = useState({email: ''});
-  const [newVillageMembers, setNewVillageMembers] = useState([]);
+  // const [newVillageMembers, setNewVillageMembers] = useState([]);
   const [sendInvitations, {data, loading}] = useMutation(createVillageMember);
   const [noInviteeListed, setNoInviteeListed] = useState('')
   const [serverError, setServerError] = useState('')
@@ -24,20 +24,18 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
     if(currentUserEmails.includes(newVillager.email)) {
       setDuplicateEmailError('User already exists!');
     }
-    console.log('currentuser emails', currentUserEmails)
-    console.log(duplicateEmailError)
-      if(newVillager.email && !duplicateEmailError) {
-        sendInvitations({
-        variables: {
-          userEmail: newVillager.email,
-          villageId: parseInt(villageId)
-        },
-        onCompleted: d => populateServerError(d.createVillageMember.errors[0])
-      })
-      }
-      if(!newVillager.email) {
-      setNoInviteeListed('Please add an email to be invited')
-      }
+    if(newVillager.email && !currentUserEmails.includes(newVillager.email)) {
+      sendInvitations({
+      variables: {
+        userEmail: newVillager.email,
+        villageId: parseInt(villageId)
+      },
+      onCompleted: d => populateServerError(d.createVillageMember.errors[0])
+    })
+    }
+    if(!newVillager.email) {
+    setNoInviteeListed('Please add an email to be invited')
+    }
   }
 
   const populateServerError = (error) => {
@@ -46,20 +44,10 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
     } 
     if (!error || !duplicateEmailError) {
       setNewVillagerFormOpen(false)
-      // window.location.reload();
+      window.location.reload();
     }
     return
   }
-
-  // const handleNewVillagers = (e) => {
-  //   // e.preventDefault();
-  //   if(newVillageMembers.length === 0) {
-  //     setNewVillageMembers([...newVillageMembers, newVillager.email])
-  //   }
-  //   if(!newVillager.email) {
-  //     setNoInviteeError(true)
-  //   }
-  // }
 
   const handleInviteNewVillager = (e) => {
     e.preventDefault()
@@ -78,11 +66,6 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
             value={newVillager.email}
             onChange={e => handleInviteNewVillager(e)}
           />
-        {/* <button className='add-member-btn' onClick={(e) => handleNewVillagers(e)}>
-          <span className="material-icons">
-            person_add
-          </span>
-        </button> */}
         </label>
         <button className='send-invite' onClick={addVillagers}>Invite!</button>
       </div>
