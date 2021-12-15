@@ -45,4 +45,10 @@ When a user visits the app, they will see a list of villages that they are a mem
 
 ## Future Features
 
+- As a user I will be able to "Manage my Account" (add multiple children to my account, modify my address, phone number, last name)
+- Authentifcation for user to login
+- An option for a user to create a "wishlist" for someone in their village to watch their kids during a specified time and the ability for someone to reply with  availability/volonteer
+- A user will have a tally of "contribution hours" for volonteering/wathching children. There will be a minimum of required hours (annually?) each village member must volunteer to maintain a status as a villager in each village
+- All villagers will be able to upload photos from group events to an event page
+
 
