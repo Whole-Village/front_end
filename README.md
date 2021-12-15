@@ -25,6 +25,10 @@ When a user visits the app, they will see a list of villages that they are a mem
 
 ## Demo
 
+<img src="https://media.giphy.com/media/WZ2Bhmj1n2p8bE65LO/giphy.gif" width="700" height="450" data-canonical-src="https://media.giphy.com/media/nh2H2pnONWGMVcf6Vd/giphy.gif" style="max-width: 100%;">
+<img src="https://media.giphy.com/media/lGVcFcZhid8gsFIcJh/giphy.gif" width="700" height="450" data-canonical-src="https://media.giphy.com/media/nh2H2pnONWGMVcf6Vd/giphy.gif" style="max-width: 100%;">
+
+
 ## Dev Installation
 
 ## Challenges
