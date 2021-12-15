@@ -13,10 +13,14 @@ header {
   font-size: 1em;
 }
 
-.first-letter {
+.first-letter, .second-letter {
   font-size: 2.1em;
   font-family: 'Poiret One', cursive;
   color: #E88D22;
+}
+
+.second-letter {
+  font-size: 1.25em;
 }
 
 .app-title {
@@ -71,7 +75,3 @@ header {
 .show {
   display:block;
 }
-
-/* .start-village-btn, .my-events-btn, .my-account-btn: cursor {
-  text-decoration: underline;
-} */

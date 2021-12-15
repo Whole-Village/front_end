@@ -25,8 +25,7 @@ function App() {
       email }
     }
   );
-  // refetch();
-  
+
   useEffect(() => {
     if(data) {
       setUserVillages(data.user.villages)

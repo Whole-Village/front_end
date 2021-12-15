@@ -13,10 +13,6 @@
 .navlink__village-card {
     text-decoration: none;
 }
-/* .wrapper {
-    width: 100%;
-    padding-left: 300px;
-} */
 
  .village-name {
   display: flex;
@@ -32,5 +28,4 @@
   display: block;
   line-height: 1em;
   max-height: 2em;
-  /* font-size: 16px; */
 }
