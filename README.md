@@ -5,6 +5,8 @@
 
 An application to help parents stay organized and connected to other parents on upcoming events associated with a particular child, because sometimes it's hard keeping up with all of the emails and group texts! This application was built in a team, which included Turing back-end students and front-end students. Through coordination with the back-end team, a graphQL server was developed specifically for this application. The front-end team built the application using Apollo Client, React, React Hooks, and React Router. Continuous integration was employed using CircleCI and E2E testing was developed using Cypress. 
 
+Visit our <a href="https://whole-village.herokuapp.com/dashboard">deployed site</a>!
+
 ## Author
 
 - [Anna Johnson](https://www.github.com/annnuuuh)
@@ -18,8 +20,6 @@ An application to help parents stay organized and connected to other parents on 
 
 
 ## Demo
-
-## Deploy Link
 
 ## Dev Installation
 
