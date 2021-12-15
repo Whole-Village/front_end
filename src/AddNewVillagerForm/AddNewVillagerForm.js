@@ -4,17 +4,29 @@ import { createVillageMember } from '../graphQL/mutations/CreateVillageMember';
 import { useMutation } from "@apollo/client";
 import './AddNewVillagerForm.css'
 
-const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
+const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage }) => {
   const [newVillager, addNewVillager] = useState({email: ''});
   const [newVillageMembers, setNewVillageMembers] = useState([]);
   const [sendInvitations, {data, loading}] = useMutation(createVillageMember);
   const [noInviteeListed, setNoInviteeListed] = useState('')
   const [serverError, setServerError] = useState('')
-  // const [noInviteeError, setNoInviteeError] = useState({[member]:d.createVillageMember.errors[0]})
+  const [duplicateEmailError, setDuplicateEmailError] = useState('');
+
+
+  console.log(currentVillage)
   const addVillagers = () => {
     setNoInviteeListed('');
     setServerError('');
-      if(newVillager.email) {
+    setDuplicateEmailError('');
+    const currentUserEmails = currentVillage.users.map((user) => {
+      return user.email;
+    })
+    if(currentUserEmails.includes(newVillager.email)) {
+      setDuplicateEmailError('User already exists!');
+    }
+    console.log('currentuser emails', currentUserEmails)
+    console.log(duplicateEmailError)
+      if(newVillager.email && !duplicateEmailError) {
         sendInvitations({
         variables: {
           userEmail: newVillager.email,
@@ -26,20 +38,15 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
       if(!newVillager.email) {
       setNoInviteeListed('Please add an email to be invited')
       }
-      
-    
-    
-    // setNoInviteeError(false)
-    // window.location.reload()
   }
 
   const populateServerError = (error) => {
     if (error === 'User must exist') {
       setServerError(error)
-    }
-    if (!error) {
+    } 
+    if (!error || !duplicateEmailError) {
       setNewVillagerFormOpen(false)
-      window.location.reload();
+      // window.location.reload();
     }
     return
   }
@@ -82,6 +89,7 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen }) => {
       <div className='invitees'>
       {noInviteeListed && <p>{noInviteeListed}</p>}
       {serverError === "User must exist" && <p>User must exist!  Please try again!</p>}
+      {duplicateEmailError && <p>{duplicateEmailError}</p>}
       <button className="material-icons close-btn" onClick={() => setNewVillagerFormOpen(false)}>
           highlight_off
         </button>
