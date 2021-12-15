@@ -12,7 +12,6 @@ const NewVillageForm = ({ handleVillageChange, newVillage, addVillageMembers, se
     if(!villageMembers.includes(villageMember.email)) {
       setVillageMembers([...villageMembers, villageMember.email])
     }
-    console.log(villageMembers)
   }
 
   const handleVillageMemberChange = (e) => {

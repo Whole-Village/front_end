@@ -7,21 +7,3 @@
   position: relative;
   z-index: 1;
 }
-
-.dashboard::before {
-  /* content: "";
-  background-image:url("../assets/diverse-village.jpg");
-  background-repeat: no-repeat;
-  background-position: bottom;
-  min-height: 100vh;
-  max-width: 100vw;
-  opacity: .75;
-  position: absolute;
-
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  z-index: -1000; */
-  
-}

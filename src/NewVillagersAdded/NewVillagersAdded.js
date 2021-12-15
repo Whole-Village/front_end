@@ -5,10 +5,8 @@ import React from 'react';
 const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers, serverError }) => {
 
   const removeVillageMember = (villagerEmail) => {
-    console.log(newVillageMembers)
     const updatedVillageList = newVillageMembers.filter(villager => villager !== villagerEmail)
     setNewVillageMembers(updatedVillageList)
-    console.log(newVillageMembers)
   }
 
   const newInvitees = newVillageMembers.map(member => {
