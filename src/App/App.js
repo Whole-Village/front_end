@@ -19,14 +19,14 @@ function App() {
   const [currentUserChildren, setCurrentUserChildren] = useState([]);
   const [error, setError] = useState(false);
   const [villageToCreate] = useMutation(createVillage)
-  const email = "priya@gmail.com";
+  const email = "anna@turing.edu";
   const { data } = useQuery(userQuery, {
     variables: {
       email }
     }
   );
   // refetch();
-  
+
   useEffect(() => {
     if(data) {
       setUserVillages(data.user.villages)
