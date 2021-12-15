@@ -13,15 +13,15 @@ describe('Dashboard User Flows', () => {
 
   it('Should see a header', () => {
   cy.get('h1').contains('Villages')
-})
+  })
 
   it('Should see navigation links', () => {
     cy.get('.navigation-bar').first().contains('Start a New Village')
-})
+  })
 
   it('Should display a user\'s villages', () => {
     cy.get('.village-container').first().contains('[TEST] Soccer team')
-})
+  })
 
   it('Should display a form to start a villege', () => {
     cy.get('.start-village-btn').click()
@@ -36,42 +36,28 @@ describe('Dashboard User Flows', () => {
 
   it("Should be able to show village invitee list", () => {
       cy.get('.start-village-btn').click()
-
-          cy.get('.village-email-input')
-          .type('ExampleInvitee@example.com')
-          .get('.add-member-btn')
-          .click()
-          .get('.roster')
-          .contains('ExampleInvitee@example.com')
+      cy.get('.village-email-input')
+      .type('ExampleInvitee@example.com')
+      .get('.add-member-btn')
+      .click()
+      .get('.roster')
+      .contains('ExampleInvitee@example.com')
   })
 
-  // it("Should be able to delete a invitee from invitee list", () => {
-  //     cy.get('.start-village-btn')
-  //     .click()
-  //       cy.get('.village-email-input')
-  //       .type('ExampleInvitee@example.com')
-  //         .get('.add-member-btn')
-  //         .click()
-  //           cy.get('.remove-member-btn > .material-icons')
-  //           .wait(700)
-  //           .click()
-  //             .get('.added-villagers')
-  //             .should('be.empty');
-  // })
 
-    it("Should be able to close the start village form", () => {
-      cy.get('.start-village-btn').click()
-      .get('.close-btn').click()
-      .get('h1').contains('Villages')
+  it("Should be able to close the start village form", () => {
+    cy.get('.start-village-btn').click()
+    .get('.close-btn').click()
+    .get('h1').contains('Villages')
   })
 
-    it('Should take a user to a village', () => {
-      cy.get('[href="/villages/3"] > .village-card').click()
-      .get('.events-sub')
-      .contains('Village Events')
-    })
+  it('Should take a user to a village', () => {
+    cy.get('[href="/villages/3"] > .village-card').click()
+    .get('.events-sub')
+    .contains('Village Events')
+  })
 
-    it.only('Should be able to submit the Create a Village', () => {
+  it('Should be able to submit the Create a Village', () => {
     cy.get('.start-village-btn').click()
     .wait(500)
     cy.get('.village-name-input').type('Example Village')
@@ -82,7 +68,6 @@ describe('Dashboard User Flows', () => {
     .click();
     cy.get(':nth-child(4) > .village-card')
     .contains('[TEST]Example Village');
-    })
+  })
 
 })
-

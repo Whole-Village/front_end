@@ -22,14 +22,13 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
   const { data } = useQuery(villagesQuery, {
     variables: {
       id }
-    }
-  );
+    });
 
   useEffect(() => {
     if(data) {
       setCurrentVillage(data.village)
     }
-  }, [data])
+    }, [data])
 
   const submitEvent = () => {
     newEvent({

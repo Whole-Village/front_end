@@ -1,0 +1,25 @@
+{
+  "data": {
+    "village": {
+      "id": "5",
+      "description": "Phoenixs best after school program for kids who skate.",
+      "name": "Skate After School",
+      "users": [
+        {
+          "email": "annabanana@terriblenickname.com",
+          "firstName": "Anna",
+          "lastName": "NotBanana",
+          "__typename": "User"
+        },
+      {
+        "email": "betty@boop.com",
+        "firstName": "Betty",
+        "lastName": "Boop",
+        "__typename": "User"
+      }
+      ],
+      "events": [],
+      "__typename": "Village"
+    }
+  }
+}

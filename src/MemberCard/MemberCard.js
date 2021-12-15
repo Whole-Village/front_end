@@ -9,5 +9,4 @@ const MemberCard = ({firstName, lastName, email}) => {
   )
 }
 
-
 export default MemberCard;

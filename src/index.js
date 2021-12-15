@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App/App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +8,6 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
-
 
 const client = new ApolloClient({
   uri: 'https://whole-village-be.herokuapp.com/graphql',
@@ -26,6 +24,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
-
 
 reportWebVitals();

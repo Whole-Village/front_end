@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const NewVillagersAdded = ({ newVillageMembers, setNewVillageMembers, serverError }) => {
 
   const removeVillageMember = (villagerEmail) => {

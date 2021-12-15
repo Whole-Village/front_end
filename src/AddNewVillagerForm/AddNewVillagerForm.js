@@ -18,7 +18,7 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
       return user.email;
     })
     if(currentUserEmails.includes(newVillager.email)) {
-      setDuplicateEmailError('User already exists!');
+      setDuplicateEmailError('This user is already in your village.');
     }
     if(newVillager.email && !currentUserEmails.includes(newVillager.email)) {
       sendInvitations({
@@ -30,7 +30,7 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
     })
     }
     if(!newVillager.email) {
-    setNoInviteeListed('Please add an email to be invited')
+    setNoInviteeListed('Please add an email to send invite.')
     }
   }
 
@@ -51,31 +51,28 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
   }
 
   return(
-    <div className='new-villager-form-modal'>
-      <div>
-        <h3>New Villager Invite Form</h3>
-        <label className='new-invitee-label'>New Invitee Email
-          <input className='village-data'
-            type='text'
-            name='email'
-            value={newVillager.email}
-            onChange={e => handleInviteNewVillager(e)}
-          />
-        </label>
-        <button className='send-invite' onClick={addVillagers}>Invite!</button>
-      </div>
-      <div className='invitees'>
-      {noInviteeListed && <p>{noInviteeListed}</p>}
-      {serverError === "User must exist" && <p>User must exist!  Please try again!</p>}
-      {duplicateEmailError && <p>{duplicateEmailError}</p>}
+    <div className='new-villager2-form-modal'>
       <button className="material-icons close-btn" onClick={() => setNewVillagerFormOpen(false)}>
           highlight_off
+      </button>
+      <h3 className="form-title">Invite Another Villager</h3>
+      <label className='new-invitee-label'>New Invitee Email</label>
+      <input className='email-input'
+        type='text'
+        name='email'
+        value={newVillager.email}
+        onChange={e => handleInviteNewVillager(e)}
+      />
+      <div className="btn-ctnr">
+        <button className='send-invite' onClick={addVillagers}>
+        Invite!
         </button>
-        <h2 className='village-headers'>Village Invite List</h2>
       </div>
+      {noInviteeListed && <p className="error-mess">{noInviteeListed}</p>}
+      {serverError === "User must exist" && <p className="error-mess">User must have a Whole Village account to be added.</p>}
+      {duplicateEmailError && <p className="error-mess">{duplicateEmailError}</p>}
     </div>
   )
 }
-
 
 export default AddNewVillagerForm;
