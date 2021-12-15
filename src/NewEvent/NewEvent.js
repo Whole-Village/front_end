@@ -5,7 +5,6 @@ import { useState } from 'react';
 const NewEvent = ({ submitEvent, setIsFormOpen, eventData, setEventData, onEventFormChange, isChecked, handleCheckBox }) => {
   const [error, setError] = useState(false);
 
-
   const checkFields = (e) => {
     e.preventDefault()
     if (eventData.name && eventData.date && eventData.time && eventData.description) {

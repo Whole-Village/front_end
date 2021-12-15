@@ -29,7 +29,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
     if(data) {
       setCurrentVillage(data.village)
     }
-    //we need to do loading/error handling here
     if(loading) {
       console.log('...loading')
     }
@@ -49,8 +48,6 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
         adultRequired: eventData.adultRequired
       }
     })
-    // setVillageEvents([...villageEvents, eventData])
-    //soooo dirty!!!!!!!!?
     window.location.reload()
   }
 

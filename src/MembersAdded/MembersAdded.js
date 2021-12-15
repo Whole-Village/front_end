@@ -26,11 +26,10 @@ const MembersAdded = ({ villageMembers, setVillageMembers }) => {
     )
   })
 
-  return(
+  return (
     <div className='added-villagers'>
       {villageInvitee}
     </div>
-
   )
 }
 

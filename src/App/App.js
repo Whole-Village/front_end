@@ -10,7 +10,6 @@ import { userQuery } from '../graphQL/queries/GetUser';
 import { useQuery } from "@apollo/client";
 import './App.css';
 
-
 function App() {
   const [newVillage, setNewVillage] = useState({village_name: '', village_invitees: [], village_description: ''});
   const [villageFormOpen, setVillageFormOpen] = useState(false);
@@ -19,13 +18,12 @@ function App() {
   const [currentUserChildren, setCurrentUserChildren] = useState([]);
   const [error, setError] = useState(false);
   const [villageToCreate] = useMutation(createVillage)
-  const email = "anna@turing.edu";
+  const email = "nadia@turing.edu";
   const { data } = useQuery(userQuery, {
     variables: {
       email }
     }
   );
-  // refetch();
 
   useEffect(() => {
     if(data) {
@@ -33,9 +31,6 @@ function App() {
       setCurrentUser(data.user)
     }
   },[data])
-
-
-
 
   const handleVillageChange = (e) => {
     setNewVillage((prevProps) => ({

@@ -64,7 +64,8 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
         onChange={e => handleInviteNewVillager(e)}
       />
       <div className="btn-ctnr">
-        <button className='send-invite' onClick={addVillagers}>Invite!
+        <button className='send-invite' onClick={addVillagers}>
+        Invite!
         </button>
       </div>
       {noInviteeListed && <p className="error-mess">{noInviteeListed}</p>}
@@ -73,6 +74,5 @@ const AddNewVillagerForm = ({ villageId, setNewVillagerFormOpen, currentVillage 
     </div>
   )
 }
-
 
 export default AddNewVillagerForm;
