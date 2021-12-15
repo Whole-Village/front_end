@@ -113,6 +113,7 @@ const VillageHome = ({ id, handleVillageChange, newVillage, setNewVillage, addVi
           villageId={id}
           addVillageMembers={addVillageMembers}
           setNewVillagerFormOpen={setNewVillagerFormOpen}
+          currentVillage={currentVillage}
         />}
       </div>
       <div className="button-container">
