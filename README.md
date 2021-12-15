@@ -50,5 +50,19 @@ When a user visits the app, they will see a list of villages that they are a mem
 - An option for a user to create a "wishlist" for someone in their village to watch their kids during a specified time and the ability for someone to reply with  availability/volonteer
 - A user will have a tally of "contribution hours" for volonteering/wathching children. There will be a minimum of required hours (annually?) each village member must volunteer to maintain a status as a villager in each village
 - All villagers will be able to upload photos from group events to an event page
+- A village chat/forum for each village
+
+## Wireframes 
+
+- Rought wireframes were developed by the team uisng Figma with the expectation that we would be working closely with a UI/UX designer: [Link to Figma Project](https://www.figma.com/file/5zU6rJnbbG7ZhLP5ocwQ6w/Whole-Village?node-id=0%3A1)
+
+- Due to scheduling conflicts, the interaction with the UI/UX designer were cut short. Below are some comps the designer sent to the team:
+
+Sign-in Page (Future Extension)
+<img width="1038" alt="Screen Shot 2021-12-03 at 12 57 35 PM" src="https://user-images.githubusercontent.com/68795578/146281425-6196417c-5572-4a74-8876-1e04be286ea4.png">
+
+New Event Form
+![image](https://user-images.githubusercontent.com/68795578/146281457-d2e462fa-0838-4d54-8fbe-d5c8458a4e37.png)
+
 
 
