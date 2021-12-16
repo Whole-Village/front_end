@@ -33,6 +33,15 @@ When a user visits the app, they will see a list of villages that they are a mem
 
 ## Dev Installation
 
+```git clone git@github.com:Whole-Village/front_end.git```
+
+```cd front_end```
+
+```npm install```
+
+```npm start```
+
+
 ## Challenges
 
 ## Wins
