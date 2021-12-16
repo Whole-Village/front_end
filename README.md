@@ -1,4 +1,4 @@
-# Whole Village
+# Whole Village   [![CircleCI](https://circleci.com/gh/Whole-Village/front_end/tree/main.svg?style=shield)](https://circleci.com/gh/Whole-Village/front_end/tree/main)
 ### Turing Mod 4 Capstone Project–Front End
 
 ## Abstract
